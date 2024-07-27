@@ -25,7 +25,10 @@ const DropdownItem = ({ item, className, setOpen }: Props) => {
           item.func ? item.func() : () => {};
         }}
       >
-        {item.title}
+        <div className="flex gap-2 items-center">
+          {item.icon && <img src={item.icon} width="16px" />}
+          {item.title}
+        </div>
         {item.shortcut && <Shortcut shortcut={item.shortcut} />}
         {item.submenu && <span>{">"}</span>}
       </li>
