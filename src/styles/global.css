@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply font-sans h-screen;
+  @apply font-sans h-screen cursor-default;
   letter-spacing: 0.25px;
   font-size: 15px;
 }
