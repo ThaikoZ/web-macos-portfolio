@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
-const Wallpaper = ({ children }: PropsWithChildren) => {
+const Screen = ({ children }: PropsWithChildren) => {
   const { darkMode } = useSelector((state: RootState) => state.darkMode);
   const backgroundClass =
     "h-full bg-macos-blue-400 bg-cover bg-center bg-no-repeat";
@@ -20,4 +20,4 @@ const Wallpaper = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default Wallpaper;
+export default Screen;

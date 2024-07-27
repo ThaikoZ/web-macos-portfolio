@@ -4,6 +4,7 @@ import darkModeReducer from "./reducers/darkModeSlice";
 export const store = configureStore({
   reducer: {
     darkMode: darkModeReducer,
+    // activeApp: darkModeReducer,
   },
 });
 
