@@ -15,7 +15,23 @@ export const finderMenu: DropdownMenuInterface[] = [
         inactive: true,
       },
       { id: "separator" },
-      { id: "finder_services", title: "Services", submenu: [] },
+      {
+        id: "finder_services",
+        title: "Services",
+        submenu: [
+          {
+            id: "finder_services_id",
+            title: "No Services Apply",
+            inactive: true,
+          },
+          { id: "separator" },
+          {
+            id: "finder_services_preferances",
+            title: "Services Preferences",
+            icon: "O",
+          },
+        ],
+      },
       { id: "separator" },
       { id: "finder_hide_finder", title: "Hide Finder", shortcut: "CMD+H" },
       {
@@ -58,7 +74,11 @@ export const finderMenu: DropdownMenuInterface[] = [
         title: "Open With",
         submenu: [
           { id: "finder_test 1", title: "test 1" },
-          { id: "finder_test 2", title: "test 2" },
+          {
+            id: "finder_test 2",
+            title: "test 2",
+            func: () => console.log("gowno dziala"),
+          },
           { id: "finder_test 3", title: "test 3" },
         ],
       },

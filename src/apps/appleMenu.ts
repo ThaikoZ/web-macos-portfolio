@@ -1,43 +1,19 @@
 import { DropdownItemInterface } from "../types/dropdown";
 
 export const appleMenu: DropdownItemInterface[] = [
-  {
-    id: "about",
-    title: "About This Mac",
-    func: () => {
-      console.log("about");
-    },
-  },
-  { id: "separator", title: "", func: () => {} },
-  {
-    id: "preferences",
-    title: "System Preferences",
-    func: () => {
-      console.log("preferences");
-    },
-  },
-  {
-    id: "app_store",
-    title: "App Store...",
-    func: () => console.log("app_store"),
-  },
-  { id: "separator", title: "", func: () => {} },
-  { id: "recent", title: "Recent Items", func: () => console.log("recent") },
-  { id: "separator", title: "", func: () => {} },
-  { id: "quit", title: "Force Quit...", func: () => console.log("quit") },
-  { id: "separator", title: "", func: () => {} },
-  { id: "sleep", title: "Sleep", func: () => console.log("sleep") },
-  { id: "restart", title: "Restart...", func: () => console.log("restart") },
-  {
-    id: "shut_down",
-    title: "Shut Down...",
-    func: () => console.log("shut_down"),
-  },
-  { id: "separator", title: "", func: () => {} },
-  { id: "lock", title: "Lock Screen", func: () => console.log("lock") },
-  {
-    id: "log_out",
-    title: "Log Out Adrian Sudak",
-    func: () => console.log("log_out"),
-  },
+  { id: "about", title: "About This Mac" },
+  { id: "separator" },
+  { id: "preferences", title: "System Preferences" },
+  { id: "app_store", title: "App Store..." },
+  { id: "separator" },
+  { id: "recent", title: "Recent Items" },
+  { id: "separator" },
+  { id: "quit", title: "Force Quit...", shortcut: "ALT+CMD+ESC" },
+  { id: "separator" },
+  { id: "sleep", title: "Sleep" },
+  { id: "restart", title: "Restart..." },
+  { id: "shut_down", title: "Shut Down..." },
+  { id: "separator" },
+  { id: "lock", title: "Lock Screen", shortcut: "CTRL+CMD+Q" },
+  { id: "log_out", title: "Log Out Adrian Sudak...", shortcut: "SHIFT+CMD+Q" },
 ];

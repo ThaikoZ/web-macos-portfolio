@@ -15,6 +15,8 @@ const Shortcut = ({ shortcut }: { shortcut: string }) => {
         return "⌥";
       case "BACKSPACE":
         return "←";
+      case "ESC":
+        return "⎋";
       default:
         return command;
     }
