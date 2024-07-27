@@ -1,5 +1,7 @@
 import { DropdownMenuInterface } from "../../types/dropdown";
 
+import settingIcon from "../../assets/icons/settings-icon.svg";
+
 export const finderMenu: DropdownMenuInterface[] = [
   {
     title: "Finder",
@@ -11,7 +13,7 @@ export const finderMenu: DropdownMenuInterface[] = [
       {
         id: "finder_empty_bin",
         title: "Empty Bin...",
-        shortcut: "CAPSLOCK+CMD+BACKSPACE",
+        shortcut: "SHIFT+CMD+BACKSPACE",
         inactive: true,
       },
       { id: "separator" },
@@ -27,8 +29,8 @@ export const finderMenu: DropdownMenuInterface[] = [
           { id: "separator" },
           {
             id: "finder_services_preferances",
-            title: "Services Preferences",
-            icon: "O",
+            title: "Services Preferences...",
+            icon: settingIcon,
           },
         ],
       },
