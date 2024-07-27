@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+::selection {
+  background: none;
+}
+
 body {
   @apply font-sans h-screen;
   letter-spacing: 0.25px;

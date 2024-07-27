@@ -1,4 +1,4 @@
-import { finderMenu } from "../static/finderMenu";
+import { finderMenu } from "../apps/finder/finderMenu";
 
 export const appsTitles = {
   finder: "Finder",

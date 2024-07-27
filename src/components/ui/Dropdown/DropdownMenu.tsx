@@ -9,9 +9,9 @@ const DropdownMenu = ({ children }: PropsWithChildren) => {
   return (
     <ul
       className={clsx(
-        "p-[0.3rem] overflow-hidden absolute rounded-lg shadow-lg drop-shadow-xl list-none w-72 z-10 backdrop-blur-lg",
+        "p-[0.3rem] overflow-hidden absolute rounded-lg shadow-lg drop-shadow-xl list-none w-max z-10 backdrop-blur-lg",
         { "bg-black bg-opacity-30 text-white": darkMode },
-        { "bg-[#fafafa] bg-opacity-75 text-black": !darkMode }
+        { "bg-[#fafafa] bg-opacity-80 text-black": !darkMode }
       )}
     >
       {children}

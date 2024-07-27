@@ -8,6 +8,7 @@ import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import Dropdown from "./components/ui/Dropdown/Dropdown";
 import { RootState } from "./store/store";
 import { getMenuByTitle } from "./utils/getMenuByTitle";
+import { appleMenu } from "./apps/appleMenu";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,17 +21,20 @@ const App = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start space-x-2">
-          <Dropdown
-            trigger={<Button icon={icon} onClick={() => {}} />}
-            menu={menu}
-          />
-          <Button className="font-semibold">{title}</Button>
-          <Button>File</Button>
-          <Button>Edit</Button>
-          <Button>View</Button>
-          <Button>Go</Button>
-          <Button>Window</Button>
-          <Button>Help</Button>
+          <Dropdown trigger={<Button icon={icon} />} menu={appleMenu} />
+          {menu.map((item, index) => (
+            <Dropdown
+              key={index}
+              trigger={
+                index == 0 ? (
+                  <Button className="font-semibold">{item.title}</Button>
+                ) : (
+                  <Button>{item.title}</Button>
+                )
+              }
+              menu={item.items}
+            />
+          ))}
         </FlexContainer>
         <div>
           <button
