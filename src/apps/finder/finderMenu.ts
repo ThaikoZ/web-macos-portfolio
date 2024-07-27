@@ -12,6 +12,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         id: "finder_empty_bin",
         title: "Empty Bin...",
         shortcut: "CAPSLOCK+CMD+BACKSPACE",
+        inactive: true,
       },
       { id: "separator" },
       { id: "finder_services", title: "Services", submenu: [] },
