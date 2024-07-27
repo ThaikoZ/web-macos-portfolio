@@ -40,8 +40,8 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
   }, []);
 
   const dropdownMenuClasses = clsx({
-    "top-full left-0 ": direction === "bottom",
-    "top-0 left-full ": direction === "right",
+    "top-full left-0": direction === "bottom",
+    "top-0 left-full": direction === "right",
   });
 
   return (
@@ -51,7 +51,7 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {cloneElement(trigger, {})}
+      {cloneElement(trigger)}
       {open && (
         <DropdownMenu className={dropdownMenuClasses}>
           {menu.map((item, index) =>

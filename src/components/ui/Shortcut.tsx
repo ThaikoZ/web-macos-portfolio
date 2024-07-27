@@ -14,7 +14,7 @@ const Shortcut = ({ shortcut }: { shortcut: string }) => {
       case "ALT":
         return "⌥";
       case "BACKSPACE":
-        return "←";
+        return "⌫";
       case "ESC":
         return "⎋";
       default:

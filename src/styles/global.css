@@ -14,6 +14,9 @@ body {
 div {
   @apply h-full;
 }
+.custom-backdrop-blur {
+  backdrop-filter: blur(15px) !important;
+}
 h1 {
   font-size: 3rem;
   line-height: 3.5rem;
