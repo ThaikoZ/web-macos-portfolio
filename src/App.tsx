@@ -1,5 +1,11 @@
+import Wallpaper from "./components/Wallpaper";
+
 function App() {
-  return <div className="text-xl">hello world</div>;
+  return (
+    <Wallpaper>
+      <h1>Hello world</h1>
+    </Wallpaper>
+  );
 }
 
 export default App;
