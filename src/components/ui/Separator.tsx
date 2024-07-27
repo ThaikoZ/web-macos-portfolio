@@ -9,7 +9,7 @@ const Separator = () => {
     <div className="mx-[1rem] my-[0.3rem]">
       <div
         className={clsx(
-          "w-full border-b-[1px] border-opacity-10",
+          "w-full border-b-[1px] border-opacity-20",
           { "border-black ": !darkMode },
           { "border-white": darkMode }
         )}

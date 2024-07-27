@@ -4,6 +4,7 @@ import DropdownMenu from "./DropdownMenu";
 import Separator from "../Separator";
 import { DropdownItemInterface } from "../../../types/dropdown";
 import clsx from "clsx";
+import SearchInput from "../SearchInput";
 
 interface Props {
   trigger: ReactElement;
@@ -32,6 +33,10 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
     }
   };
 
+  const handleSearch = (query: string) => {
+    console.log("Search query:", query);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -40,8 +45,8 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
   }, []);
 
   const dropdownMenuClasses = clsx({
-    "top-full left-0": direction === "bottom",
-    "top-0 left-full": direction === "right",
+    "top-full left-0 ": direction === "bottom",
+    "top-0 left-full ": direction === "right",
   });
 
   return (
@@ -55,8 +60,10 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
       {open && (
         <DropdownMenu className={dropdownMenuClasses}>
           {menu.map((item, index) =>
-            item.id !== "separator" ? (
-              item.submenu ? (
+            item.id === "help_search_input" ? (
+              <SearchInput key={index} onSearch={handleSearch} />
+            ) : item.id !== "separator" ? (
+              item.submenu && item.submenu.length > 0 ? (
                 <Dropdown
                   key={index}
                   direction="right"
@@ -77,7 +84,9 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
                 <DropdownItem
                   key={index}
                   className={
-                    index > 0 && menu[index - 1].id !== "separator"
+                    index > 0 &&
+                    menu[index - 1].id !== "separator" &&
+                    menu[index - 1].id !== "help_search_input"
                       ? "mt-[-2px]"
                       : ""
                   }
