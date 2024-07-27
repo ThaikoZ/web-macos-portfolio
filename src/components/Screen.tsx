@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
 const Screen = ({ children }: PropsWithChildren) => {
-  const { darkMode } = useSelector((state: RootState) => state.darkMode);
+  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
   const backgroundClass =
     "h-full bg-macos-blue-400 bg-cover bg-center bg-no-repeat";
 

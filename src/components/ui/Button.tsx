@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { RootState } from "../store/store";
+import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { ReactNode } from "react";
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Button = ({ icon, className, children, onClick }: Props) => {
-  const { darkMode } = useSelector((state: RootState) => state.darkMode);
+  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
   return (
     <button

@@ -1,28 +1,30 @@
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
 import icon from "./assets/apple-logo.svg";
-import Button from "./components/Button";
+import Button from "./components/ui/Button";
 import FlexContainer from "./components/FlexContainer";
-import Dropdown, {
-  DropdownItemInterface,
-} from "./components/Dropdown/Dropdown";
-
-const appleOptions: DropdownItemInterface[] = [
-  { id: "apple", title: "Apple", href: "#" },
-  { id: "dwa", title: "Dwa", href: "#" },
-  { id: "3", title: "Three", href: "#" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from "./store/reducers/darkModeSlice";
+import Dropdown from "./components/ui/Dropdown/Dropdown";
+import { RootState } from "./store/store";
+import { getMenuByTitle } from "./utils/getMenuByTitle";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { title } = useSelector(
+    (state: RootState) => state.system.activeWindow
+  );
+  const menu = getMenuByTitle(title);
+
   return (
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start space-x-2">
           <Dropdown
             trigger={<Button icon={icon} onClick={() => {}} />}
-            menu={appleOptions}
+            menu={menu}
           />
-          <Button className="font-semibold">Finder</Button>
+          <Button className="font-semibold">{title}</Button>
           <Button>File</Button>
           <Button>Edit</Button>
           <Button>View</Button>
@@ -30,14 +32,22 @@ const App = () => {
           <Button>Window</Button>
           <Button>Help</Button>
         </FlexContainer>
-        <div>Panel prawy</div>
+        <div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(toggleDarkMode());
+            }}
+          >
+            Switch Mode
+          </button>
+        </div>
         {/* Apple Dropdown menu */}
         {/* Horizontal Active menu items*/}
         {/* Right panel */}
       </TopBar>
       {/* ScreenView */}
       {/* Bottom Dock */}
-      <h4>Hello world</h4>
     </Screen>
   );
 };

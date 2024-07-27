@@ -5,6 +5,7 @@
 body {
   @apply font-sans h-screen;
   letter-spacing: 0.25px;
+  font-size: 15px;
 }
 div {
   @apply h-full;

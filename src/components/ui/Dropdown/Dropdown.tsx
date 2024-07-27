@@ -1,11 +1,8 @@
 import { cloneElement, ReactElement, useEffect, useRef, useState } from "react";
 import DropdownItem from "./DropdownItem";
-
-export interface DropdownItemInterface {
-  id: string;
-  title: string;
-  href: string;
-}
+import DropdownMenu from "./DropdownMenu";
+import Separator from "../Separator";
+import { DropdownItemInterface } from "../../../types/dropdown";
 
 interface Props {
   trigger: ReactElement;
@@ -18,11 +15,6 @@ const Dropdown = ({ trigger, menu }: Props) => {
 
   const handleOpen = () => {
     setOpen(!open);
-  };
-
-  const handleMenuItemClick = (id: string) => {
-    console.log(id, "clicked");
-    setOpen(false);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -47,15 +39,24 @@ const Dropdown = ({ trigger, menu }: Props) => {
         onClick: handleOpen,
       })}
       {open && (
-        <ul className="p-[0.25px] overflow-hidden absolute top-full rounded-md shadow-md drop-shadow-xl list-none bg-white w-56 z-10">
-          {menu.map((item) => (
-            <DropdownItem
-              key={item.id}
-              item={item}
-              onClick={handleMenuItemClick}
-            />
-          ))}
-        </ul>
+        <DropdownMenu>
+          {menu.map((item, index) =>
+            item.id !== "separator" ? (
+              <DropdownItem
+                key={index}
+                className={
+                  index > 0 && menu[index - 1].id !== "separator"
+                    ? "mt-[-2px]"
+                    : ""
+                }
+                item={item}
+                setOpen={setOpen}
+              />
+            ) : (
+              <Separator key={index} />
+            )
+          )}
+        </DropdownMenu>
       )}
     </div>
   );
