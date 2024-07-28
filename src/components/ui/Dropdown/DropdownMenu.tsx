@@ -1,28 +1,32 @@
-import { ReactNode } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/store";
+import { PropsWithChildren, useContext } from "react";
+import { DropdownContext } from "./Dropdown";
 import { cn } from "@/lib/utils";
 
-interface Props {
-  className?: string;
-  children: ReactNode;
-}
+const DropdownMenu = ({
+  children,
+  className,
+}: PropsWithChildren<{ className?: string; isSubmenu?: boolean }>) => {
+  const context = useContext(DropdownContext);
+  if (!context) {
+    throw new Error("DropdownMenu must be used within a Dropdown");
+  }
 
-const DropdownMenu = ({ className, children }: Props) => {
-  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
+  const { isOpen, ref } = context;
 
-  return (
+  return isOpen ? (
     <ul
+      ref={ref}
       className={cn(
         className,
-        "p-[0.3rem] absolute rounded-lg shadow-lg w-max z-10 backdrop-blur-lg dark:bg-black dark:bg-opacity-40 bg-[#fafafa] bg-opacity-85",
-        { " ": darkMode },
-        { "": !darkMode }
+        "absolute p-[0.3rem] rounded-lg shadow-window h-fit w-max z-10 border-[1px] border-opacity-[12%] border-black font-[500]",
+        "bg-dropdown-light-background bg-opacity-60 text-light-text",
+        "dark:bg-dropdown-dark-background dark:bg-opacity-60 dark:text-dark-text backdrop-brightness-200",
+        "backdrop-blur-lg"
       )}
     >
       {children}
     </ul>
-  );
+  ) : null;
 };
 
 export default DropdownMenu;

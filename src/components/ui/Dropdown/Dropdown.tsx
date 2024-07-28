@@ -1,19 +1,23 @@
-import { cn } from "@/lib/utils";
-import { cloneElement, ReactElement, useEffect, useRef, useState } from "react";
-import { DropdownItemInterface } from "../../../types/Dropdown";
-import SearchInput from "../SearchInput";
-import Separator from "../Separator";
-import DropdownItem from "./DropdownItem";
-import DropdownMenu from "./DropdownMenu";
+import React, { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
+import DropdownGroup, { DropdownGroupContext } from "./DropdownGroup";
+import DropdownTrigger from './DropdownTrigger';
+import DropdownMenu from './DropdownMenu';
+import DropdownMenuContent from './DropdownMenuContent';
+import DropdownMenuItem from './DropdownMenuItem';
+import DropdownMenuSeparator from './DropdownMenuSeparator';
 
-interface Props {
-  trigger: ReactElement;
-  menu: DropdownItemInterface[];
-  direction?: "right" | "bottom";
-}
+
+interface DropdownContextInterface { 
+  isOpen: boolean; 
+  toggle: () => void;
+  ref: React.RefObject<HTMLUListElement>;  
+  close: () => void;
+} 
+
+export const DropdownContext = createContext<DropdownContextInterface | undefined>(undefined);
 
 const useOutsideClick = (
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLUListElement>,
   callback: () => void
 ) => {
   useEffect(() => {
@@ -30,72 +34,47 @@ const useOutsideClick = (
   }, [ref, callback]);
 };
 
-const DropdownOld = ({ trigger, menu, direction = "bottom" }: Props) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useOutsideClick(dropdownRef, () => setOpen(false));
+const Dropdown = ({ id = "dropdown1", children }: PropsWithChildren<{ id?: string }>) => {
+  const dropdownGroupContext = useContext(DropdownGroupContext);
+  const [localIsOpen, setLocalIsOpen] = useState(false);
+  const ref = useRef<HTMLUListElement>(null);
 
-  const handleMouseEnter = () => setOpen(true);
-  const handleMouseLeave = () => setOpen(false);
+  const isOpen = dropdownGroupContext
+    ? dropdownGroupContext.activeDropdown === id
+    : localIsOpen;
 
-  const handleSearch = (query: string) => {
-    console.log("Search query:", query);
+  const toggle = () => {
+    if (dropdownGroupContext) {
+      dropdownGroupContext.setActiveDropdown(isOpen ? null : id!);
+    } else {
+      setLocalIsOpen((prev) => !prev);
+    }
   };
 
-  const dropdownMenuClasses = cn({
-    "top-full left-0": direction === "bottom",
-    "top-0 left-full bg-opacity-100": direction === "right",
-    "dark:top-0 dark:left-full dark:bg-opacity-[80%] dark:bg-gray-900":
-      direction === "right",
-  });
+  const close = () => {
+    if (dropdownGroupContext) {
+      dropdownGroupContext.setActiveDropdown(null);
+    } else {
+      setLocalIsOpen(false);
+    }
+  };
+
+  useOutsideClick(ref, close);
 
   return (
-    <div
-      className="h-full relative"
-      ref={dropdownRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {cloneElement(trigger)}
-      {open && (
-        <DropdownMenu className={dropdownMenuClasses}>
-          {menu.map((item, index) => {
-            switch (item.id) {
-              case "help_search_input":
-                return <SearchInput key={index} onSearch={handleSearch} />;
-              case "separator":
-                return <Separator key={index} />;
-            }
-            const dropdownItem = (
-              <DropdownItem
-                key={index}
-                className={
-                  index > 0 &&
-                  menu[index - 1].id !== "separator" &&
-                  menu[index - 1].id !== "help_search_input"
-                    ? "mt-[-2px]"
-                    : ""
-                }
-                item={item}
-                setOpen={setOpen}
-              />
-            );
-            return item.submenu && item.submenu.length > 0 ? (
-              <DropdownOld
-                key={index}
-                direction="right"
-                trigger={dropdownItem}
-                menu={item.submenu}
-              />
-            ) : (
-              dropdownItem
-            );
-          })}
-        </DropdownMenu>
-      )}
-    </div>
+    <DropdownContext.Provider value={{ isOpen, toggle, ref, close }}>
+      <div>{children}</div>
+    </DropdownContext.Provider>
   );
 };
 
-export default DropdownOld;
+Dropdown.Trigger = DropdownTrigger;
+Dropdown.Menu = DropdownMenu;
+Dropdown.Content = DropdownMenuContent;
+Dropdown.MenuItem = DropdownMenuItem;
+Dropdown.MenuSeparator = DropdownMenuSeparator;
+Dropdown.Group = DropdownGroup;
+
+export { Dropdown };
+
