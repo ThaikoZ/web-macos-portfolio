@@ -1,4 +1,4 @@
-import { DropdownMenuInterface } from "../../types/dropdown";
+import { DropdownMenuInterface } from "../../types/Dropdown";
 
 import settingIcon from "../../assets/icons/apps/settings-icon.svg";
 

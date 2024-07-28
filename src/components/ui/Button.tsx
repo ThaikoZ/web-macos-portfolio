@@ -4,25 +4,15 @@ import { useSelector } from "react-redux";
 import { ReactNode } from "react";
 
 interface Props {
-  icon?: string;
-  imgWidth?: string;
+  Icon?: ReactNode;
   children?: ReactNode;
   className?: string;
   onClick?: () => void;
 }
 
-const Button = ({
-  icon,
-  className,
-  children,
-  onClick,
-  imgWidth = "20",
-}: Props) => {
+const Button = ({ Icon, className, children, onClick }: Props) => {
   const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
-  const svgStyle = {
-    filter: !darkMode ? "invert(1)" : "invert(0)",
-  };
   return (
     <div
       onClick={onClick}
@@ -33,7 +23,7 @@ const Button = ({
         { "hover:bg-[#292828]": !darkMode }
       )}
     >
-      {icon && <img src={icon} style={svgStyle} alt="Icon" width={imgWidth} />}
+      {Icon}
       {children}
     </div>
   );

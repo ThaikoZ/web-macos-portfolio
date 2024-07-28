@@ -1,17 +1,23 @@
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
-import appleIcon from "./assets/icons/apple-logo.svg";
+
 import Button from "./components/ui/Button";
 import FlexContainer from "./components/FlexContainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./components/ui/Dropdown/Dropdown";
 import { RootState } from "./store/store";
 import { getMenuByTitle } from "./utils/getMenuByTitle";
 import { appleMenu } from "./apps/appleMenu";
-import { settings, user, spotlight, batteryFull } from "./assets/icons/utility";
 import WifiButton from "./components/TopBar/WifiButton";
+import BatteryFullIcon from "./assets/icons/utility/BatteryFullIcon";
+import UserAccountIcon from "./assets/icons/utility/UserAccountIcon";
+import AppleLogoIcon from "./assets/icons/utility/AppleLogoIcon";
+import SpotlightIcon from "./assets/icons/utility/SpotlightIcon";
+import SettingsPanelIcon from "./assets/icons/utility/SettingsPanel";
+import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
   const { title } = useSelector(
     (state: RootState) => state.system.activeWindow
   );
@@ -21,7 +27,10 @@ const App = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start">
-          <Dropdown trigger={<Button icon={appleIcon} />} menu={appleMenu} />
+          <Dropdown
+            trigger={<Button Icon={<AppleLogoIcon />} />}
+            menu={appleMenu}
+          />
           {menu.map((item, index) => (
             <Dropdown
               key={index}
@@ -38,11 +47,11 @@ const App = () => {
         </FlexContainer>
         <FlexContainer>
           <div className="flex">
-            <Button icon={batteryFull} imgWidth="24px" />
+            <Button Icon={<BatteryFullIcon width={24} />} />
             <WifiButton />
-            <Button icon={spotlight} imgWidth="17px" />
-            <Button icon={user} imgWidth="17px" />
-            <Button icon={settings} imgWidth="17px" />
+            <Button Icon={<SpotlightIcon width={17} />} />
+            <Button Icon={<UserAccountIcon />} />
+            <Button Icon={<SettingsPanelIcon width={20} />} />
             <ul className="flex">
               <Button>
                 <div className="flex gap-2.5">
@@ -52,14 +61,14 @@ const App = () => {
               </Button>
             </ul>
           </div>
-          {/* <button
+          <button
             onClick={(e) => {
               e.preventDefault();
               dispatch(toggleDarkMode());
             }}
           >
             Switch Mode
-          </button> */}
+          </button>
         </FlexContainer>
         {/* Right panel */}
       </TopBar>

@@ -1,4 +1,4 @@
-import { DropdownItemInterface } from "../types/dropdown";
+import { DropdownItemInterface } from "../types/Dropdown";
 
 export const appleMenu: DropdownItemInterface[] = [
   { id: "about", title: "About This Mac" },

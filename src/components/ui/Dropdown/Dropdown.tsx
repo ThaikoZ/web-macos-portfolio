@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { cloneElement, ReactElement, useEffect, useRef, useState } from "react";
-import { DropdownItemInterface } from "../../../types/dropdown";
+import { DropdownItemInterface } from "../../../types/Dropdown";
 import SearchInput from "../SearchInput";
 import Separator from "../Separator";
 import DropdownItem from "./DropdownItem";

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Dispatch, SetStateAction } from "react";
-import { DropdownItemInterface } from "../../../types/dropdown";
+import { DropdownItemInterface } from "../../../types/Dropdown";
 import Shortcut from "../Shortcut";
 
 interface Props {
