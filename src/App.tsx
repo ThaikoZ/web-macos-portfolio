@@ -39,7 +39,7 @@ const App = () => {
               key={index}
               trigger={
                 index == 0 ? (
-                  <Button className="font-semibold ">{item.title}</Button>
+                  <Button className="font-[600] ">{item.title}</Button>
                 ) : (
                   <Button>{item.title}</Button>
                 )

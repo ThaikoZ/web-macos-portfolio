@@ -2,21 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-::selection {
-  background: none;
-}
-
 body {
-  @apply font-sans h-screen cursor-default;
+  @apply font-mac-text h-screen cursor-default;
   letter-spacing: 0.25px;
   font-size: 15px;
 }
 div {
   @apply h-full;
 }
-.custom-backdrop-blur {
-  backdrop-filter: blur(15px) !important;
-}
+
 h1 {
   font-size: 3rem;
   line-height: 3.5rem;

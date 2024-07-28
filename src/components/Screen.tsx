@@ -11,8 +11,8 @@ const Screen = ({ children }: PropsWithChildren) => {
   return (
     <div
       className={clsx(backgroundClass, {
-        "bg-[url('../assets/macos-sonoma-dark.jpg')]": darkMode,
-        "bg-[url('../assets/macos-sonoma-light.jpg')]": !darkMode,
+        "bg-[url('src/assets/background/monterey-dark.jpg')]": darkMode,
+        "bg-[url('src/assets/background/monterey-light.jpg')]": !darkMode,
       })}
     >
       {children}
