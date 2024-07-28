@@ -1,8 +1,15 @@
-import settings from "./settings-panel.svg";
-import spotlight from "./spotlight.svg";
-import user from "./user-acc.svg";
-// import wifi from "./wifi.svg";
-import batteryFull from "./battery-full.svg";
+import BatteryFullIcon from "./BatteryFullIcon";
 import WifiIcon from "./WifiIcon";
+import UserAccountIcon from "./UserAccountIcon";
+import AppleLogoIcon from "./AppleLogoIcon";
+import SpotlightIcon from "./SpotlightIcon";
+import SettingsPanelIcon from "./SettingsPanel";
 
-export { settings, spotlight, user, batteryFull, WifiIcon };
+export {
+  BatteryFullIcon,
+  UserAccountIcon,
+  AppleLogoIcon,
+  SpotlightIcon,
+  SettingsPanelIcon,
+  WifiIcon,
+};

@@ -9,12 +9,15 @@ import { RootState } from "./store/store";
 import { getMenuByTitle } from "./utils/getMenuByTitle";
 import { appleMenu } from "./apps/appleMenu";
 import WifiButton from "./components/TopBar/WifiButton";
-import BatteryFullIcon from "./assets/icons/utility/BatteryFullIcon";
-import UserAccountIcon from "./assets/icons/utility/UserAccountIcon";
-import AppleLogoIcon from "./assets/icons/utility/AppleLogoIcon";
-import SpotlightIcon from "./assets/icons/utility/SpotlightIcon";
-import SettingsPanelIcon from "./assets/icons/utility/SettingsPanel";
+
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
+import {
+  AppleLogoIcon,
+  BatteryFullIcon,
+  SettingsPanelIcon,
+  SpotlightIcon,
+  UserAccountIcon,
+} from "./assets/icons/utility";
 
 const App = () => {
   const dispatch = useDispatch();
