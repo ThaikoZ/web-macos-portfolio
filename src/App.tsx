@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./components/ui/Dropdown/Dropdown";
 import { RootState } from "./store/store";
 import { getMenuByTitle } from "./utils/getMenuByTitle";
-import { appleMenu } from "./apps/appleMenu";
+import { systemMenu } from "./apps/systemMenu";
 import WifiButton from "./components/TopBar/WifiButton";
 
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
@@ -32,7 +32,7 @@ const App = () => {
         <FlexContainer className="justify-start">
           <Dropdown
             trigger={<Button Icon={<AppleLogoIcon />} />}
-            menu={appleMenu}
+            menu={systemMenu}
           />
           {menu.map((item, index) => (
             <Dropdown
