@@ -1,10 +1,12 @@
+import clsx from "clsx";
 import { cloneElement, ReactElement, useEffect, useRef, useState } from "react";
+import { DropdownItemInterface } from "../../../types/dropdown";
+import SearchInput from "../SearchInput";
+import Separator from "../Separator";
 import DropdownItem from "./DropdownItem";
 import DropdownMenu from "./DropdownMenu";
-import Separator from "../Separator";
-import { DropdownItemInterface } from "../../../types/dropdown";
-import clsx from "clsx";
-import SearchInput from "../SearchInput";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
 
 interface Props {
   trigger: ReactElement;
@@ -12,41 +14,43 @@ interface Props {
   direction?: "right" | "bottom";
 }
 
+const useOutsideClick = (
+  ref: React.RefObject<HTMLDivElement>,
+  callback: () => void
+) => {
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        callback();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, callback]);
+};
+
 const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
-  const handleMouseEnter = () => {
-    setOpen(true);
-  };
+  useOutsideClick(dropdownRef, () => setOpen(false));
 
-  const handleMouseLeave = () => {
-    setOpen(false);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
-      setOpen(false);
-    }
-  };
+  const handleMouseEnter = () => setOpen(true);
+  const handleMouseLeave = () => setOpen(false);
 
   const handleSearch = (query: string) => {
     console.log("Search query:", query);
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const dropdownMenuClasses = clsx({
-    "top-full left-0 ": direction === "bottom",
-    "top-0 left-full ": direction === "right",
+    "top-full left-0": direction === "bottom",
+    "top-0 left-full bg-opacity-100": direction === "right" && !darkMode,
+    "top-0 left-full bg-opacity-[80%] bg-gray-900":
+      direction === "right" && darkMode,
   });
 
   return (
@@ -59,45 +63,38 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
       {cloneElement(trigger)}
       {open && (
         <DropdownMenu className={dropdownMenuClasses}>
-          {menu.map((item, index) =>
-            item.id === "help_search_input" ? (
-              <SearchInput key={index} onSearch={handleSearch} />
-            ) : item.id !== "separator" ? (
-              item.submenu && item.submenu.length > 0 ? (
-                <Dropdown
-                  key={index}
-                  direction="right"
-                  trigger={
-                    <DropdownItem
-                      className={
-                        index > 0 && menu[index - 1].id !== "separator"
-                          ? "mt-[-2px]"
-                          : ""
-                      }
-                      item={item}
-                      setOpen={setOpen}
-                    />
-                  }
-                  menu={item.submenu}
-                />
-              ) : (
-                <DropdownItem
-                  key={index}
-                  className={
-                    index > 0 &&
-                    menu[index - 1].id !== "separator" &&
-                    menu[index - 1].id !== "help_search_input"
-                      ? "mt-[-2px]"
-                      : ""
-                  }
-                  item={item}
-                  setOpen={setOpen}
-                />
-              )
+          {menu.map((item, index) => {
+            switch (item.id) {
+              case "help_search_input":
+                return <SearchInput key={index} onSearch={handleSearch} />;
+              case "separator":
+                return <Separator key={index} />;
+            }
+            const dropdownItem = (
+              <DropdownItem
+                key={index}
+                className={
+                  index > 0 &&
+                  menu[index - 1].id !== "separator" &&
+                  menu[index - 1].id !== "help_search_input"
+                    ? "mt-[-2px]"
+                    : ""
+                }
+                item={item}
+                setOpen={setOpen}
+              />
+            );
+            return item.submenu && item.submenu.length > 0 ? (
+              <Dropdown
+                key={index}
+                direction="right"
+                trigger={dropdownItem}
+                menu={item.submenu}
+              />
             ) : (
-              <Separator key={index} />
-            )
-          )}
+              dropdownItem
+            );
+          })}
         </DropdownMenu>
       )}
     </div>

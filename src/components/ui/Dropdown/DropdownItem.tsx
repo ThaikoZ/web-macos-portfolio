@@ -16,7 +16,7 @@ const DropdownItem = ({ item, className, setOpen }: Props) => {
         className={clsx(
           className,
           "px-[1rem] py-[0.25rem] rounded-md transition-colors flex justify-between gap-14",
-          { "hover:bg-macos-blue-500 hover:text-white ": !item.inactive },
+          { "hover:bg-macos-selection hover:text-white ": !item.inactive },
           { "text-gray-400": item.inactive }
         )}
         onClick={(e) => {

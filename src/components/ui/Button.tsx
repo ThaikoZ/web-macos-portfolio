@@ -5,14 +5,24 @@ import { ReactNode } from "react";
 
 interface Props {
   icon?: string;
+  imgWidth?: string;
   children?: ReactNode;
   className?: string;
   onClick?: () => void;
 }
 
-const Button = ({ icon, className, children, onClick }: Props) => {
+const Button = ({
+  icon,
+  className,
+  children,
+  onClick,
+  imgWidth = "20",
+}: Props) => {
   const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
+  const svgStyle = {
+    filter: !darkMode ? "invert(1)" : "invert(0)",
+  };
   return (
     <div
       onClick={onClick}
@@ -23,7 +33,7 @@ const Button = ({ icon, className, children, onClick }: Props) => {
         { "hover:bg-[#292828]": !darkMode }
       )}
     >
-      {icon && <img src={icon} alt="Icon" width="20" height="20" />}
+      {icon && <img src={icon} style={svgStyle} alt="Icon" width={imgWidth} />}
       {children}
     </div>
   );
