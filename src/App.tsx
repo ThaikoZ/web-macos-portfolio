@@ -1,10 +1,9 @@
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
-
 import Button from "./components/ui/Button";
 import FlexContainer from "./components/FlexContainer";
 import { useDispatch, useSelector } from "react-redux";
-import Dropdown from "./components/ui/Dropdown/Dropdown";
+import { Dropdown } from "./components/ui/NewDropdown/Dropdown";
 import { RootState } from "./store/store";
 import { getMenuByTitle } from "./utils/getMenuByTitle";
 import { systemMenu } from "./apps/systemMenu";
@@ -18,6 +17,7 @@ import {
   SpotlightIcon,
   UserAccountIcon,
 } from "./assets/icons/utility";
+import { cn } from "./lib/utils";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,23 +30,26 @@ const App = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start">
-          <Dropdown
-            trigger={<Button Icon={<AppleLogoIcon />} />}
-            menu={systemMenu}
-          />
+        <Dropdown.Group>
+          <Dropdown id="appleMenu">
+          <Dropdown.Trigger>
+            <Button Icon={<AppleLogoIcon />}/>
+          </Dropdown.Trigger>
+          <Dropdown.Menu >
+            {systemMenu.map((item, index) => <Dropdown.Content key={index} item={item}/>)}
+          </Dropdown.Menu>
+          </Dropdown>
           {menu.map((item, index) => (
-            <Dropdown
-              key={index}
-              trigger={
-                index == 0 ? (
-                  <Button className="font-[600] ">{item.title}</Button>
-                ) : (
-                  <Button>{item.title}</Button>
-                )
-              }
-              menu={item.items}
-            />
+            <Dropdown key={index} id={item.title}>
+              <Dropdown.Trigger>
+                <Button className={cn({"font-[700] ": !index})}>{item.title}</Button>
+              </Dropdown.Trigger>
+              <Dropdown.Menu>
+                {item.items.map((item, index) => <Dropdown.Content key={index} item={item}/>)}
+              </Dropdown.Menu>
+            </Dropdown>
           ))}
+          </Dropdown.Group>
         </FlexContainer>
         <FlexContainer>
           <div className="flex">

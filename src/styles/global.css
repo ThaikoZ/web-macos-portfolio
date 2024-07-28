@@ -3,12 +3,16 @@
 @import "tailwindcss/utilities";
 
 :root {
-  font-size: 15px;
   @apply font-sf-text cursor-default;
+  font-size: 15px;
+  font-weight: 400;
+  
 }
 
 body {
-  @apply h-screen ;
+  @apply h-screen;
+  margin: 0;
+  padding: 0;
 }
 div {
   @apply h-full;

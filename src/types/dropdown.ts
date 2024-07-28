@@ -3,6 +3,7 @@ export interface DropdownItemInterface {
   title?: string;
   inactive?: boolean;
   shortcut?: string;
+  badge?: string;
   icon?: string;
   submenu?: DropdownItemInterface[];
   func?: () => void;

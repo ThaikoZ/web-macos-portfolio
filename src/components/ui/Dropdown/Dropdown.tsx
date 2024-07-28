@@ -30,7 +30,7 @@ const useOutsideClick = (
   }, [ref, callback]);
 };
 
-const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
+const DropdownOld = ({ trigger, menu, direction = "bottom" }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +82,7 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
               />
             );
             return item.submenu && item.submenu.length > 0 ? (
-              <Dropdown
+              <DropdownOld
                 key={index}
                 direction="right"
                 trigger={dropdownItem}
@@ -98,4 +98,4 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
   );
 };
 
-export default Dropdown;
+export default DropdownOld;

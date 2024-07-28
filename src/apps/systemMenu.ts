@@ -3,8 +3,8 @@ import { DropdownItemInterface } from "../types/Dropdown";
 export const systemMenu: DropdownItemInterface[] = [
   { id: "about", title: "About This Mac" },
   { id: "separator" },
-  { id: "preferences", title: "System Preferences" },
-  { id: "app_store", title: "App Store..." },
+  { id: "preferences", title: "System Preferences", badge: "1 update" },
+  { id: "app_store", title: "App Store...", badge: "7 updates" },
   { id: "separator" },
   {
     id: "recent",
@@ -19,7 +19,7 @@ export const systemMenu: DropdownItemInterface[] = [
       { id: "recent_clear", title: "Clear Menu" },
     ],
   },
-  { id: "separator" },
+  // { id: "separator" },
   { id: "quit", title: "Force Quit...", shortcut: "ALT+CMD+ESC" },
   { id: "separator" },
   { id: "sleep", title: "Sleep" },

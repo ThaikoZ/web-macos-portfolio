@@ -4,6 +4,7 @@ import UserAccountIcon from "./UserAccountIcon";
 import AppleLogoIcon from "./AppleLogoIcon";
 import SpotlightIcon from "./SpotlightIcon";
 import SettingsPanelIcon from "./SettingsPanel";
+import ChevronRightIcon from "./ChevronRightIcon";
 
 export {
   BatteryFullIcon,
@@ -12,4 +13,5 @@ export {
   SpotlightIcon,
   SettingsPanelIcon,
   WifiIcon,
+  ChevronRightIcon,
 };

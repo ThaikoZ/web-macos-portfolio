@@ -34,7 +34,7 @@ export const finderMenu: DropdownMenuInterface[] = [
           },
         ],
       },
-      { id: "separator" },
+      // { id: "separator" },
       { id: "finder_hide_finder", title: "Hide Finder", shortcut: "CMD+H" },
       {
         id: "finder_hide_others",

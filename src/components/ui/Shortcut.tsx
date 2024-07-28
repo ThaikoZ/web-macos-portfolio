@@ -1,5 +1,12 @@
-const Shortcut = ({ shortcut }: { shortcut: string }) => {
-  const shortcuts = shortcut.split("+");
+import { cn } from "@/lib/utils";
+
+interface Props {
+  shortcut: string;
+  className?: string;
+}
+
+const Shortcut = ({ shortcut, className, ...props }: Props) => {
+  const shortcuts = shortcut!.split("+");
 
   const getShortcut = (command: string) => {
     switch (command) {
@@ -23,7 +30,13 @@ const Shortcut = ({ shortcut }: { shortcut: string }) => {
   };
 
   return (
-    <div className="flex gap-[2px] text-gray-400">
+    <div
+      className={cn(
+        className,
+        "flex gap-[1px] text-dropdown-light-separator dark:text-dropdown-dark-separator opacity-40 "
+      )}
+      {...props}
+    >
       {shortcuts.map((item) => (
         <span key={item}>{getShortcut(item)}</span>
       ))}
