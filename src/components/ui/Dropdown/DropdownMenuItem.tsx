@@ -37,7 +37,7 @@ const DropdownMenuItem = ({ item }: DropdownMenuItemProps) => {
       if (item.func) item.func();
       else console.log("No action assigned to " + item.id);
 
-      if (!hasSubMenu) {
+      if (!hasSubMenu && item.id !== "help_search_input") {
         toggle();
       }
     }

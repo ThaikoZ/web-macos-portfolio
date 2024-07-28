@@ -11,6 +11,8 @@ const DropdownMenuContent = ({ item }: DropdownMenuItemProps) => {
   if (item.submenu) return null;
 
   switch (item.id) {
+    // case "help_search_input":
+    //   return <Dropdown.MenuSearchBox />;
     case "separator":
       return <Dropdown.MenuSeparator />;
     default:

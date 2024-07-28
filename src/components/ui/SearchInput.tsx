@@ -1,17 +1,15 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { cn } from "@/lib/utils";
 
-interface SearchInputProps {
-  placeholder?: string;
-  onSearch?: (query: string) => void;
-}
-
 const SearchInput = ({
   placeholder = "Search",
   onSearch,
-}: SearchInputProps) => {
+}: PropsWithChildren<{
+  placeholder?: string;
+  onSearch?: (query: string) => void;
+}>) => {
   const [query, setQuery] = useState<string>("");
   const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 

@@ -1,41 +1,33 @@
-import React, { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import DropdownGroup, { DropdownGroupContext } from "./DropdownGroup";
-import DropdownTrigger from './DropdownTrigger';
-import DropdownMenu from './DropdownMenu';
-import DropdownMenuContent from './DropdownMenuContent';
-import DropdownMenuItem from './DropdownMenuItem';
-import DropdownMenuSeparator from './DropdownMenuSeparator';
+import DropdownTrigger from "./DropdownTrigger";
+import DropdownMenu from "./DropdownMenu";
+import DropdownMenuContent from "./DropdownMenuContent";
+import DropdownMenuItem from "./DropdownMenuItem";
+import DropdownMenuSeparator from "./DropdownMenuSeparator";
+import SearchInput from "../SearchInput";
 
-
-interface DropdownContextInterface { 
-  isOpen: boolean; 
+interface DropdownContextInterface {
+  isOpen: boolean;
   toggle: () => void;
-  ref: React.RefObject<HTMLUListElement>;  
+  ref: React.RefObject<HTMLUListElement>;
   close: () => void;
-} 
+}
 
-export const DropdownContext = createContext<DropdownContextInterface | undefined>(undefined);
+export const DropdownContext = createContext<
+  DropdownContextInterface | undefined
+>(undefined);
 
-const useOutsideClick = (
-  ref: React.RefObject<HTMLUListElement>,
-  callback: () => void
-) => {
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        callback();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref, callback]);
-};
-
-
-const Dropdown = ({ id = "dropdown1", children }: PropsWithChildren<{ id?: string }>) => {
+const Dropdown = ({
+  id = "dropdown1",
+  children,
+}: PropsWithChildren<{ id?: string }>) => {
   const dropdownGroupContext = useContext(DropdownGroupContext);
   const [localIsOpen, setLocalIsOpen] = useState(false);
   const ref = useRef<HTMLUListElement>(null);
@@ -60,8 +52,6 @@ const Dropdown = ({ id = "dropdown1", children }: PropsWithChildren<{ id?: strin
     }
   };
 
-  useOutsideClick(ref, close);
-
   return (
     <DropdownContext.Provider value={{ isOpen, toggle, ref, close }}>
       <div>{children}</div>
@@ -74,7 +64,7 @@ Dropdown.Menu = DropdownMenu;
 Dropdown.Content = DropdownMenuContent;
 Dropdown.MenuItem = DropdownMenuItem;
 Dropdown.MenuSeparator = DropdownMenuSeparator;
+Dropdown.MenuSearchBox = SearchInput;
 Dropdown.Group = DropdownGroup;
 
 export { Dropdown };
-
