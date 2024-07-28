@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const FlexContainer = ({ className, children }: Props) => {
-  return <div className={clsx(className, "flex items-center")}>{children}</div>;
+  return <div className={cn(className, "flex items-center")}>{children}</div>;
 };
 
 export default FlexContainer;

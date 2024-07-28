@@ -1,7 +1,7 @@
-import clsx from "clsx";
 import { Dispatch, SetStateAction } from "react";
 import { DropdownItemInterface } from "../../../types/Dropdown";
 import Shortcut from "../Shortcut";
+import { cn } from "@/lib/utils";
 
 interface Props {
   item: DropdownItemInterface;
@@ -13,7 +13,7 @@ const DropdownItem = ({ item, className, setOpen }: Props) => {
   return (
     <>
       <li
-        className={clsx(
+        className={cn(
           className,
           "px-[1rem] py-[0.25rem] rounded-md transition-colors flex justify-between gap-14",
           { "hover:bg-macos-selection hover:text-white ": !item.inactive },

@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 interface SearchInputProps {
   placeholder?: string;
@@ -37,7 +37,7 @@ const SearchInput = ({
         onChange={handleInputChange}
         placeholder={placeholder}
         autoFocus
-        className={clsx(
+        className={cn(
           "w-full px-[1rem] py-[0.25rem] rounded-md cursor-text bg-opacity-10 backdrop-blur-md",
           {
             "focus:outline-none focus:ring-[1px] bg-white focus:ring-white":

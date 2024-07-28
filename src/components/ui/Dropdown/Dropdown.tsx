@@ -1,12 +1,10 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { cloneElement, ReactElement, useEffect, useRef, useState } from "react";
 import { DropdownItemInterface } from "../../../types/Dropdown";
 import SearchInput from "../SearchInput";
 import Separator from "../Separator";
 import DropdownItem from "./DropdownItem";
 import DropdownMenu from "./DropdownMenu";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/store";
 
 interface Props {
   trigger: ReactElement;
@@ -35,7 +33,6 @@ const useOutsideClick = (
 const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
   useOutsideClick(dropdownRef, () => setOpen(false));
 
@@ -46,11 +43,11 @@ const Dropdown = ({ trigger, menu, direction = "bottom" }: Props) => {
     console.log("Search query:", query);
   };
 
-  const dropdownMenuClasses = clsx({
+  const dropdownMenuClasses = cn({
     "top-full left-0": direction === "bottom",
-    "top-0 left-full bg-opacity-100": direction === "right" && !darkMode,
-    "top-0 left-full bg-opacity-[80%] bg-gray-900":
-      direction === "right" && darkMode,
+    "top-0 left-full bg-opacity-100": direction === "right",
+    "dark:top-0 dark:left-full dark:bg-opacity-[80%] dark:bg-gray-900":
+      direction === "right",
   });
 
   return (
