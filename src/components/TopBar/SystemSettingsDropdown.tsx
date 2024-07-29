@@ -1,5 +1,5 @@
-import { Dropdown } from "../ui/Dropdown/Dropdown";
-import Button from "../ui/Button";
+import { Dropdown } from "../Oldui/Dropdown/Dropdown";
+import Button from "../Oldui/Button";
 import { AppleLogoIcon } from "@/assets/icons/utility";
 import { systemMenu } from "@/apps/systemMenu";
 

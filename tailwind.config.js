@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -29,7 +30,8 @@ export default {
         ],
       },
       boxShadow: {
-        window: "-9px 9px 23px 0px rgba(24, 24, 24, 0.15), 9px 9px 23px 0px rgba(24, 24, 24, 0.15), 2px 4px 20px 0px rgba(24, 24, 24, 0.3)"
+        window:
+          "-9px 9px 23px 0px rgba(24, 24, 24, 0.15), 9px 9px 23px 0px rgba(24, 24, 24, 0.15), 2px 4px 20px 0px rgba(24, 24, 24, 0.3)",
       },
       colors: {
         "macos-selection": "#007AFF",
@@ -39,11 +41,11 @@ export default {
           red: "#FF3830",
           yellow: "#FFCC00",
           gray: "#8E8E93",
-          text: "#111111"
+          text: "#111111",
         },
         btn: {
-          'primary-dark': "linear-gradient(to bottom, #1568E5, #155CCC)",
-          'primary-light': "linear-gradient(to bottom, #1568E5, #155CCC)",
+          "primary-dark": "linear-gradient(to bottom, #1568E5, #155CCC)",
+          "primary-light": "linear-gradient(to bottom, #1568E5, #155CCC)",
         },
         dark: {
           blue: "#0A84FF",
@@ -52,18 +54,18 @@ export default {
           red: "#FF453A",
           yellow: "#FFD60A",
           gray: "#98989D",
-          text: "#F1F1F1"
+          text: "#F1F1F1",
         },
         dropdown: {
           dark: {
             background: "#282828",
-            separator: "#EBEBF5"
+            separator: "#EBEBF5",
           },
           light: {
             background: "#ffffff",
-            separator: "#3C3C43"
+            separator: "#3C3C43",
           },
-        }
+        },
       },
       cursor: {
         pointer: "url(../assets/cursors/pointer.png), pointer",

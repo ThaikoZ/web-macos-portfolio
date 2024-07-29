@@ -3,8 +3,8 @@ import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
 import WifiButton from "./components/TopBar/WifiButton";
-import Button from "./components/ui/Button";
-import { Dropdown } from "./components/ui/Dropdown/Dropdown";
+import Button from "./components/Oldui/Button";
+import { Dropdown } from "./components/Oldui/Dropdown/Dropdown";
 import { RootState } from "./store/store";
 import { getMenuByTitle } from "@/lib/utils";
 import {
@@ -12,12 +12,11 @@ import {
   SpotlightIcon,
   UserAccountIcon,
 } from "./assets/icons/utility";
-import ActiveWindowDetails from "./components/TopBar/ActiveWindowDetails";
-import SystemSettingsDropdown from "./components/TopBar/SystemSettingsDropdown";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import BatteryButton from "./components/TopBar/BatteryButton";
+import SystemToolbar from "./components/TopBar/SystemToolbar";
 
-const App = () => {
+const Desktop = () => {
   const dispatch = useDispatch();
   const { title } = useSelector(
     (state: RootState) => state.system.activeWindow
@@ -27,12 +26,7 @@ const App = () => {
   return (
     <Screen>
       <TopBar>
-        <FlexContainer className="justify-start">
-          <Dropdown.Group>
-            <SystemSettingsDropdown />
-            <ActiveWindowDetails menu={menu} />
-          </Dropdown.Group>
-        </FlexContainer>
+        {/* <SystemToolbar /> */}
         <FlexContainer>
           <div className="flex">
             <BatteryButton />
@@ -66,4 +60,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Desktop;

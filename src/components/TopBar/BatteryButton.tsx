@@ -1,6 +1,6 @@
 import { BatteryFullIcon } from "@/assets/icons/utility";
-import Button from "../ui/Button";
-import { Dropdown } from "../ui/Dropdown/Dropdown";
+import Button from "../Oldui/Button";
+import { Dropdown } from "../Oldui/Dropdown/Dropdown";
 import { batteryMenu } from "@/apps/bateryMenu";
 
 const BatteryButton = () => {
