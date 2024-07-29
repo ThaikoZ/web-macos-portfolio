@@ -6,9 +6,8 @@ import WifiButton from "./components/TopBar/WifiButton";
 import Button from "./components/ui/Button";
 import { Dropdown } from "./components/ui/Dropdown/Dropdown";
 import { RootState } from "./store/store";
-import { getMenuByTitle } from "./utils/getMenuByTitle";
+import { getMenuByTitle } from "@/lib/utils";
 import {
-  BatteryFullIcon,
   SettingsPanelIcon,
   SpotlightIcon,
   UserAccountIcon,
@@ -16,6 +15,7 @@ import {
 import ActiveWindowDetails from "./components/TopBar/ActiveWindowDetails";
 import SystemSettingsDropdown from "./components/TopBar/SystemSettingsDropdown";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
+import BatteryButton from "./components/TopBar/BatteryButton";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,14 +28,14 @@ const App = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start">
-        <Dropdown.Group>
-          <SystemSettingsDropdown />
-          <ActiveWindowDetails menu={menu}/>
+          <Dropdown.Group>
+            <SystemSettingsDropdown />
+            <ActiveWindowDetails menu={menu} />
           </Dropdown.Group>
         </FlexContainer>
         <FlexContainer>
           <div className="flex">
-            <Button Icon={<BatteryFullIcon width={24} />} />
+            <BatteryButton />
             <WifiButton />
             <Button Icon={<SpotlightIcon width={17} />} />
             <Button Icon={<UserAccountIcon />} />

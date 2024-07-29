@@ -6,6 +6,8 @@ export interface DropdownItemInterface {
   badge?: string;
   icon?: string;
   submenu?: DropdownItemInterface[];
+  className?: string;
+  disabled?: boolean;
   func?: () => void;
 }
 

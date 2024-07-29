@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { appsTitles } from "../../utils/getMenuByTitle";
+import { appsTitles } from "@/lib/utils";
 
 export interface ActiveWindowState {
   title: string;

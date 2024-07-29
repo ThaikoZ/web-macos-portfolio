@@ -1,6 +1,5 @@
-import { DropdownMenuInterface } from "../../types/Dropdown";
-
-import settingIcon from "../../assets/icons/apps/settings-icon.svg";
+import { DropdownMenuInterface } from "@/types/Dropdown";
+import settingIcon from "@/assets/icons/apps/settings-icon.svg";
 
 export const finderMenu: DropdownMenuInterface[] = [
   {

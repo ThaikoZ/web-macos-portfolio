@@ -10,9 +10,10 @@ import DropdownMenuContent from "./DropdownMenuContent";
 
 export interface DropdownMenuItemProps {
   item: DropdownItemInterface;
+  className?: string;
 }
 
-const DropdownMenuItem = ({ item }: DropdownMenuItemProps) => {
+const DropdownMenuItem = ({ item, className }: DropdownMenuItemProps) => {
   const context = useContext(DropdownContext);
   if (!context) {
     throw new Error("DropdownMenu must be used within a Dropdown");
@@ -33,7 +34,7 @@ const DropdownMenuItem = ({ item }: DropdownMenuItemProps) => {
   const handleOnToggle = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    if (!item.inactive) {
+    if (!item.inactive && !item.disabled) {
       if (item.func) item.func();
       else console.log("No action assigned to " + item.id);
 
@@ -63,10 +64,11 @@ const DropdownMenuItem = ({ item }: DropdownMenuItemProps) => {
   return (
     <li
       className={cn(
+        className,
         "dropdown-menu-item relative group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12",
         {
           "hover:bg-light-blue dark:hover:bg-dark-dark-blue hover:text-white":
-            !item.inactive,
+            !(item.disabled || item.inactive),
         }
       )}
       onClick={handleOnToggle}
@@ -83,7 +85,9 @@ const DropdownMenuItem = ({ item }: DropdownMenuItemProps) => {
         <Shortcut
           shortcut={item.shortcut}
           className={cn({
-            "group-hover:text-white group-hover:opacity-100": !item.inactive,
+            "group-hover:text-white group-hover:opacity-100": !(
+              item.disabled || item.inactive
+            ),
           })}
         />
       )}
