@@ -1,21 +1,14 @@
+import { getMenuByTitle } from "@/lib/utils";
 import { useDispatch, useSelector } from "react-redux";
+import { systemMenu } from "./apps/systemMenu";
+import { AppleLogoIcon } from "./assets/icons/utility";
 import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
-import WifiButton from "./components/TopBar/WifiButton";
-import Button from "./components/ui/Button";
-import { Dropdown } from "./components/ui/Dropdown/Dropdown";
-import { RootState } from "./store/store";
-import { getMenuByTitle } from "@/lib/utils";
-import {
-  SettingsPanelIcon,
-  SpotlightIcon,
-  UserAccountIcon,
-} from "./assets/icons/utility";
-import ActiveWindowDetails from "./components/TopBar/ActiveWindowDetails";
-import SystemSettingsDropdown from "./components/TopBar/SystemSettingsDropdown";
+import Button from "./components/new/ui/Button";
+import { Dropdown } from "./components/new/ui/Dropdown";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
-import BatteryButton from "./components/TopBar/BatteryButton";
+import { RootState } from "./store/store";
 
 const Desktop = () => {
   const dispatch = useDispatch();
@@ -28,18 +21,29 @@ const Desktop = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start">
-          <Dropdown.Group>
-            <SystemSettingsDropdown />
-            <ActiveWindowDetails menu={menu} />
-          </Dropdown.Group>
+          <Dropdown
+            trigger={<Button icon={<AppleLogoIcon />} />}
+            menu={systemMenu}
+          />
+          {menu.map((item, index) => (
+            <Dropdown
+              key={item.title}
+              trigger={
+                <Button font={index === 0 ? "bold" : "medium"}>
+                  {item.title}
+                </Button>
+              }
+              menu={item}
+            />
+          ))}
         </FlexContainer>
         <FlexContainer>
           <div className="flex">
-            <BatteryButton />
-            <WifiButton />
-            <Button Icon={<SpotlightIcon width={17} />} />
-            <Button Icon={<UserAccountIcon />} />
-            <Button Icon={<SettingsPanelIcon width={20} />} />
+            {/* <BatteryButton /> */}
+            {/* <WifiButton /> */}
+            {/* <Button icon={<SpotlightIcon width={17} />} /> */}
+            {/* <Button icon={<UserAccountIcon />} /> */}
+            {/* <Button icon={<SettingsPanelIcon width={20} />} /> */}
             <ul className="flex">
               <Button>
                 <div className="flex gap-2.5">

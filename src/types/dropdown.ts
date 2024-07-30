@@ -1,5 +1,5 @@
 export interface DropdownItemInterface {
-  id: string;
+  id: string | "separator" | "submenu" | "title";
   title?: string;
   inactive?: boolean;
   shortcut?: string;
