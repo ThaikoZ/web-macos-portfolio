@@ -17,7 +17,7 @@ import SystemSettingsDropdown from "./components/TopBar/SystemSettingsDropdown";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import BatteryButton from "./components/TopBar/BatteryButton";
 
-const App = () => {
+const Desktop = () => {
   const dispatch = useDispatch();
   const { title } = useSelector(
     (state: RootState) => state.system.activeWindow
@@ -66,4 +66,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Desktop;

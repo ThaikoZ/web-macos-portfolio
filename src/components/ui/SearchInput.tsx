@@ -1,6 +1,4 @@
 import { useState, ChangeEvent, PropsWithChildren } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import { cn } from "@/lib/utils";
 
 const SearchInput = ({
@@ -11,7 +9,6 @@ const SearchInput = ({
   onSearch?: (query: string) => void;
 }>) => {
   const [query, setQuery] = useState<string>("");
-  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -37,11 +34,8 @@ const SearchInput = ({
         autoFocus
         className={cn(
           "w-full px-[1rem] py-[0.25rem] rounded-md cursor-text bg-opacity-10 backdrop-blur-md",
-          {
-            "focus:outline-none focus:ring-[1px] bg-white focus:ring-white":
-              darkMode,
-          },
-          { "focus:outline-none   bg-black ": !darkMode }
+          "dark:focus:outline-none focus:ring-[1px] dark:bg-white dark:focus:ring-white",
+          "focus:outline-none bg-black "
         )}
       />
       {query && (
