@@ -5,8 +5,8 @@ import { AppleLogoIcon } from "./assets/icons/utility";
 import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
-import Button from "./components/new/ui/Button";
-import { Dropdown } from "./components/new/ui/Dropdown";
+import Button from "./components/ui/Button";
+import { Dropdown } from "./components/ui/Dropdown";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import { RootState } from "./store/store";
 

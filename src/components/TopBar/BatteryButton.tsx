@@ -1,5 +1,5 @@
 import { BatteryFullIcon } from "@/assets/icons/utility";
-import Button from "../new/ui/Button";
+import Button from "../ui/Button";
 import { Dropdown } from "../ui/Dropdown/Dropdown";
 import { batteryMenu } from "@/apps/bateryMenu";
 

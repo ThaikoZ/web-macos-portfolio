@@ -1,6 +1,6 @@
 import { DropdownMenuInterface } from "@/types/Dropdown";
 import { Dropdown } from "../ui/Dropdown/Dropdown";
-import Button from "../new/ui/Button";
+import Button from "../ui/Button";
 import { cn } from "@/lib/utils";
 
 const ActiveWindowDetails = ({ menu }: { menu: DropdownMenuInterface[] }) => {
