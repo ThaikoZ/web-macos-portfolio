@@ -6,7 +6,7 @@ import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
 import Button from "./components/ui/Button";
-import { Dropdown } from "./components/ui/Dropdown";
+import DropdownMenu  from "./components/ui/DropdownMenu";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import { RootState } from "./store/store";
 
@@ -21,12 +21,12 @@ const Desktop = () => {
     <Screen>
       <TopBar>
         <FlexContainer className="justify-start">
-          <Dropdown
+          <DropdownMenu
             trigger={<Button icon={<AppleLogoIcon />} />}
             menu={systemMenu}
           />
           {menu.map((item, index) => (
-            <Dropdown
+            <DropdownMenu
               key={item.title}
               trigger={
                 <Button font={index === 0 ? "bold" : "medium"}>
