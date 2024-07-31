@@ -6,7 +6,7 @@ import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
 import Button from "./components/ui/Button";
-import DropdownMenu  from "./components/ui/DropdownMenu";
+import DropdownMenu from "./components/ui/DropdownMenu";
 import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import { RootState } from "./store/store";
 

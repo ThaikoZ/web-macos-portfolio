@@ -308,7 +308,7 @@ export const finderMenu: DropdownMenuInterface[] = [
       },
       { id: "finder_view_clean_up", title: "Clean Up" },
       {
-        id: "finder_view_clean_up_by",
+        id: "submenu",
         title: "Clean Up By",
         submenu: [
           {
