@@ -148,7 +148,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         id: "finder_file_add_to_sidebar",
         title: "Add to Sidebar",
         inactive: true,
-        shortcut: "CTLR+CMD+T",
+        shortcut: "CTRL+CMD+T",
       },
       { id: "separator" },
       {

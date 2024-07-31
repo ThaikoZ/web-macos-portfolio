@@ -33,7 +33,7 @@ const DropdownMenuSelector = ({
     case "submenu":
       return (
         <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger className="group select-none outline-none data-[state=open]:bg-dropdown-light-separator data-[state=open]:dark:bg-dropdown-dark-separator data-[state=open]:bg-opacity-15 data-[state=open]:dark:bg-opacity-30 data-[state=open]:rounded-md data-[disabled]:pointer-events-none">
+          <DropdownMenu.SubTrigger className="group select-none outline-none data-[state=open]:bg-topbar-dropdown-sub-active rounded-md data-[disabled]:pointer-events-none">
             <DropdownMenuItem item={item} />
           </DropdownMenu.SubTrigger>
           <DropdownMenu.Portal>
@@ -59,7 +59,6 @@ export const Dropdown = (props: DropdownProps) => {
     props.className,
     "p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px]"
   );
-  console.log(dropdownClass);
 
   return (
     <DropdownMenu.Root>
@@ -92,7 +91,7 @@ export const DropdownMenuItem = forwardRef<
   const disabled = item.inactive || item.disabled;
 
   const handleOnClick = () => {
-    if (disabled) {
+    if (!disabled) {
       if (item.func) item.func();
       else console.log(item.id);
     }
@@ -105,32 +104,40 @@ export const DropdownMenuItem = forwardRef<
       className={cn(
         "group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12",
         {
-          "hover:bg-light-blue dark:hover:bg-dark-dark-blue hover:text-white":
+          "hover:bg-topbar-dropdown-sub-item-hovered hover:text-topbar-dropdown-sub-item-hovered-text":
             !disabled,
         }
       )}
     >
       <div className="flex gap-2 items-center">
         {item.icon && <img src={item.icon} width="20px" />}
-        <span className={cn({ "opacity-40": item.inactive })}>
+        <span
+          className={cn({
+            "text-topbar-dropdown-text-inactive": item.inactive,
+          })}
+        >
           {item.title}
         </span>
       </div>
       {item.shortcut && (
         <Shortcut
           shortcut={item.shortcut}
-          className={cn({
-            "group-hover:text-topbar-dropdown-shortcut-hovered ": !disabled,
-          })}
+          className={cn(
+            {
+              "group-hover:text-topbar-dropdown-shortcut-text-hovered":
+                !disabled,
+            },
+            { "": item.inactive }
+          )}
         />
       )}
       {item.badge && <Badge label={item.badge} />}
       {item.submenu && (
         <ChevronRightIcon
-          className={cn("fill-black", {
-            "group-hover:fill-white": !disabled,
-            "opacity-40": item.inactive,
-          })}
+          className={cn(
+            "group-hover:fill-topbar-dropdown-sub-chevron-text-hovered",
+            { "text-topbar-dropdown-text-inactive": disabled }
+          )}
         />
       )}
     </div>

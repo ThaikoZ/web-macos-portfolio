@@ -48,14 +48,27 @@ export default {
             background: "rgba(var(--color-topbar-dropdown-background))",
             border: "rgba(var(--color-topbar-dropdown-border))",
             text: "rgba(var(--color-topbar-dropdown-text))",
+            "text-inactive": "rgba(var(--color-topbar-dropdown-text-inactive))",
             separator: "rgba(var(--color-topbar-dropdown-separator))",
             badge: {
               background: "rgba(var(--color-topbar-dropdown-badge-background))",
             },
             shortcut: {
-              background:
-                "rgba(var(--color-topbar-dropdown-shortcut-background))",
-              hovered: "rgba(var(--color-topbar-dropdown-shortcut-hovered))",
+              text: "rgba(var(--color-topbar-dropdown-shortcut-text))",
+              "text-hovered":
+                "rgba(var(--color-topbar-dropdown-shortcut-text-hovered))",
+            },
+            sub: {
+              active: "rgba(var(--color-topbar-dropdown-sub-active))",
+              chevron: {
+                text: "rgba(var(--color-topbar-dropdown-sub-chevron-text))",
+                hovered:
+                  "rgba(var(--color-topbar-dropdown-sub-chevron-text-hovered))",
+              },
+              item: {
+                hovered: "rgba(var(--color-topbar-dropdown-item-hovered))",
+                "hovered-text": "rgba(var(--color-topbar-dropdown-item-text))",
+              },
             },
           },
         },

@@ -33,7 +33,7 @@ const Shortcut = ({ shortcut, className, ...props }: Props) => {
     <div
       className={cn(
         className,
-        "flex gap-[1px] text-topbar-dropdown-shortcut-background"
+        "flex gap-[1px] text-topbar-dropdown-shortcut-text"
       )}
       {...props}
     >
