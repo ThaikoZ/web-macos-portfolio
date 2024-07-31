@@ -1,4 +1,7 @@
+import { appsTitles } from "@/lib/appsTitles";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+type ThemeType = "dark" | "light";
 
 export interface SystemSettingsState {
   isWifiEnabled: boolean;
@@ -7,6 +10,8 @@ export interface SystemSettingsState {
   isFocusEnabled: boolean;
   displayRange: number;
   soundRange: number;
+  theme: ThemeType;
+  activeWindowTitle: string;
 }
 
 const initialState: SystemSettingsState = {
@@ -16,29 +21,34 @@ const initialState: SystemSettingsState = {
   isFocusEnabled: false,
   displayRange: 0.8,
   soundRange: 0.3,
+  theme: "dark",
+  activeWindowTitle: appsTitles.finder,
 };
 
 const systemSettingsSlice = createSlice({
   name: "systemSettings",
   initialState,
   reducers: {
-    toggleWifi(state) {
-      return { ...state, isWifiEnabled: !state.isWifiEnabled };
+    toggleWifi(settings) {
+      return { ...settings, isWifiEnabled: !settings.isWifiEnabled };
     },
-    toggleBluetooth(state) {
-      return { ...state, isBluetoothEnabled: !state.isBluetoothEnabled };
+    toggleBluetooth(settings) {
+      return { ...settings, isBluetoothEnabled: !settings.isBluetoothEnabled };
     },
-    toggleAirdrop(state) {
-      return { ...state, isAirdropEnabled: !state.isAirdropEnabled };
+    toggleAirdrop(settings) {
+      return { ...settings, isAirdropEnabled: !settings.isAirdropEnabled };
     },
-    toggleFocus(state) {
-      return { ...state, isFocusEnabled: !state.isFocusEnabled };
+    toggleFocus(settings) {
+      return { ...settings, isFocusEnabled: !settings.isFocusEnabled };
     },
     setDisplayRange(settings, action: PayloadAction<number>) {
       return { ...settings, displayRange: action.payload };
     },
     setSoundRange(settings, action: PayloadAction<number>) {
       return { ...settings, soundRange: action.payload };
+    },
+    switchThemeTo(settings, action: PayloadAction<ThemeType>) {
+      return { ...settings, theme: action.payload };
     },
   },
 });
@@ -50,6 +60,7 @@ export const {
   toggleFocus,
   setDisplayRange,
   setSoundRange,
+  switchThemeTo,
 } = systemSettingsSlice.actions;
 
 export default systemSettingsSlice.reducer;

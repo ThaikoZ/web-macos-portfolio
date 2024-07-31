@@ -7,15 +7,15 @@ import Screen from "./components/Screen";
 import TopBar from "./components/TopBar/TopBar";
 import Button from "./components/ui/Button";
 import DropdownMenu from "./components/ui/DropdownMenu";
-import { toggleDarkMode } from "./store/reducers/darkModeSlice";
 import { RootState } from "./store/store";
+import { switchThemeTo } from "./store/reducers/systemSettingsSlice";
 
 const Desktop = () => {
   const dispatch = useDispatch();
-  const { title } = useSelector(
-    (state: RootState) => state.system.activeWindow
+  const { activeWindowTitle, theme } = useSelector(
+    (state: RootState) => state.systemSettings
   );
-  const menu = getMenuByTitle(title);
+  const menu = getMenuByTitle(activeWindowTitle);
 
   return (
     <Screen>
@@ -56,7 +56,7 @@ const Desktop = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              dispatch(toggleDarkMode());
+              dispatch(switchThemeTo(theme === "light" ? "dark" : "light"));
             }}
           >
             Switch Mode

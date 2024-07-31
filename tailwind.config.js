@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
+      backgroundImage: {
+        wallpaper: "var(--wallpaper)",
+      },
       fontFamily: {
         "sf-text": [
           "SF Pro Text",
@@ -33,6 +37,9 @@ export default {
           "-9px 9px 23px 0px rgba(24, 24, 24, 0.15), 9px 9px 23px 0px rgba(24, 24, 24, 0.15), 2px 4px 20px 0px rgba(24, 24, 24, 0.3)",
       },
       colors: {
+        topbar: "rgba(var(--color-topbar))",
+        "topbar-text": "rgba(var(--color-topbar-text))",
+
         "macos-selection": "#007AFF",
         light: {
           blue: "#007AFF",
@@ -67,25 +74,25 @@ export default {
         },
       },
       cursor: {
-        pointer: "url(../assets/cursors/pointer.png), pointer",
-        default: "url(../assets/cursors/default.png), default",
-        auto: "url(../assets/cursors/apple-cursor.png), auto",
-        text: "url(../assets/cursors/text.png), text",
-        crosshair: "url(../assets/cursors/crosshair.png), crosshair",
-        "zoom-in": "url(../assets/cursors/zoom-in.png), zoom-in",
-        "zoom-out": "url(../assets/cursors/zoom-out.png), zoom-out",
-        help: "url(../assets/cursors/help.png), help",
-        grab: "url(../assets/cursors/grab.png), grab",
-        move: "url(../assets/cursors/move.png), move",
-        wait: "url(../assets/cursors/wait.png), wait",
-        "n-resize": "url(../assets/cursors/n-resize.png), n-resize",
-        "s-resize": "url(../assets/cursors/n-resize.png), n-resize",
-        "w-resize": "url(../assets/cursors/w-resize.png), w-resize",
-        "e-resize": "url(../assets/cursors/w-resize.png), w-resize",
-        "nw-resize": "url(../assets/cursors/nw-resize.png), nw-resize",
-        "se-resize": "url(../assets/cursors/nw-resize.png), nw-resize",
-        "ne-resize": "url(../assets/cursors/ne-resize.png), ne-resize",
-        "sw-resize": "url(../assets/cursors/ne-resize.png), ne-resize",
+        pointer: "var(--cursor-pointer)",
+        default: "var(--cursor-default)",
+        auto: "var(--cursor-auto)",
+        text: "var(--cursor-text)",
+        crosshair: "var(--cursor-crosshair)",
+        "zoom-in": "var(--cursor-zoom-in)",
+        "zoom-out": "var(--cursor-zoom-out)",
+        help: "var(--cursor-help)",
+        grab: "var(--cursor-grab)",
+        move: "var(--cursor-move)",
+        wait: "var(--cursor-wait)",
+        "n-resize": "var(--cursor-n-resize)",
+        "s-resize": "var(--cursor-s-resize)",
+        "w-resize": "var(--cursor-w-resize)",
+        "e-resize": "var(--cursor-e-resize)",
+        "nw-resize": "var(--cursor-nw-resize)",
+        "se-resize": "var(--cursor-se-resize)",
+        "ne-resize": "var(--cursor-ne-resize)",
+        "sw-resize": "var(--cursor-sw-resize)",
       },
     },
   },

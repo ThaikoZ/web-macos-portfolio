@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transition-bg {
+  transition: background-image 0.25s ease-in-out;
+}

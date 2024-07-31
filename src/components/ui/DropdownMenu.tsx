@@ -18,9 +18,9 @@ export interface DropdownMenuItemProps {
 }
 
 const dropdownClass = cn(
-  "p-[0.3rem] rounded-lg shadow-window h-fit w-max z-10 border-[1px] border-opacity-[12%] border-black font-[500]",
+  "p-[0.3rem] rounded-lg shadow-window h-fit w-max z-10 border-[1px] border-opacity-[12%] border-black font-[500] backdrop-brightness-150",
+  "dark:bg-dropdown-dark-background dark:bg-opacity-60 dark:text-dark-text",
   "bg-dropdown-light-background bg-opacity-60 text-light-text",
-  "backdrop-brightness-200 dark:bg-dropdown-dark-background dark:bg-opacity-60 dark:text-dark-text",
   "backdrop-blur-lg"
 );
 
@@ -59,14 +59,12 @@ export const Dropdown = (props: DropdownProps) => {
         <div className="h-full">{props.trigger}</div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          align="start"
-          side="bottom"
-          className={dropdownClass}
-        >
-          {props.menu.items.map((item, index) => (
-            <div key={index}>{getComponent(item)}</div>
-          ))}
+        <DropdownMenu.Content align="start" side="bottom">
+          <div className={dropdownClass}>
+            {props.menu.items.map((item, index) => (
+              <div key={index}>{getComponent(item)}</div>
+            ))}
+          </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
@@ -77,8 +75,10 @@ export const DropdownMenuItem = forwardRef<
   HTMLDivElement,
   DropdownMenuItemProps
 >(({ item }, ref) => {
+  const disabled = item.inactive || item.disabled;
+
   const handleOnClick = () => {
-    if (!(item.inactive || item.disabled)) {
+    if (disabled) {
       if (item.func) item.func();
       else console.log(item.id);
     }
@@ -92,7 +92,7 @@ export const DropdownMenuItem = forwardRef<
         "group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12",
         {
           "hover:bg-light-blue dark:hover:bg-dark-dark-blue hover:text-white":
-            !(item.disabled || item.inactive),
+            !disabled,
         }
       )}
     >
@@ -106,16 +106,17 @@ export const DropdownMenuItem = forwardRef<
         <Shortcut
           shortcut={item.shortcut}
           className={cn({
-            "group-hover:text-white group-hover:opacity-100": !(
-              item.disabled || item.inactive
-            ),
+            "group-hover:text-white group-hover:opacity-100": !disabled,
           })}
         />
       )}
       {item.badge && <Badge label={item.badge} />}
       {item.submenu && (
         <ChevronRightIcon
-          className={cn("fill-black", { "opacity-40": item.inactive })}
+          className={cn("fill-black", {
+            "group-hover:fill-white": !disabled,
+            "opacity-40": item.inactive,
+          })}
         />
       )}
     </div>

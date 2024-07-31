@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
 const Screen = ({ children }: PropsWithChildren) => {
-  const { darkMode } = useSelector((state: RootState) => state.system.darkMode);
- 
+  const theme = useSelector((state: RootState) => state.systemSettings.theme);
+
   return (
     <div
-      className={cn("h-full bg-macos-blue-400 bg-cover bg-center bg-no-repeat", {
-        "bg-[url('src/assets/background/monterey-dark.jpg')] dark": darkMode,
-        "bg-[url('src/assets/background/monterey-light.jpg')] light": !darkMode,
-      })}
+      className={cn(
+        "h-full bg-cover bg-center bg-no-repeat bg-wallpaper transition-bg",
+        theme
+      )}
     >
       {children}
     </div>
