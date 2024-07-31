@@ -21,7 +21,7 @@ const initialState: SystemSettingsState = {
   isFocusEnabled: false,
   displayRange: 0.8,
   soundRange: 0.3,
-  theme: "dark",
+  theme: "light",
   activeWindowTitle: appsTitles.finder,
 };
 

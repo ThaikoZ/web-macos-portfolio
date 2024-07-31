@@ -11,20 +11,22 @@ import { forwardRef } from "react";
 export interface DropdownProps {
   trigger: ReactNode;
   menu: DropdownMenuInterface;
+  className?: string;
 }
 
 export interface DropdownMenuItemProps {
   item: DropdownItemInterface;
 }
 
-const dropdownClass = cn(
-  "p-[0.3rem] rounded-lg shadow-window h-fit w-max z-10 border-[1px] border-opacity-[12%] border-black font-[500] backdrop-brightness-150",
-  "dark:bg-dropdown-dark-background dark:bg-opacity-60 dark:text-dark-text",
-  "bg-dropdown-light-background bg-opacity-60 text-light-text",
-  "backdrop-blur-lg"
-);
+interface DropdownMenuSelectorProps {
+  item: DropdownItemInterface;
+  className?: string;
+}
 
-const getComponent = (item: DropdownItemInterface) => {
+const DropdownMenuSelector = ({
+  item,
+  className,
+}: DropdownMenuSelectorProps) => {
   switch (item.id) {
     case "separator":
       return <Separator />;
@@ -35,9 +37,9 @@ const getComponent = (item: DropdownItemInterface) => {
             <DropdownMenuItem item={item} />
           </DropdownMenu.SubTrigger>
           <DropdownMenu.Portal>
-            <DropdownMenu.SubContent className={cn(dropdownClass, "")}>
+            <DropdownMenu.SubContent className={className}>
               {item.submenu?.map((subItem, index) => (
-                <div key={index}>{getComponent(subItem)}</div>
+                <DropdownMenuSelector key={index} item={subItem} />
               ))}
             </DropdownMenu.SubContent>
           </DropdownMenu.Portal>
@@ -53,18 +55,30 @@ const getComponent = (item: DropdownItemInterface) => {
 };
 
 export const Dropdown = (props: DropdownProps) => {
+  const dropdownClass = cn(
+    props.className,
+    "backdrop-brightness-150 p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px] border-opacity-[12%] "
+  );
+  console.log(dropdownClass);
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <div className="h-full">{props.trigger}</div>
+        <div className="h-full ">{props.trigger}</div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content align="start" side="bottom">
-          <div className={dropdownClass}>
-            {props.menu.items.map((item, index) => (
-              <div key={index}>{getComponent(item)}</div>
-            ))}
-          </div>
+        <DropdownMenu.Content
+          align="start"
+          side="bottom"
+          className={dropdownClass}
+        >
+          {props.menu.items.map((item, index) => (
+            <DropdownMenuSelector
+              key={index}
+              item={item}
+              className={dropdownClass}
+            />
+          ))}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

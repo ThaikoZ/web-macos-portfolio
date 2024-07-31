@@ -3,8 +3,9 @@ interface Props {
 }
 
 const Badge = ({ label }: Props) => {
+  // FIXME: Badge bg color doesnt work
   return (
-    <div className="rounded-xl bg-dropdown-light-separator dark:bg-dropdown-dark-separator bg-opacity-15 dark:bg-opacity-20 px-3 py-0.5 text-xs h-full group-hover:bg-transparent">
+    <div className="bg-dropdown-badge rounded-xl px-3 py-0.5 text-xs h-full group-hover:bg-transparent">
       {label}
     </div>
   );

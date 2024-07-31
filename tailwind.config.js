@@ -2,7 +2,6 @@
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
@@ -37,8 +36,23 @@ export default {
           "-9px 9px 23px 0px rgba(24, 24, 24, 0.15), 9px 9px 23px 0px rgba(24, 24, 24, 0.15), 2px 4px 20px 0px rgba(24, 24, 24, 0.3)",
       },
       colors: {
-        topbar: "rgba(var(--color-topbar))",
-        "topbar-text": "rgba(var(--color-topbar-text))",
+        topbar: {
+          background: "rgba(var(--color-topbar-background))",
+          text: "rgba(var(--color-topbar-text))",
+          btn: {
+            background: "rgba(var(--color-topbar-btn-background))",
+            hovered: "rgba(var(--color-topbar-btn-hovered))",
+            text: "rgba(var(--color-topbar-btn-text))",
+          },
+          dropdown: {
+            background: "rgba(var(--color-topbar-dropdown-background))",
+            border: "rgba(var(--color-topbar-dropdown-border))",
+            text: "rgba(var(--color-topbar-dropdown-text))",
+            badge: {
+              background: "rgba(var(--color-dropdown-badge-background))",
+            },
+          },
+        },
 
         "macos-selection": "#007AFF",
         light: {
@@ -49,10 +63,7 @@ export default {
           gray: "#8E8E93",
           text: "#111111",
         },
-        btn: {
-          "primary-dark": "linear-gradient(to bottom, #1568E5, #155CCC)",
-          "primary-light": "linear-gradient(to bottom, #1568E5, #155CCC)",
-        },
+
         dark: {
           blue: "#0A84FF",
           "dark-blue": "#0047f7",

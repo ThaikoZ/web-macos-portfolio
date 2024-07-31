@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --cursor-pointer: url("../assets/cursors/pointer.png"), pointer;
   --cursor-default: url("../assets/cursors/default.png"), default;
@@ -15,23 +11,49 @@
   --cursor-move: url("../assets/cursors/move.png"), move;
   --cursor-wait: url("../assets/cursors/wait.png"), wait;
   --cursor-n-resize: url("../assets/cursors/n-resize.png"), n-resize;
-  --cursor-s-resize: url("../assets/cursors/s-resize.png"), s-resize;
+  --cursor-s-resize: url("../assets/cursors/n-resize.png"), s-resize;
   --cursor-w-resize: url("../assets/cursors/w-resize.png"), w-resize;
-  --cursor-e-resize: url("../assets/cursors/e-resize.png"), e-resize;
+  --cursor-e-resize: url("../assets/cursors/w-resize.png"), e-resize;
   --cursor-nw-resize: url("../assets/cursors/nw-resize.png"), nw-resize;
-  --cursor-se-resize: url("../assets/cursors/se-resize.png"), se-resize;
+  --cursor-se-resize: url("../assets/cursors/nw-resize.png"), se-resize;
   --cursor-ne-resize: url("../assets/cursors/ne-resize.png"), ne-resize;
-  --cursor-sw-resize: url("../assets/cursors/sw-resize.png"), sw-resize;
+  --cursor-sw-resize: url("../assets/cursors/ne-resize.png"), sw-resize;
 }
 
 .light {
-  --wallpaper: url("src/assets/background/monterey-light.jpg");
-  --color-topbar: 255, 255, 255, 0.5;
+  --wallpaper: url("src/assets/backgrounds/monterey-light.jpg");
+
+  /* Topbar */
+  --color-topbar-background: 255, 255, 255, 0.5;
   --color-topbar-text: 17, 17, 17, 1;
+
+  --color-topbar-btn-background: 0, 0, 0, 0;
+  --color-topbar-btn-hovered: 0, 0, 0, 0.15;
+  --color-topbar-btn-text: 17, 17, 17, 1;
+
+  /* Dropdown Menu */
+  --color-topbar-dropdown-background: 255, 255, 255, 0.6;
+  --color-topbar-dropdown-text: 17, 17, 17, 1;
+  --color-topbar-dropdown-border: 0, 0, 0, 0.12;
+
+  --color-dropdown-badge-background: 60, 60, 67, 0.2;
 }
 
 .dark {
-  --wallpaper: url("src/assets/background/monterey-dark.jpg");
-  --color-topbar: 0, 0, 0, 0.18;
+  --wallpaper: url("src/assets/backgrounds/monterey-dark.jpg");
+
+  /* Topbar */
+  --color-topbar-background: 0, 0, 0, 0.18;
   --color-topbar-text: 241, 241, 241, 1;
+
+  --color-topbar-btn-background: 0, 0, 0, 0;
+  --color-topbar-btn-hovered: 255, 255, 255, 0.2;
+  --color-topbar-btn-text: 255, 255, 255, 1;
+
+  /* Dropdown Menu */
+  --color-topbar-dropdown-background: 255, 255, 255, 0.6;
+  --color-topbar-dropdown-text: 17, 17, 17, 1;
+  --color-topbar-dropdown-border: 0, 0, 0, 0.12;
+
+  --color-dropdown-badge-background: 235, 235, 245, 0.15;
 }

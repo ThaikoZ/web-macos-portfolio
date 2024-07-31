@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Desktop from "./Desktop.tsx";
-import "./styles/index.css";
+import "./styles/globals.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
 

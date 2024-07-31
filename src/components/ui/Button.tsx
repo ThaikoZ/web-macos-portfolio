@@ -6,26 +6,25 @@ export interface Props {
   children?: ReactNode;
   className?: string;
   active?: boolean;
-  font?: "regular" | "medium" | "bold";
+  font?: string;
   onClick?: () => void;
 }
 
 const Button = (props: Props) => {
   return (
-    <div
+    <button
       onClick={props.onClick}
       className={cn(
         props.className,
-        "px-[0.75rem] py-[2px] h-full rounded-[0.25rem] flex items-center transition-colors capitalize text-center w-max",
-        { "bg-dropdown-dark-background dark:bg-white": props.active },
-        [`font-${props.font}`],
-        "hover:bg-dropdown-dark-background dark:hover:bg-white bg-opacity-20 hover:bg-opacity-20 dark:bg-opacity-20 dark:hover:bg-opacity-20 "
+        "px-[0.75rem] py-[2px] h-full rounded-[0.25rem] flex items-center transition-colors capitalize text-center w-max font-medium cursor-default",
+        { [`${props.font}`]: props.font },
+        "bg-topbar-btn-background hover:bg-topbar-btn-hovered text-btn-text"
       )}
       {...props}
     >
       {props.icon}
       {props.children}
-    </div>
+    </button>
   );
 };
 

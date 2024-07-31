@@ -4,7 +4,7 @@ import { systemMenu } from "./apps/systemMenu";
 import { AppleLogoIcon } from "./assets/icons/utility";
 import FlexContainer from "./components/FlexContainer";
 import Screen from "./components/Screen";
-import TopBar from "./components/TopBar/TopBar";
+import TopBar from "./components/topbar/TopBar";
 import Button from "./components/ui/Button";
 import DropdownMenu from "./components/ui/DropdownMenu";
 import { RootState } from "./store/store";
@@ -17,19 +17,24 @@ const Desktop = () => {
   );
   const menu = getMenuByTitle(activeWindowTitle);
 
+  const topbarDropdownClass =
+    "bg-topbar-dropdown-background bg-topbar-dropdown-text bg-topbar-dropdown-border";
+
   return (
     <Screen>
       <TopBar>
-        <FlexContainer className="justify-start">
+        <FlexContainer className="justify-start ">
           <DropdownMenu
             trigger={<Button icon={<AppleLogoIcon />} />}
+            className={topbarDropdownClass}
             menu={systemMenu}
           />
           {menu.map((item, index) => (
             <DropdownMenu
               key={item.title}
+              className={topbarDropdownClass}
               trigger={
-                <Button font={index === 0 ? "bold" : "medium"}>
+                <Button font={index === 0 ? "!font-bold" : ""}>
                   {item.title}
                 </Button>
               }

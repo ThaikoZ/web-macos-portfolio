@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./fonts.css";
+@import "./theme.css";
+@import "./styles.css";
 
 :root {
   @apply font-sf-text cursor-default;
