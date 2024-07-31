@@ -30,6 +30,12 @@ const DropdownMenuSelector = ({
   switch (item.id) {
     case "separator":
       return <Separator />;
+    case "title":
+      return (
+        <DropdownMenu.DropdownMenuLabel className="px-[0.75rem] py-[0.15rem] mt-2 first-of-type:mt-0 text-sm font-semibold text-topbar-dropdown-title">
+          {item.title}
+        </DropdownMenu.DropdownMenuLabel>
+      );
     case "submenu":
       return (
         <DropdownMenu.Sub>
@@ -57,13 +63,13 @@ const DropdownMenuSelector = ({
 export const Dropdown = (props: DropdownProps) => {
   const dropdownClass = cn(
     props.className,
-    "p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px]"
+    "p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px] backdrop-saturate-200"
   );
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <div className="h-full ">{props.trigger}</div>
+        <div className="h-full">{props.trigger}</div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content

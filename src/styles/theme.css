@@ -38,6 +38,7 @@
   --color-topbar-dropdown-border: 0, 0, 0, 0.12;
   --color-topbar-dropdown-item-hovered: 0, 122, 255, 1;
   --color-topbar-dropdown-item-text: 255, 255, 255, 1;
+  --color-topbar-dropdown-title: 0, 0, 0, 0.45;
 
   --color-topbar-dropdown-separator: 60, 60, 67, 0.18;
 
@@ -63,12 +64,13 @@
   --color-topbar-btn-text: 255, 255, 255, 1;
 
   /* Dropdown Menu */
-  --color-topbar-dropdown-background: 16, 16, 16, 0.45;
+  --color-topbar-dropdown-background: 72, 72, 72, 0.5;
   --color-topbar-dropdown-text: 255, 255, 255, 1;
   --color-topbar-dropdown-text-inactive: 255, 255, 255, 0.45;
   --color-topbar-dropdown-border: 0, 0, 0, 0.12;
   --color-topbar-dropdown-item-hovered: 0, 71, 247, 1;
   --color-topbar-dropdown-item-text: 255, 255, 255, 1;
+  --color-topbar-dropdown-title: 255, 255, 255, 0.4;
 
   --color-topbar-dropdown-separator: 255, 255, 255, 0.2;
 

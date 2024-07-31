@@ -48,6 +48,7 @@ export default {
             background: "rgba(var(--color-topbar-dropdown-background))",
             border: "rgba(var(--color-topbar-dropdown-border))",
             text: "rgba(var(--color-topbar-dropdown-text))",
+            title: "rgba(var(--color-topbar-dropdown-title))",
             "text-inactive": "rgba(var(--color-topbar-dropdown-text-inactive))",
             separator: "rgba(var(--color-topbar-dropdown-separator))",
             badge: {
