@@ -32,11 +32,14 @@
   --color-topbar-btn-text: 17, 17, 17, 1;
 
   /* Dropdown Menu */
-  --color-topbar-dropdown-background: 255, 255, 255, 0.6;
+  --color-topbar-dropdown-background: 255, 255, 255, 0.65;
   --color-topbar-dropdown-text: 17, 17, 17, 1;
   --color-topbar-dropdown-border: 0, 0, 0, 0.12;
+  --color-topbar-dropdown-separator: 60, 60, 67, 0.18;
+  --color-topbar-dropdown-badge-background: 60, 60, 67, 0.2;
 
-  --color-dropdown-badge-background: 60, 60, 67, 0.2;
+  --color-topbar-dropdown-shortcut-background: 60, 60, 67, 0.4;
+  --color-topbar-dropdown-shortcut-hovered: 255, 255, 255, 1;
 }
 
 .dark {
@@ -51,9 +54,11 @@
   --color-topbar-btn-text: 255, 255, 255, 1;
 
   /* Dropdown Menu */
-  --color-topbar-dropdown-background: 255, 255, 255, 0.6;
-  --color-topbar-dropdown-text: 17, 17, 17, 1;
+  --color-topbar-dropdown-background: 16, 16, 16, 0.45;
+  --color-topbar-dropdown-text: 255, 255, 255, 1;
   --color-topbar-dropdown-border: 0, 0, 0, 0.12;
-
-  --color-dropdown-badge-background: 235, 235, 245, 0.15;
+  --color-topbar-dropdown-separator: 255, 255, 255, 0.2;
+  --color-topbar-dropdown-badge-background: 235, 235, 245, 0.15;
+  --color-topbar-dropdown-shortcut-background: 235, 235, 245, 0.4;
+  --color-topbar-dropdown-shortcut-hovered: 255, 255, 255, 1;
 }

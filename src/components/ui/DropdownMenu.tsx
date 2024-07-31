@@ -57,7 +57,7 @@ const DropdownMenuSelector = ({
 export const Dropdown = (props: DropdownProps) => {
   const dropdownClass = cn(
     props.className,
-    "backdrop-brightness-150 p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px] border-opacity-[12%] "
+    "p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px]"
   );
   console.log(dropdownClass);
 
@@ -120,7 +120,7 @@ export const DropdownMenuItem = forwardRef<
         <Shortcut
           shortcut={item.shortcut}
           className={cn({
-            "group-hover:text-white group-hover:opacity-100": !disabled,
+            "group-hover:text-topbar-dropdown-shortcut-hovered ": !disabled,
           })}
         />
       )}

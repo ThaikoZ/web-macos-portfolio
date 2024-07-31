@@ -1,5 +1,5 @@
 import { getMenuByTitle } from "@/lib/utils";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { systemMenu } from "./apps/systemMenu";
 import { AppleLogoIcon } from "./assets/icons/utility";
 import FlexContainer from "./components/FlexContainer";
@@ -8,17 +8,17 @@ import TopBar from "./components/topbar/TopBar";
 import Button from "./components/ui/Button";
 import DropdownMenu from "./components/ui/DropdownMenu";
 import { RootState } from "./store/store";
-import { switchThemeTo } from "./store/reducers/systemSettingsSlice";
+import { useTheme } from "./hooks/useTheme";
 
 const Desktop = () => {
-  const dispatch = useDispatch();
-  const { activeWindowTitle, theme } = useSelector(
+  const { toggleTheme } = useTheme();
+  const { activeWindowTitle } = useSelector(
     (state: RootState) => state.systemSettings
   );
   const menu = getMenuByTitle(activeWindowTitle);
 
   const topbarDropdownClass =
-    "bg-topbar-dropdown-background bg-topbar-dropdown-text bg-topbar-dropdown-border";
+    "bg-topbar-dropdown-background text-topbar-dropdown-text border-topbar-dropdown-border";
 
   return (
     <Screen>
@@ -61,7 +61,7 @@ const Desktop = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              dispatch(switchThemeTo(theme === "light" ? "dark" : "light"));
+              toggleTheme();
             }}
           >
             Switch Mode

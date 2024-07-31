@@ -1,8 +1,6 @@
 import { appsTitles } from "@/lib/appsTitles";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type ThemeType = "dark" | "light";
-
 export interface SystemSettingsState {
   isWifiEnabled: boolean;
   isBluetoothEnabled: boolean;
@@ -10,7 +8,6 @@ export interface SystemSettingsState {
   isFocusEnabled: boolean;
   displayRange: number;
   soundRange: number;
-  theme: ThemeType;
   activeWindowTitle: string;
 }
 
@@ -21,7 +18,6 @@ const initialState: SystemSettingsState = {
   isFocusEnabled: false,
   displayRange: 0.8,
   soundRange: 0.3,
-  theme: "light",
   activeWindowTitle: appsTitles.finder,
 };
 
@@ -47,9 +43,6 @@ const systemSettingsSlice = createSlice({
     setSoundRange(settings, action: PayloadAction<number>) {
       return { ...settings, soundRange: action.payload };
     },
-    switchThemeTo(settings, action: PayloadAction<ThemeType>) {
-      return { ...settings, theme: action.payload };
-    },
   },
 });
 
@@ -60,7 +53,6 @@ export const {
   toggleFocus,
   setDisplayRange,
   setSoundRange,
-  switchThemeTo,
 } = systemSettingsSlice.actions;
 
 export default systemSettingsSlice.reducer;

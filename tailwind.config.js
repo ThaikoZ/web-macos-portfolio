@@ -48,8 +48,14 @@ export default {
             background: "rgba(var(--color-topbar-dropdown-background))",
             border: "rgba(var(--color-topbar-dropdown-border))",
             text: "rgba(var(--color-topbar-dropdown-text))",
+            separator: "rgba(var(--color-topbar-dropdown-separator))",
             badge: {
-              background: "rgba(var(--color-dropdown-badge-background))",
+              background: "rgba(var(--color-topbar-dropdown-badge-background))",
+            },
+            shortcut: {
+              background:
+                "rgba(var(--color-topbar-dropdown-shortcut-background))",
+              hovered: "rgba(var(--color-topbar-dropdown-shortcut-hovered))",
             },
           },
         },
