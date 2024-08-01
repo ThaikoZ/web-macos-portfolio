@@ -1,7 +1,7 @@
 :root {
   --cursor-pointer: url("../assets/cursors/pointer.png"), pointer;
   --cursor-default: url("../assets/cursors/default.png"), default;
-  --cursor-auto: url("../assets/cursors/apple-cursor.png"), auto;
+  --cursor-auto: url("../assets/cursors/default.png"), auto;
   --cursor-text: url("../assets/cursors/text.png"), text;
   --cursor-crosshair: url("../assets/cursors/crosshair.png"), crosshair;
   --cursor-zoom-in: url("../assets/cursors/zoom-in.png"), zoom-in;
@@ -21,7 +21,7 @@
 }
 
 .light {
-  --wallpaper: url("src/assets/backgrounds/monterey-light.jpg");
+  --wallpaper: url("/src/assets/backgrounds/monterey-light.jpg");
 
   /* Topbar */
   --color-topbar-background: rgba(255, 255, 255, 0.5);
@@ -59,7 +59,7 @@
 }
 
 .dark {
-  --wallpaper: url("src/assets/backgrounds/monterey-dark.jpg");
+  --wallpaper: url("/src/assets/backgrounds/monterey-dark.jpg");
 
   /* Topbar */
   --color-topbar-background: rgba(0, 0, 0, 0.18);

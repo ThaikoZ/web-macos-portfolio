@@ -1,10 +1,9 @@
 import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { useTheme } from "@/hooks/useTheme";
 
 const Screen = ({ children }: PropsWithChildren) => {
-  const theme = useSelector((state: RootState) => state.systemSettings.theme);
+  const { theme } = useTheme();
 
   return (
     <div
