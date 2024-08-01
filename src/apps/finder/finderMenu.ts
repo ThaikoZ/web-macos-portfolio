@@ -306,10 +306,11 @@ export const finderMenu: DropdownMenuInterface[] = [
           },
         ],
       },
-      { id: "finder_view_clean_up", title: "Clean Up" },
+      { id: "finder_view_clean_up", title: "Clean Up", inactive: true },
       {
         id: "submenu",
         title: "Clean Up By",
+        inactive: true,
         submenu: [
           {
             id: "finder_view_clean_up_by_name",

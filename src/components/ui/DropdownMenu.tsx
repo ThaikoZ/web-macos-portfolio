@@ -12,6 +12,7 @@ export interface DropdownProps {
   trigger: ReactNode;
   menu: DropdownMenuInterface;
   className?: string;
+  onOpenChange?: (isOpen: boolean) => void;
 }
 
 export interface DropdownMenuItemProps {
@@ -32,7 +33,12 @@ const DropdownMenuSelector = ({
       return <Separator />;
     case "title":
       return (
-        <DropdownMenu.DropdownMenuLabel className="px-[0.75rem] py-[0.15rem] mt-2 first-of-type:mt-0 text-sm font-semibold text-topbar-dropdown-title">
+        <DropdownMenu.DropdownMenuLabel
+          className={cn(
+            item.className,
+            "px-[0.75rem] py-[0.15rem] mt-2 first-of-type:mt-0 text-sm text-topbar-dropdown-title"
+          )}
+        >
           {item.title}
         </DropdownMenu.DropdownMenuLabel>
       );
@@ -53,7 +59,10 @@ const DropdownMenuSelector = ({
       );
     default:
       return (
-        <DropdownMenu.Item className="outline-none" disabled={item.inactive}>
+        <DropdownMenu.Item
+          className="outline-none"
+          disabled={item.inactive || item.disabled}
+        >
           <DropdownMenuItem item={item} />
         </DropdownMenu.Item>
       );
@@ -61,10 +70,7 @@ const DropdownMenuSelector = ({
 };
 
 export const Dropdown = (props: DropdownProps) => {
-  const dropdownClass = cn(
-    props.className,
-    "p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px] backdrop-saturate-200"
-  );
+  const dropdownClass = cn(props.className, "dropdown-menu");
 
   return (
     <DropdownMenu.Root>
@@ -108,10 +114,15 @@ export const DropdownMenuItem = forwardRef<
       ref={ref}
       onClick={handleOnClick}
       className={cn(
+        item.className,
         "group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12",
         {
           "hover:bg-topbar-dropdown-sub-item-hovered hover:text-topbar-dropdown-sub-item-hovered-text":
-            !disabled,
+            !disabled && !item.variant,
+        },
+        {
+          "dark:hover:bg-white dark:hover:bg-opacity-20 hover:bg-black hover:bg-opacity-15 text-topbar-dropdown-text":
+            item.variant == "secondary",
         }
       )}
     >
@@ -129,6 +140,7 @@ export const DropdownMenuItem = forwardRef<
         <Shortcut
           shortcut={item.shortcut}
           className={cn(
+            "font-medium",
             {
               "group-hover:text-topbar-dropdown-shortcut-text-hovered":
                 !disabled,

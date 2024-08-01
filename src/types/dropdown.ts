@@ -9,6 +9,7 @@ export interface DropdownItemInterface {
   className?: string;
   disabled?: boolean;
   func?: () => void;
+  variant?: "secondary";
 }
 
 export interface DropdownMenuInterface {

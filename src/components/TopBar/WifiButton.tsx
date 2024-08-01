@@ -6,7 +6,7 @@ import { WifiIcon } from "../../assets/icons/utility";
 
 const WifiButton = () => {
   const isWifiEnabled = useSelector(
-    (state: RootState) => state.system.settings.isWifiEnabled
+    (state: RootState) => state.systemSettings.isWifiEnabled
   );
   const dispatch = useDispatch();
 
@@ -15,10 +15,15 @@ const WifiButton = () => {
   };
 
   if (isWifiEnabled)
-    return <Button Icon={<WifiIcon width={19} />} onClick={handleOnClick} />;
+    return <Button icon={<WifiIcon width={19} />} onClick={handleOnClick} />;
   return (
     <Button
-      Icon={<WifiIcon width={19} className="fill-zinc-400" />}
+      icon={
+        <WifiIcon
+          width={19}
+          className="fill-topbar-wifi-disabled transition-colors"
+        />
+      }
       onClick={handleOnClick}
     />
   );

@@ -5,3 +5,7 @@
 .transition-bg {
   transition: background-image 0.25s ease-in-out;
 }
+
+.dropdown-menu {
+  @apply p-[0.3rem] rounded-lg shadow-window h-fit w-max backdrop-blur-lg border-[1px] backdrop-saturate-200 bg-topbar-dropdown-background text-topbar-dropdown-text border-topbar-dropdown-border;
+}

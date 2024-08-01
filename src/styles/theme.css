@@ -24,62 +24,74 @@
   --wallpaper: url("src/assets/backgrounds/monterey-light.jpg");
 
   /* Topbar */
-  --color-topbar-background: 255, 255, 255, 0.5;
-  --color-topbar-text: 17, 17, 17, 1;
+  --color-topbar-background: rgba(255, 255, 255, 0.5);
+  --color-topbar-text: rgba(17, 17, 17, 1);
 
-  --color-topbar-btn-background: 0, 0, 0, 0;
-  --color-topbar-btn-hovered: 0, 0, 0, 0.15;
-  --color-topbar-btn-text: 17, 17, 17, 1;
+  --color-topbar-btn-background: rgba(0, 0, 0, 0);
+  --color-topbar-btn-hovered: rgba(0, 0, 0, 0.15);
+  --color-topbar-btn-text: rgba(17, 17, 17, 1);
 
   /* Dropdown Menu */
-  --color-topbar-dropdown-background: 255, 255, 255, 0.65;
-  --color-topbar-dropdown-text: 17, 17, 17, 1;
-  --color-topbar-dropdown-text-inactive: 17, 17, 17, 0.45;
-  --color-topbar-dropdown-border: 0, 0, 0, 0.12;
-  --color-topbar-dropdown-item-hovered: 0, 122, 255, 1;
-  --color-topbar-dropdown-item-text: 255, 255, 255, 1;
-  --color-topbar-dropdown-title: 0, 0, 0, 0.45;
+  --color-topbar-dropdown-background: rgba(255, 255, 255, 0.65);
+  --color-topbar-dropdown-text: rgba(17, 17, 17, 1);
+  --color-topbar-dropdown-text-inactive: rgba(17, 17, 17, 0.45);
+  --color-topbar-dropdown-border: rgba(0, 0, 0, 0.12);
+  --color-topbar-dropdown-title: rgba(0, 0, 0, 0.5);
 
-  --color-topbar-dropdown-separator: 60, 60, 67, 0.18;
+  --color-topbar-dropdown-item-hovered: rgba(0, 122, 255, 1);
+  --color-topbar-dropdown-item-text: rgba(255, 255, 255, 1);
 
-  --color-topbar-dropdown-badge-background: 60, 60, 67, 0.2;
+  --color-topbar-dropdown-separator: rgba(60, 60, 67, 0.18);
 
-  --color-topbar-dropdown-shortcut-text: 60, 60, 67, 0.4;
-  --color-topbar-dropdown-shortcut-text-hovered: 255, 255, 255, 1;
+  --color-topbar-dropdown-badge-background: rgba(60, 60, 67, 0.2);
 
-  --color-topbar-dropdown-sub-chevron-text: 0, 0, 0, 1;
-  --color-topbar-dropdown-sub-chevron-text-hovered: 255, 255, 255, 1;
-  --color-topbar-dropdown-sub-active: 60, 60, 67, 0.15;
+  --color-topbar-dropdown-shortcut-text: rgba(60, 60, 67, 0.4);
+  --color-topbar-dropdown-shortcut-text-hovered: rgba(255, 255, 255, 1);
+
+  --color-topbar-dropdown-sub-chevron-text: rgba(0, 0, 0, 1);
+  --color-topbar-dropdown-sub-chevron-text-hovered: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-sub-active: rgba(60, 60, 67, 0.15);
+
+  /* Control Panel */
+  --color-topbar-wifi-disabled: rgba(0, 0, 0, 0.4);
+  --color-topbar-control-card-btn-inactive: rgba(0, 0, 0, 0.1);
+  --bg-topbar-control-card-background: rgba(255, 255, 255, 0.4);
 }
 
 .dark {
   --wallpaper: url("src/assets/backgrounds/monterey-dark.jpg");
 
   /* Topbar */
-  --color-topbar-background: 0, 0, 0, 0.18;
-  --color-topbar-text: 241, 241, 241, 1;
+  --color-topbar-background: rgba(0, 0, 0, 0.18);
+  --color-topbar-text: rgba(241, 241, 241, 1);
 
-  --color-topbar-btn-background: 0, 0, 0, 0;
-  --color-topbar-btn-hovered: 255, 255, 255, 0.2;
-  --color-topbar-btn-text: 255, 255, 255, 1;
+  --color-topbar-btn-background: rgba(0, 0, 0, 0);
+  --color-topbar-btn-hovered: rgba(255, 255, 255, 0.2);
+  --color-topbar-btn-text: rgba(255, 255, 255, 1);
 
   /* Dropdown Menu */
-  --color-topbar-dropdown-background: 72, 72, 72, 0.5;
-  --color-topbar-dropdown-text: 255, 255, 255, 1;
-  --color-topbar-dropdown-text-inactive: 255, 255, 255, 0.45;
-  --color-topbar-dropdown-border: 0, 0, 0, 0.12;
-  --color-topbar-dropdown-item-hovered: 0, 71, 247, 1;
-  --color-topbar-dropdown-item-text: 255, 255, 255, 1;
-  --color-topbar-dropdown-title: 255, 255, 255, 0.4;
+  --color-topbar-dropdown-background: rgba(72, 72, 72, 0.5);
+  --color-topbar-dropdown-text: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-text-inactive: rgba(255, 255, 255, 0.45);
+  --color-topbar-dropdown-border: rgba(0, 0, 0, 0.12);
+  --color-topbar-dropdown-title: rgba(255, 255, 255, 0.5);
 
-  --color-topbar-dropdown-separator: 255, 255, 255, 0.2;
+  --color-topbar-dropdown-item-hovered: rgba(0, 71, 247, 1);
+  --color-topbar-dropdown-item-text: rgba(255, 255, 255, 1);
 
-  --color-topbar-dropdown-badge-background: 235, 235, 245, 0.15;
+  --color-topbar-dropdown-separator: rgba(255, 255, 255, 0.2);
 
-  --color-topbar-dropdown-shortcut-text: 235, 235, 245, 0.4;
-  --color-topbar-dropdown-shortcut-text-hovered: 255, 255, 255, 1;
+  --color-topbar-dropdown-badge-background: rgba(235, 235, 245, 0.15);
 
-  --color-topbar-dropdown-sub-chevron-text: 255, 255, 255, 1;
-  --color-topbar-dropdown-sub-chevron-text-hovered: 255, 255, 255, 1;
-  --color-topbar-dropdown-sub-active: 235, 235, 245, 0.15;
+  --color-topbar-dropdown-shortcut-text: rgba(235, 235, 245, 0.4);
+  --color-topbar-dropdown-shortcut-text-hovered: rgba(255, 255, 255, 1);
+
+  --color-topbar-dropdown-sub-chevron-text: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-sub-chevron-text-hovered: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-sub-active: rgba(235, 235, 245, 0.15);
+
+  /* Control Panel */
+  --color-topbar-wifi-disabled: rgba(255, 255, 255, 0.5);
+  --color-topbar-control-card-btn-inactive: rgba(255, 255, 255, 0.1);
+  --bg-topbar-control-card-background: rgba(10, 10, 10, 0.25);
 }

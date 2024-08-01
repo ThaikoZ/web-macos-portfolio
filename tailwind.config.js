@@ -2,6 +2,7 @@
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
@@ -37,40 +38,45 @@ export default {
       },
       colors: {
         topbar: {
-          background: "rgba(var(--color-topbar-background))",
-          text: "rgba(var(--color-topbar-text))",
+          background: "var(--color-topbar-background)",
+          text: "var(--color-topbar-text)",
           btn: {
-            background: "rgba(var(--color-topbar-btn-background))",
-            hovered: "rgba(var(--color-topbar-btn-hovered))",
-            text: "rgba(var(--color-topbar-btn-text))",
+            background: "var(--color-topbar-btn-background)",
+            hovered: "var(--color-topbar-btn-hovered)",
+            text: "var(--color-topbar-btn-text)",
           },
           dropdown: {
-            background: "rgba(var(--color-topbar-dropdown-background))",
-            border: "rgba(var(--color-topbar-dropdown-border))",
-            text: "rgba(var(--color-topbar-dropdown-text))",
-            title: "rgba(var(--color-topbar-dropdown-title))",
-            "text-inactive": "rgba(var(--color-topbar-dropdown-text-inactive))",
-            separator: "rgba(var(--color-topbar-dropdown-separator))",
+            background: "var(--color-topbar-dropdown-background)",
+            border: "var(--color-topbar-dropdown-border)",
+            text: "var(--color-topbar-dropdown-text)",
+            title: "var(--color-topbar-dropdown-title)",
+            "text-inactive": "var(--color-topbar-dropdown-text-inactive)",
+            separator: "var(--color-topbar-dropdown-separator)",
             badge: {
-              background: "rgba(var(--color-topbar-dropdown-badge-background))",
+              background: "var(--color-topbar-dropdown-badge-background)",
             },
             shortcut: {
-              text: "rgba(var(--color-topbar-dropdown-shortcut-text))",
+              text: "var(--color-topbar-dropdown-shortcut-text)",
               "text-hovered":
-                "rgba(var(--color-topbar-dropdown-shortcut-text-hovered))",
+                "var(--color-topbar-dropdown-shortcut-text-hovered)",
             },
             sub: {
-              active: "rgba(var(--color-topbar-dropdown-sub-active))",
+              active: "var(--color-topbar-dropdown-sub-active)",
               chevron: {
-                text: "rgba(var(--color-topbar-dropdown-sub-chevron-text))",
+                text: "var(--color-topbar-dropdown-sub-chevron-text)",
                 hovered:
-                  "rgba(var(--color-topbar-dropdown-sub-chevron-text-hovered))",
+                  "var(--color-topbar-dropdown-sub-chevron-text-hovered)",
               },
               item: {
-                hovered: "rgba(var(--color-topbar-dropdown-item-hovered))",
-                "hovered-text": "rgba(var(--color-topbar-dropdown-item-text))",
+                hovered: "var(--color-topbar-dropdown-item-hovered)",
+                "hovered-text": "var(--color-topbar-dropdown-item-text)",
               },
             },
+          },
+          "wifi-disabled": "var(--color-topbar-wifi-disabled)",
+          "control-card": {
+            background: "var(--bg-topbar-control-card-background)",
+            "btn-inactive": "var(--color-topbar-control-card-btn-inactive)",
           },
         },
 
