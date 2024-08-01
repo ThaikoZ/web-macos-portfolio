@@ -16,6 +16,7 @@ import DropdownMenu from "../ui/DropdownMenu";
 import BatteryButton from "./BatteryButton";
 import WifiButton from "./WifiButton";
 import SettingsPanel from "./control-panel/ControlPanel";
+import DateTimeButton from "./DateTimeButton";
 
 const TopBar = () => {
   const { activeWindowTitle, isAirdropEnabled, isBluetoothEnabled } =
@@ -56,15 +57,7 @@ const TopBar = () => {
           <Button icon={<SpotlightIcon width={17} />} />
           <Button icon={<UserAccountIcon />} />
           <SettingsPanel />
-
-          <ul className="flex">
-            <Button>
-              <div className="flex gap-2.5">
-                <span>Mon Jun 5</span>
-                <span>9:41 AM</span>
-              </div>
-            </Button>
-          </ul>
+          <DateTimeButton />
         </FlexContainer>
       </div>
     </div>
