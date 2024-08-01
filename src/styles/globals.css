@@ -1,0 +1,17 @@
+@import "./fonts.css";
+@import "./theme.css";
+@import "./styles.css";
+
+:root {
+  @apply font-sf-text cursor-default;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+body {
+  @apply h-screen;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

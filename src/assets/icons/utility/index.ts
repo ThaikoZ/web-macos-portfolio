@@ -3,15 +3,21 @@ import WifiIcon from "./WifiIcon";
 import UserAccountIcon from "./UserAccountIcon";
 import AppleLogoIcon from "./AppleLogoIcon";
 import SpotlightIcon from "./SpotlightIcon";
-import SettingsPanelIcon from "./SettingsPanel";
+import ControlPanelIcon from "./ControlPanelIcon";
 import ChevronRightIcon from "./ChevronRightIcon";
+import BluetoothIcon from "./BluetoothIcon";
+import AirDropIcon from "./AirdropIcon";
+import ThemeModeIcon from "./ThemeModeIcon";
 
 export {
   BatteryFullIcon,
   UserAccountIcon,
   AppleLogoIcon,
   SpotlightIcon,
-  SettingsPanelIcon,
+  ControlPanelIcon,
   WifiIcon,
   ChevronRightIcon,
+  BluetoothIcon,
+  AirDropIcon,
+  ThemeModeIcon,
 };

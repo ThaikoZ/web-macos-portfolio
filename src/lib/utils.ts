@@ -1,11 +1,8 @@
 import clsx from "clsx";
 import { finderMenu } from "../apps/finder/finderMenu";
+import { appsTitles } from "./appsTitles";
 
 export const cn = clsx;
-
-export const appsTitles = {
-  finder: "Finder",
-};
 
 export const getMenuByTitle = (title: string) => {
   switch (title) {

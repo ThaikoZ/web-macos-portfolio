@@ -1,5 +1,5 @@
 export interface DropdownItemInterface {
-  id: string;
+  id: string | "separator" | "submenu" | "title";
   title?: string;
   inactive?: boolean;
   shortcut?: string;
@@ -9,6 +9,7 @@ export interface DropdownItemInterface {
   className?: string;
   disabled?: boolean;
   func?: () => void;
+  variant?: "secondary";
 }
 
 export interface DropdownMenuInterface {

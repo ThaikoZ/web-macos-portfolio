@@ -1,17 +1,9 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import darkModeReducer from "./reducers/darkModeSlice";
-import activeWindowReducer from "./reducers/activeWindowSlice";
+import { configureStore } from "@reduxjs/toolkit";
 import systemSettingsSlice from "./reducers/systemSettingsSlice";
-
-const systemReducer = combineReducers({
-  darkMode: darkModeReducer,
-  activeWindow: activeWindowReducer,
-  settings: systemSettingsSlice,
-});
 
 export const store = configureStore({
   reducer: {
-    system: systemReducer,
+    systemSettings: systemSettingsSlice,
   },
 });
 

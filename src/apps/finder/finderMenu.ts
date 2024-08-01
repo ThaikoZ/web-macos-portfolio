@@ -17,7 +17,7 @@ export const finderMenu: DropdownMenuInterface[] = [
       },
       { id: "separator" },
       {
-        id: "finder_services",
+        id: "submenu",
         title: "Services",
         submenu: [
           {
@@ -148,7 +148,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         id: "finder_file_add_to_sidebar",
         title: "Add to Sidebar",
         inactive: true,
-        shortcut: "CTLR+CMD+T",
+        shortcut: "CTRL+CMD+T",
       },
       { id: "separator" },
       {
@@ -257,7 +257,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         shortcut: "CTRL+CMD+O",
       },
       {
-        id: "finder_view_sort_by",
+        id: "submenu",
         title: "Sort By",
         submenu: [
           {
@@ -306,10 +306,11 @@ export const finderMenu: DropdownMenuInterface[] = [
           },
         ],
       },
-      { id: "finder_view_clean_up", title: "Clean Up" },
+      { id: "finder_view_clean_up", title: "Clean Up", inactive: true },
       {
-        id: "finder_view_clean_up_by",
+        id: "submenu",
         title: "Clean Up By",
+        inactive: true,
         submenu: [
           {
             id: "finder_view_clean_up_by_name",
@@ -448,69 +449,69 @@ export const finderMenu: DropdownMenuInterface[] = [
         title: "Desktop",
         shortcut: "SHIFT+CMD+O",
       },
-      // {
-      //   id: "finder_go_downloads",
-      //   icon: "I",
-      //   title: "Downloads",
-      //   shortcut: "SHIFT+CMD+D",
-      // },
-      // {
-      //   id: "finder_go_home",
-      //   icon: "I",
-      //   title: "Home",
-      //   shortcut: "ALT+CMD+H",
-      // },
-      // {
-      //   id: "finder_go_library",
-      //   icon: "I",
-      //   title: "Library",
-      //   shortcut: "SHIFT+CMD+L",
-      // },
-      // {
-      //   id: "finder_go_computer",
-      //   icon: "I",
-      //   title: "Computer",
-      //   shortcut: "SHIFT+CMD+C",
-      // },
-      // {
-      //   id: "finder_go_airdrop",
-      //   icon: "I",
-      //   title: "AirDrops",
-      //   shortcut: "SHIFT+CMD+R",
-      // },
-      // {
-      //   id: "finder_go_network",
-      //   icon: "I",
-      //   title: "Network",
-      //   shortcut: "SHIFT+CMD+K",
-      // },
-      // {
-      //   id: "finder_go_icloud_drive",
-      //   icon: "I",
-      //   title: "iCloud Drive",
-      //   shortcut: "SHIFT+CMD+I",
-      // },
-      // {
-      //   id: "finder_go_shared",
-      //   icon: "I",
-      //   title: "Shared",
-      //   shortcut: "SHIFT+CMD+S",
-      // },
-      // {
-      //   id: "finder_go_applications",
-      //   icon: "I",
-      //   title: "Applicationss",
-      //   shortcut: "SHIFT+CMD+A",
-      // },
-      // {
-      //   id: "finder_go_utilities",
-      //   icon: "I",
-      //   title: "Utilities",
-      //   shortcut: "SHIFT+CMD+U",
-      // },
-      // { id: "separator" },
       {
-        id: "finder_go_recent_foldres",
+        id: "finder_go_downloads",
+        icon: "I",
+        title: "Downloads",
+        shortcut: "SHIFT+CMD+D",
+      },
+      {
+        id: "finder_go_home",
+        icon: "I",
+        title: "Home",
+        shortcut: "ALT+CMD+H",
+      },
+      {
+        id: "finder_go_library",
+        icon: "I",
+        title: "Library",
+        shortcut: "SHIFT+CMD+L",
+      },
+      {
+        id: "finder_go_computer",
+        icon: "I",
+        title: "Computer",
+        shortcut: "SHIFT+CMD+C",
+      },
+      {
+        id: "finder_go_airdrop",
+        icon: "I",
+        title: "AirDrops",
+        shortcut: "SHIFT+CMD+R",
+      },
+      {
+        id: "finder_go_network",
+        icon: "I",
+        title: "Network",
+        shortcut: "SHIFT+CMD+K",
+      },
+      {
+        id: "finder_go_icloud_drive",
+        icon: "I",
+        title: "iCloud Drive",
+        shortcut: "SHIFT+CMD+I",
+      },
+      {
+        id: "finder_go_shared",
+        icon: "I",
+        title: "Shared",
+        shortcut: "SHIFT+CMD+S",
+      },
+      {
+        id: "finder_go_applications",
+        icon: "I",
+        title: "Applicationss",
+        shortcut: "SHIFT+CMD+A",
+      },
+      {
+        id: "finder_go_utilities",
+        icon: "I",
+        title: "Utilities",
+        shortcut: "SHIFT+CMD+U",
+      },
+      { id: "separator" },
+      {
+        id: "submenu",
         title: "Recent Folders",
         submenu: [
           {

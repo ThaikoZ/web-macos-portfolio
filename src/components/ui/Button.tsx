@@ -1,33 +1,30 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface Props {
-  Icon?: ReactNode;
+export interface Props {
+  icon?: ReactNode;
   children?: ReactNode;
   className?: string;
-  onClick?: () => void;
   active?: boolean;
-  onMouseEnter?: () => void;
+  font?: string;
+  onClick?: () => void;
 }
 
-const Button = ({ Icon, className, children, onClick, active, onMouseEnter,  ...props }: Props) => {
-
+const Button = (props: Props) => {
   return (
-    <div
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
+    <button
+      onClick={props.onClick}
       className={cn(
-        className,
-        "px-[0.75rem] py-[2px] h-full rounded-[0.25rem] flex items-center transition-colors capitalize font-medium text-center w-max hover:bg-dropdown-dark-background dark:hover:bg-white",
-        {" bg-dropdown-dark-background dark:bg-white": active},
-        {"bg-opacity-20 hover:bg-opacity-20 dark:bg-opacity-20 dark:hover:bg-opacity-20": true}
-
+        props.className,
+        "px-[0.75rem] py-[2px] h-full rounded-[0.25rem] flex items-center transition-colors capitalize text-center w-max font-medium cursor-default",
+        { [`${props.font}`]: props.font },
+        "bg-topbar-btn-background hover:bg-topbar-btn-hovered text-btn-text"
       )}
       {...props}
     >
-      {Icon}
-      {children}
-    </div>
+      {props.icon}
+      {props.children}
+    </button>
   );
 };
 
