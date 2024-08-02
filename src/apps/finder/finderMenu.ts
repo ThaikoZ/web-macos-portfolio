@@ -515,7 +515,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         title: "Recent Folders",
         submenu: [
           {
-            id: "finder_go_recent_folders_folders",
+            id: "title",
             title: "Folders",
             inactive: true,
           },
