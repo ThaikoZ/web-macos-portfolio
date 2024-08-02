@@ -1,4 +1,4 @@
-export const defaultTheme = "light";
+export const defaultTheme = "dark";
 
 export type ThemeType = "light" | "dark";
 
