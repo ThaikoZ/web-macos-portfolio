@@ -1,12 +1,12 @@
 import { createContext, useState, useEffect, PropsWithChildren } from "react";
-import { ThemeContextInterface, ThemeType } from "../types/theme";
+import { defaultTheme, ThemeContextInterface, ThemeType } from "../types/theme";
 
 export const ThemeContext = createContext<ThemeContextInterface | undefined>(
   undefined
 );
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [theme, setTheme] = useState<ThemeType>("light");
+  const [theme, setTheme] = useState<ThemeType>(defaultTheme);
 
   useEffect(() => {
     document.body.className = theme;
