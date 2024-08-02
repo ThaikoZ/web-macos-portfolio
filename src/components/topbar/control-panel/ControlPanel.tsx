@@ -1,5 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import Button from "../../ui/Button";
+import Button from "../ui/Button";
 import {
   BluetoothIcon,
   ControlPanelIcon,

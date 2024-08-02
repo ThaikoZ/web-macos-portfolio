@@ -82,6 +82,7 @@ export const finderMenu: DropdownMenuInterface[] = [
         title: "Open With",
         submenu: [],
         inactive: true,
+        disabled: true,
       },
       {
         id: "finder_file_close_window",
