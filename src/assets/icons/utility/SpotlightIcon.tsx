@@ -1,4 +1,4 @@
-import { IconProps } from "../../../types/icon";
+import { IconProps } from "@/types/icon";
 
 export const SpotlightIcon = ({
   width = 16,

@@ -6,17 +6,19 @@ import {
   ThemeModeIcon,
   AirDropIcon,
   WifiIcon,
-} from "../../../assets/icons/utility";
+} from "@/assets/icons/utility";
 import Card from "./ControlPanelCard";
 import CardButton from "./CardButton";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../store/store";
-import { useTheme } from "../../../hooks/useTheme";
+import { RootState } from "@/store/store";
+
 import {
   toggleAirdrop,
   toggleBluetooth,
   toggleWifi,
-} from "../../../store/reducers/systemSettingsSlice";
+} from "@/store/reducers/systemSettingsSlice";
+import { useTheme } from "@/hooks/useTheme";
+import { DARK_MODE } from "@/constants/theme";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
@@ -66,9 +68,9 @@ const ControlPanel = () => {
           <Card className="col-span-6">
             <CardButton
               title="Dark Mode"
-              subtitle={theme === "dark" ? "On" : "Off"}
+              subtitle={theme === DARK_MODE ? "On" : "Off"}
               onToggle={() => toggleTheme()}
-              isActive={theme === "dark"}
+              isActive={theme === DARK_MODE}
               Icon={ThemeModeIcon}
               iconProps={{ width: 20, height: 20, fill: "red" }}
             />

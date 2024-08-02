@@ -1,5 +1,5 @@
+import { finderMenu } from "@/apps/finder/finderMenu";
 import clsx from "clsx";
-import { finderMenu } from "../apps/finder/finderMenu";
 import { appsTitles } from "./appsTitles";
 
 export const cn = clsx;

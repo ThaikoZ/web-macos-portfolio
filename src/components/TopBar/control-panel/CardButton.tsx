@@ -1,5 +1,6 @@
+import { DARK_MODE } from "@/constants/theme";
+import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
-import { useTheme } from "../../../hooks/useTheme";
 
 interface IconProps {
   width?: number;
@@ -38,7 +39,7 @@ const CardButton = ({
       >
         <Icon
           {...iconProps}
-          fill={isActive || theme === "dark" ? "white" : "black"}
+          fill={isActive || theme === DARK_MODE ? "white" : "black"}
         />
       </div>
       <div className="flex flex-col justify-center">

@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
+import { PropsWithChildren } from "react";
 
 const Screen = ({ children }: PropsWithChildren) => {
   const { theme } = useTheme();

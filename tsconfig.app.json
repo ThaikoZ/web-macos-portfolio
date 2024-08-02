@@ -26,10 +26,15 @@
     /* Paths */
     "baseUrl": "./src",
     "paths": {
+      "@/assets/*": ["assets/*"],
+      "@/apps/*": ["apps/*"],
       "@/components/*": ["components/*"],
+      "@/store/*": ["store/*"],
+      "@/styles/*": ["styles/*"],
       "@/hooks/*": ["hooks/*"],
       "@/types/*": ["types/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/constants/*": ["constants/*"]
     }
   },
   "include": ["src/**/*"]
