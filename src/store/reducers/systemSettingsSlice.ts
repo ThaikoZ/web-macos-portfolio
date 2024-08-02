@@ -1,15 +1,15 @@
+import { appsTitles } from "@/constants/apps";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { appsTitles } from "@/lib/appsTitles";
 
 export interface SystemSettingsState {
   isWifiEnabled: boolean;
   isBluetoothEnabled: boolean;
   isAirdropEnabled: boolean;
   isFocusEnabled: boolean;
+  isFullscreen: boolean;
   displayRange: number;
   soundRange: number;
   activeWindowTitle: string;
-  isFullscreen: boolean;
 }
 
 const initialState: SystemSettingsState = {
@@ -17,10 +17,10 @@ const initialState: SystemSettingsState = {
   isBluetoothEnabled: true,
   isAirdropEnabled: false,
   isFocusEnabled: false,
+  isFullscreen: false,
   displayRange: 0.8,
   soundRange: 0.3,
   activeWindowTitle: appsTitles.finder,
-  isFullscreen: false,
 };
 
 const systemSettingsSlice = createSlice({

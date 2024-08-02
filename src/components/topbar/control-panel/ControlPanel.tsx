@@ -20,6 +20,8 @@ import {
 import { useTheme } from "@/hooks/useTheme";
 import { DARK_MODE } from "@/constants/theme";
 import FullscreenButton from "./FullscreenButton";
+import CardContainer from "./CardContainer";
+import { SunIcon } from "@radix-ui/react-icons";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
@@ -77,8 +79,21 @@ const ControlPanel = () => {
             />
           </Card>
           <Card className="col-span-3 ">
-            Keyboard <br />
-            Brightness
+            <CardContainer>
+              <span className="-mt-1.5">
+                <SunIcon
+                  fill="black"
+                  viewBox="0 0 16 0.5"
+                  width={28}
+                  height={28}
+                />
+              </span>
+              <span className="mt-1.5">
+                Keyboard
+                <br />
+                Brightness
+              </span>
+            </CardContainer>
           </Card>
           <Card className="col-span-3">
             <FullscreenButton />

@@ -3,6 +3,7 @@ import { EnterFullScreenIcon, ExitFullScreenIcon } from "@radix-ui/react-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { toggleFullscreen } from "@/store/reducers/systemSettingsSlice";
+import CardContainer from "./CardContainer";
 
 const FullscreenButton: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,7 @@ const FullscreenButton: React.FC = () => {
   };
 
   return (
-    <div
-      className="flex flex-col justify-center items-center text-center gap-1.5 text-sm font-medium"
-      onClick={handleToggleFullscreen}
-    >
+    <CardContainer onClick={handleToggleFullscreen}>
       {isFullscreen ? (
         <>
           <ExitFullScreenIcon width={26} height={26} />
@@ -48,7 +46,7 @@ const FullscreenButton: React.FC = () => {
           </span>
         </>
       )}
-    </div>
+    </CardContainer>
   );
 };
 
