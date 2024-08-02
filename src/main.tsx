@@ -6,9 +6,9 @@ import { store } from "@/store/store.ts";
 import { ThemeProvider } from "@/components/ThemeProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ThemeProvider>
       <Desktop />
-    </Provider>
-  </ThemeProvider>
+    </ThemeProvider>
+  </Provider>
 );
