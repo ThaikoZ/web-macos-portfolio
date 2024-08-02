@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, PropsWithChildren } from "react";
-import { ThemeContextInterface, ThemeType } from "@/types/theme";
 import { DARK_MODE, DEFAULT_THEME, LIGHT_MODE } from "@/constants/theme";
+import { ThemeContextInterface, ThemeType } from "@/types/theme";
 
 export const ThemeContext = createContext<ThemeContextInterface | undefined>(
   undefined

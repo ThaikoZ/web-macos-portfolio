@@ -1,5 +1,5 @@
-import TopBar from "./components/topbar/TopBar";
 import Screen from "./components/Screen";
+import TopBar from "./components/topbar/TopBar";
 
 const Desktop = () => {
   return (
