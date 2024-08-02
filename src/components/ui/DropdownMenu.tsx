@@ -8,7 +8,7 @@ import {
   DropdownItemInterface,
   DropdownMenuInterface,
 } from "../../types/dropdown";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "../../assets/icons/utility";
 
 export interface DropdownProps {

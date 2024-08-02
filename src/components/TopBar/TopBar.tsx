@@ -14,8 +14,8 @@ import WifiButton from "./WifiButton";
 import SettingsPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
 import { RootState } from "../../store/store";
-import { cn, getMenuByTitle } from "../../lib/utils";
 import { systemMenu } from "../../apps/systemMenu";
+import { cn, getMenuByTitle } from "@/lib/utils";
 
 const TopBar = () => {
   const { activeWindowTitle, isAirdropEnabled, isBluetoothEnabled } =
