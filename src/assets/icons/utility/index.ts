@@ -8,6 +8,7 @@ import ChevronRightIcon from "./ChevronRightIcon";
 import BluetoothIcon from "./BluetoothIcon";
 import AirDropIcon from "./AirdropIcon";
 import ThemeModeIcon from "./ThemeModeIcon";
+import EnterFullscreenIcon from "./EnterFullscreenIcon";
 
 export {
   BatteryFullIcon,
@@ -20,4 +21,5 @@ export {
   BluetoothIcon,
   AirDropIcon,
   ThemeModeIcon,
+  EnterFullscreenIcon,
 };

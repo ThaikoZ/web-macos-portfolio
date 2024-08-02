@@ -9,6 +9,7 @@ export interface SystemSettingsState {
   displayRange: number;
   soundRange: number;
   activeWindowTitle: string;
+  isFullscreen: boolean;
 }
 
 const initialState: SystemSettingsState = {
@@ -19,6 +20,7 @@ const initialState: SystemSettingsState = {
   displayRange: 0.8,
   soundRange: 0.3,
   activeWindowTitle: appsTitles.finder,
+  isFullscreen: false,
 };
 
 const systemSettingsSlice = createSlice({
@@ -37,6 +39,12 @@ const systemSettingsSlice = createSlice({
     toggleFocus(settings) {
       return { ...settings, isFocusEnabled: !settings.isFocusEnabled };
     },
+    toggleFullscreen(settings) {
+      return { ...settings, isFullscreen: !settings.isFullscreen };
+    },
+    setFullscreen(settings, action: PayloadAction<boolean>) {
+      return { ...settings, isFullscreen: action.payload };
+    },
     setDisplayRange(settings, action: PayloadAction<number>) {
       return { ...settings, displayRange: action.payload };
     },
@@ -53,6 +61,8 @@ export const {
   toggleFocus,
   setDisplayRange,
   setSoundRange,
+  toggleFullscreen,
+  setFullscreen,
 } = systemSettingsSlice.actions;
 
 export default systemSettingsSlice.reducer;

@@ -8,7 +8,7 @@ import {
   WifiIcon,
 } from "@/assets/icons/utility";
 import Card from "./ControlPanelCard";
-import CardButton from "./CardButton";
+import CardToggleButton from "./CardToggleButton";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
@@ -19,6 +19,7 @@ import {
 } from "@/store/reducers/systemSettingsSlice";
 import { useTheme } from "@/hooks/useTheme";
 import { DARK_MODE } from "@/constants/theme";
+import FullscreenButton from "./FullscreenButton";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const ControlPanel = () => {
           className="dropdown-menu grid grid-cols-12 gap-2.5 !p-2 !rounded-xl min-w-fit me-2"
         >
           <Card className="col-span-6 row-span-2">
-            <CardButton
+            <CardToggleButton
               title="Wi-Fi"
               subtitle="Home"
               onToggle={() => dispatch(toggleWifi())}
@@ -48,25 +49,25 @@ const ControlPanel = () => {
               Icon={WifiIcon}
               iconProps={{ width: 21, height: 21, fill: "black" }}
             />
-            <CardButton
+            <CardToggleButton
               title="Bluetooth"
               subtitle={isBluetoothEnabled ? "On" : "Off"}
               onToggle={() => dispatch(toggleBluetooth())}
               isActive={isBluetoothEnabled}
               Icon={BluetoothIcon}
-              iconProps={{ width: 20, height: 20, fill: "blue" }}
+              iconProps={{ width: 20, height: 20 }}
             />
-            <CardButton
+            <CardToggleButton
               title="AirDrop"
               subtitle={isAirdropEnabled ? "Everyone" : "Off"}
               onToggle={() => dispatch(toggleAirdrop())}
               isActive={isAirdropEnabled}
               Icon={AirDropIcon}
-              iconProps={{ width: 24, height: 24, fill: "black" }}
+              iconProps={{ width: 24, height: 24 }}
             />
           </Card>
-          <Card className="col-span-6">
-            <CardButton
+          <Card className="col-span-6 ">
+            <CardToggleButton
               title="Dark Mode"
               subtitle={theme === DARK_MODE ? "On" : "Off"}
               onToggle={() => toggleTheme()}
@@ -75,8 +76,13 @@ const ControlPanel = () => {
               iconProps={{ width: 20, height: 20, fill: "red" }}
             />
           </Card>
-          <Card className="col-span-3">dwa</Card>
-          <Card className="col-span-3">dwa</Card>
+          <Card className="col-span-3 ">
+            Keyboard <br />
+            Brightness
+          </Card>
+          <Card className="col-span-3">
+            <FullscreenButton />
+          </Card>
           <Card className="col-span-12" title="Display">
             dwa
           </Card>

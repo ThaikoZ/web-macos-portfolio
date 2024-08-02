@@ -18,7 +18,7 @@ interface Props {
   iconProps?: IconProps;
 }
 
-const CardButton = ({
+const CardToggleButton = ({
   title,
   subtitle,
   Icon,
@@ -50,4 +50,4 @@ const CardButton = ({
   );
 };
 
-export default CardButton;
+export default CardToggleButton;

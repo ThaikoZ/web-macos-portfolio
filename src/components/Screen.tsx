@@ -1,10 +1,49 @@
-import { useTheme } from "@/hooks/useTheme";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setFullscreen } from "@/store/reducers/systemSettingsSlice";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/hooks/useTheme";
 import { PropsWithChildren } from "react";
 
 const Screen = ({ children }: PropsWithChildren) => {
   const { theme } = useTheme();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      dispatch(setFullscreen(!!document.fullscreenElement));
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      } else if (event.key === "F11") {
+        event.preventDefault();
+        if (document.fullscreenElement) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        } else {
+          const elem = document.documentElement;
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("keydown", handleKeyDown);
+
+    console.log("changed mode");
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [dispatch]);
   return (
     <div
       className={cn(
