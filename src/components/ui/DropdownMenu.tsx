@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { DropdownMenuInterface, DropdownItemInterface } from "@/types/Dropdown";
-import { cn } from "@/lib/utils";
 import Separator from "./Separator";
-import { ChevronRightIcon } from "@/assets/icons/utility";
 import Shortcut from "./Shortcut";
 import Badge from "./Badge";
 import { forwardRef } from "react";
+import {
+  DropdownItemInterface,
+  DropdownMenuInterface,
+} from "../../types/dropdown";
+import { cn } from "../../lib/utils";
+import { ChevronRightIcon } from "../../assets/icons/utility";
 
 export interface DropdownProps {
   trigger: ReactNode;

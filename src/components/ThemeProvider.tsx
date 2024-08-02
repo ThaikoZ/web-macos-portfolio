@@ -1,6 +1,6 @@
 // src/components/ThemeProvider.tsx
-import { ThemeContextInterface } from "@/types/Theme";
 import { createContext, useState, useEffect, PropsWithChildren } from "react";
+import { ThemeContextInterface } from "../types/theme";
 
 // Create a context with a default value
 export const ThemeContext = createContext<ThemeContextInterface | undefined>(

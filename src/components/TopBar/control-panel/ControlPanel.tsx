@@ -6,17 +6,17 @@ import {
   ThemeModeIcon,
   AirDropIcon,
   WifiIcon,
-} from "@/assets/icons/utility";
+} from "../../../assets/icons/utility";
 import Card from "./ControlPanelCard";
 import CardButton from "./CardButton";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+import { useTheme } from "../../../hooks/useTheme";
 import {
   toggleAirdrop,
   toggleBluetooth,
   toggleWifi,
-} from "@/store/reducers/systemSettingsSlice";
-import { RootState } from "@/store/store";
-import { useTheme } from "@/hooks/useTheme";
+} from "../../../store/reducers/systemSettingsSlice";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();

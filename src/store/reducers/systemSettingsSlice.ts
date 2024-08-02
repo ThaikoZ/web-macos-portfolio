@@ -1,5 +1,5 @@
-import { appsTitles } from "@/lib/appsTitles";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { appsTitles } from "../../lib/appsTitles";
 
 export interface SystemSettingsState {
   isWifiEnabled: boolean;

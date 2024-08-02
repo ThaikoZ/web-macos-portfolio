@@ -1,4 +1,4 @@
-import { IconProps } from "../../../types/IconProps";
+import { IconProps } from "../../../types/icon";
 
 export const UserAccountIcon = ({
   width = 19,

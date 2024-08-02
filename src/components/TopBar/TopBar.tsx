@@ -1,7 +1,4 @@
-import { cn } from "@/lib/utils";
-import { getMenuByTitle } from "@/lib/utils";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 import FlexContainer from "../FlexContainer";
 import Button from "../ui/Button";
 import {
@@ -10,13 +7,15 @@ import {
   BluetoothIcon,
   SpotlightIcon,
   UserAccountIcon,
-} from "@/assets/icons/utility";
-import { systemMenu } from "@/apps/systemMenu";
+} from "../../assets/icons/utility";
 import DropdownMenu from "../ui/DropdownMenu";
 import BatteryButton from "./BatteryButton";
 import WifiButton from "./WifiButton";
 import SettingsPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
+import { RootState } from "../../store/store";
+import { cn, getMenuByTitle } from "../../lib/utils";
+import { systemMenu } from "../../apps/systemMenu";
 
 const TopBar = () => {
   const { activeWindowTitle, isAirdropEnabled, isBluetoothEnabled } =

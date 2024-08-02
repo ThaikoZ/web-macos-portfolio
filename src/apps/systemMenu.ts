@@ -1,4 +1,4 @@
-import { DropdownMenuInterface } from "../types/Dropdown";
+import { DropdownMenuInterface } from "../types/dropdown";
 
 export const systemMenu: DropdownMenuInterface = {
   title: "",
