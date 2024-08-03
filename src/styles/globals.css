@@ -6,6 +6,7 @@
   @apply font-sf-text cursor-default;
   font-size: 15px;
   font-weight: 500;
+  overflow-x: hidden;
 }
 
 ::selection {
