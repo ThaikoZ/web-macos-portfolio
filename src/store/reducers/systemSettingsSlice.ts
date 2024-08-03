@@ -18,8 +18,8 @@ const initialState: SystemSettingsState = {
   isAirdropEnabled: false,
   isFocusEnabled: false,
   isFullscreen: false,
-  displayRange: 0.8,
-  soundRange: 0.3,
+  displayRange: 90,
+  soundRange: 50,
   activeWindowTitle: appsTitles.finder,
 };
 

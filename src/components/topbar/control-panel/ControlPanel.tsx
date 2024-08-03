@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
 import {
+  setDisplayRange,
+  setSoundRange,
   toggleAirdrop,
   toggleBluetooth,
   toggleWifi,
@@ -22,12 +24,17 @@ import { DARK_MODE } from "@/constants/theme";
 import FullscreenButton from "./FullscreenButton";
 import CardContainer from "./CardContainer";
 import { SunIcon } from "@radix-ui/react-icons";
+import Slider from "./Slider";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
-  const { isAirdropEnabled, isWifiEnabled, isBluetoothEnabled } = useSelector(
-    (state: RootState) => state.systemSettings
-  );
+  const {
+    isAirdropEnabled,
+    isWifiEnabled,
+    isBluetoothEnabled,
+    displayRange,
+    soundRange,
+  } = useSelector((state: RootState) => state.systemSettings);
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -98,11 +105,23 @@ const ControlPanel = () => {
           <Card className="col-span-3">
             <FullscreenButton />
           </Card>
-          <Card className="col-span-12" title="Display">
-            dwa
+          <Card className="col-span-12 gap-1.5" title="Display">
+            <Slider
+              value={[displayRange]}
+              onValueChange={(value: number) => {
+                console.log(value);
+                dispatch(setDisplayRange(value));
+              }}
+            />
           </Card>
-          <Card className="col-span-12" title="Sound">
-            dwa
+          <Card className="col-span-12 gap-1.5" title="Sound">
+            <Slider
+              value={[soundRange]}
+              onValueChange={(value: number) => {
+                console.log(value);
+                dispatch(setSoundRange(value));
+              }}
+            />
           </Card>
           <Card className="col-span-12">dwa</Card>
         </DropdownMenu.Content>

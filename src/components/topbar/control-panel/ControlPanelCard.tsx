@@ -15,7 +15,7 @@ const ControlPanelCard = (props: Props) => {
         "flex flex-col justify-center rounded-xl px-2.5 py-2 shadow-md bg-topbar-control-card-background min-w-24"
       )}
     >
-      {props.title && <h2 className="text-xs">{props.title}</h2>}
+      {props.title && <h2 className="font-bold">{props.title}</h2>}
       {props.children}
     </div>
   );

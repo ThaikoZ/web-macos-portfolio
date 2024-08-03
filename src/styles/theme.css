@@ -55,7 +55,10 @@
   /* Control Panel */
   --color-topbar-wifi-disabled: rgba(0, 0, 0, 0.4);
   --color-topbar-control-card-btn-inactive: rgba(0, 0, 0, 0.1);
-  --bg-topbar-control-card-background: rgba(255, 255, 255, 0.4);
+  --bg-topbar-control-card-background: rgba(255, 255, 255, 0.3);
+
+  --color-topbar-control-range-background: rgba(0, 0, 0, 0.1);
+  --color-topbar-control-range-active: rgba(249, 250, 251, 0.95);
 }
 
 .dark {
@@ -93,5 +96,8 @@
   /* Control Panel */
   --color-topbar-wifi-disabled: rgba(255, 255, 255, 0.5);
   --color-topbar-control-card-btn-inactive: rgba(255, 255, 255, 0.1);
-  --bg-topbar-control-card-background: rgba(10, 10, 10, 0.25);
+  --bg-topbar-control-card-background: rgba(10, 10, 10, 0.2);
+
+  --color-topbar-control-range-background: rgba(0, 0, 0, 0.2);
+  --color-topbar-control-range-active: rgba(20, 20, 20, 0.35);
 }
