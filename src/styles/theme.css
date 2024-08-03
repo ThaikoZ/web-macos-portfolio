@@ -59,6 +59,7 @@
 
   --color-topbar-control-range-background: rgba(0, 0, 0, 0.1);
   --color-topbar-control-range-active: rgba(249, 250, 251, 0.95);
+  --color-topbar-control-range-icon: rgba(0, 0, 0, 1);
 }
 
 .dark {
@@ -100,4 +101,5 @@
 
   --color-topbar-control-range-background: rgba(0, 0, 0, 0.2);
   --color-topbar-control-range-active: rgba(20, 20, 20, 0.35);
+  --color-topbar-control-range-icon: rgba(255, 255, 255, 1);
 }

@@ -23,7 +23,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { DARK_MODE } from "@/constants/theme";
 import FullscreenButton from "./FullscreenButton";
 import CardContainer from "./CardContainer";
-import { SunIcon } from "@radix-ui/react-icons";
+import { SpeakerLoudIcon, SunIcon } from "@radix-ui/react-icons";
 import Slider from "./Slider";
 
 const ControlPanel = () => {
@@ -105,22 +105,20 @@ const ControlPanel = () => {
           <Card className="col-span-3">
             <FullscreenButton />
           </Card>
-          <Card className="col-span-12 gap-1.5" title="Display">
+          <Card className="col-span-12 gap-1.5 px-4 py-3" title="Display">
             <Slider
               value={[displayRange]}
-              onValueChange={(value: number) => {
-                console.log(value);
-                dispatch(setDisplayRange(value));
-              }}
+              onValueChange={(value: number) =>
+                dispatch(setDisplayRange(value))
+              }
+              Icon={<SunIcon />}
             />
           </Card>
-          <Card className="col-span-12 gap-1.5" title="Sound">
+          <Card className="col-span-12 gap-1.5 px-4 py-3" title="Sound">
             <Slider
               value={[soundRange]}
-              onValueChange={(value: number) => {
-                console.log(value);
-                dispatch(setSoundRange(value));
-              }}
+              onValueChange={(value: number) => dispatch(setSoundRange(value))}
+              Icon={<SpeakerLoudIcon />}
             />
           </Card>
           <Card className="col-span-12">dwa</Card>

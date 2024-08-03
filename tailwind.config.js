@@ -82,6 +82,7 @@ export default {
             range: {
               background: "var(--color-topbar-control-range-background)",
               active: "var(--color-topbar-control-range-active)",
+              icon: "var(--color-topbar-control-range-icon)",
             },
           },
         },

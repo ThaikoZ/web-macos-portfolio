@@ -8,10 +8,13 @@
   font-weight: 500;
 }
 
+::selection {
+  background: none;
+}
+
 body {
   @apply h-screen;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

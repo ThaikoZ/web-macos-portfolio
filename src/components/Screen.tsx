@@ -1,13 +1,17 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFullscreen } from "@/store/reducers/systemSettingsSlice";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/hooks/useTheme";
 import { PropsWithChildren } from "react";
+import { RootState } from "@/store/store";
 
 const Screen = ({ children }: PropsWithChildren) => {
   const { theme } = useTheme();
   const dispatch = useDispatch();
+  const displayRange = useSelector(
+    (state: RootState) => state.systemSettings.displayRange
+  );
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -37,13 +41,14 @@ const Screen = ({ children }: PropsWithChildren) => {
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     document.addEventListener("keydown", handleKeyDown);
 
-    console.log("changed mode");
-
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [dispatch]);
+
+  const displayOpacity = 0.7 * (1 - displayRange / 100);
+
   return (
     <div
       className={cn(
@@ -51,7 +56,14 @@ const Screen = ({ children }: PropsWithChildren) => {
         theme
       )}
     >
-      {children}
+      <div
+        className="relative top-0 left-0 w-full h-full pointer-events-none z-50"
+        style={{
+          backgroundColor: `rgba(0, 0, 0, ${displayOpacity})`,
+        }}
+      >
+        <div className="pointer-events-auto z-20">{children}</div>
+      </div>
     </div>
   );
 };

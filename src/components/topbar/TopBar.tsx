@@ -25,12 +25,12 @@ const TopBar = () => {
   return (
     <div
       className={cn(
-        "bg-topbar-background text-topbar-text",
-        "w-full h-[1.8rem] px-[0.4rem] flex z-10",
-        "before:backdrop-blur-xl before:absolute before:z-[-10px] before:left-0 before:top-0 before:w-full before:h-[1.8rem]"
+        "bg-topbar-background text-topbar-text z-30",
+        "w-full h-[1.8rem] px-[0.4rem] flex",
+        "before:backdrop-blur-xl before:absolute before:-z-20 before:left-0 before:top-0 before:w-full before:h-[1.8rem]"
       )}
     >
-      <div className="z-[5] w-full flex justify-between">
+      <div className="w-full flex justify-between">
         <FlexContainer className="justify-start ">
           <DropdownMenu
             trigger={<Button icon={<AppleLogoIcon />} />}
