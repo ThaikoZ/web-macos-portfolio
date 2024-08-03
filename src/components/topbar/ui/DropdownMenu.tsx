@@ -77,7 +77,7 @@ const DropdownMenuSelector = ({
 };
 
 export const Dropdown = (props: DropdownProps) => {
-  const dropdownClass = cn(props.className, "dropdown-menu");
+  const dropdownClass = cn(props.className, "window");
 
   return (
     <DropdownMenu.Root>

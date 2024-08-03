@@ -13,7 +13,7 @@ import FlexContainer from "../FlexContainer";
 import Button from "./ui/Button";
 import DropdownMenu from "./ui/DropdownMenu";
 import BatteryButton from "./BatteryButton";
-import SettingsPanel from "./control-panel/ControlPanel";
+import ControlPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
 import WifiButton from "./WifiButton";
 
@@ -55,7 +55,7 @@ const TopBar = () => {
           <WifiButton />
           <Button icon={<SpotlightIcon width={17} />} />
           <Button icon={<UserAccountIcon />} />
-          <SettingsPanel />
+          <ControlPanel />
           <DateTimeButton />
         </FlexContainer>
       </div>

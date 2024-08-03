@@ -32,9 +32,9 @@ export default {
           "sans-serif",
         ],
       },
-      boxShadow: {
-        window:
-          "-9px 9px 23px 0px rgba(24, 24, 24, 0.15), 9px 9px 23px 0px rgba(24, 24, 24, 0.15), 2px 4px 20px 0px rgba(24, 24, 24, 0.3)",
+      borderColor: {
+        "window-outer": "var(--color-window-outer)",
+        "window-inner": "var(--color-window-inner)",
       },
       colors: {
         topbar: {

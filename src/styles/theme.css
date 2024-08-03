@@ -23,6 +23,9 @@
 .light {
   --wallpaper: url("/src/assets/backgrounds/monterey-light.jpg");
 
+  --color-window-outer: rgba(0, 0, 0, 0.1);
+  --color-window-inner: rgba(211, 211, 211, 0.26);
+
   /* Topbar */
   --color-topbar-background: rgba(255, 255, 255, 0.5);
   --color-topbar-text: rgba(17, 17, 17, 1);
@@ -64,6 +67,9 @@
 
 .dark {
   --wallpaper: url("/src/assets/backgrounds/monterey-dark.jpg");
+
+  --color-window-outer: rgba(0, 0, 0, 0.5);
+  --color-window-inner: rgba(211, 211, 211, 0.26);
 
   /* Topbar */
   --color-topbar-background: rgba(0, 0, 0, 0.18);
