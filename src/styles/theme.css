@@ -23,7 +23,7 @@
 .light {
   --wallpaper: url("/src/assets/backgrounds/monterey-light.jpg");
 
-  --color-window-outer: rgba(0, 0, 0, 0.1);
+  --color-window-outer: rgba(0, 0, 0, 0.15);
   --color-window-inner: rgba(211, 211, 211, 0.26);
 
   /* Topbar */
