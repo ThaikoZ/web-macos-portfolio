@@ -57,12 +57,12 @@ const Screen = ({ children }: PropsWithChildren) => {
       )}
     >
       <div
-        className="relative top-0 left-0 w-full h-full pointer-events-none z-50"
+        className="relative top-0 left-0 w-full h-full pointer-events-none z-10"
         style={{
           backgroundColor: `rgba(0, 0, 0, ${displayOpacity})`,
         }}
       >
-        <div className="pointer-events-auto z-20">{children}</div>
+        <div className="pointer-events-auto z-0">{children}</div>
       </div>
     </div>
   );
