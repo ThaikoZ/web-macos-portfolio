@@ -22,14 +22,14 @@ const MusicPlayer = () => {
       <div className="flex items-center gap-3 me-2 mt-1">
         <div onClick={playSong}>
           {isPlaying ? (
-            <PauseIcon className="w-6 h-6 fill-zinc-800" />
+            <PauseIcon className="w-6 h-6 " />
           ) : (
-            <PlayIcon className="w-5 h-5 fill-zinc-800" />
+            <PlayIcon className="w-5 h-5 " />
           )}
         </div>
         <div onClick={nextSong}>
-          <PlayIcon className="w-[18px] h-[18px] fill-zinc-800" />
-          <PlayIcon className="absolute right-6 bottom-[36px] w-[18px] h-[18px] fill-zinc-800" />
+          <PlayIcon className="w-[18px] h-[18px] " />
+          <PlayIcon className="absolute right-6 bottom-[36px] w-[18px] h-[18px] " />
         </div>
       </div>
     </div>
