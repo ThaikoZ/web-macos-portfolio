@@ -25,6 +25,7 @@ import FullscreenButton from "./FullscreenButton";
 import CardContainer from "./CardContainer";
 import { SpeakerLoudIcon, SunIcon } from "@radix-ui/react-icons";
 import Slider from "./Slider";
+import MusicPlayer from "./MusicPlayer";
 
 const ControlPanel = () => {
   const dispatch = useDispatch();
@@ -121,7 +122,9 @@ const ControlPanel = () => {
               Icon={<SpeakerLoudIcon />}
             />
           </Card>
-          <Card className="col-span-12">dwa</Card>
+          <Card className="col-span-12">
+            <MusicPlayer />
+          </Card>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

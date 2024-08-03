@@ -1,4 +1,4 @@
-import Screen from "./components/Screen";
+import Screen from "./components/screen/Screen";
 import TopBar from "./components/topbar/TopBar";
 
 const Desktop = () => {
