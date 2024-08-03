@@ -86,6 +86,10 @@ export default {
             },
           },
         },
+        dock: {
+          background: "var(--color-dock-background)",
+          divider: "var(--color-dock-divider)",
+        },
       },
       cursor: {
         pointer: "var(--cursor-pointer)",

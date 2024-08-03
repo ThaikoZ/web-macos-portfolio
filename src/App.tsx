@@ -1,14 +1,14 @@
 import Dock from "./components/dock/Dock";
 import Screen from "./components/screen/Screen";
 import TopBar from "./components/topbar/TopBar";
-import View from "./components/view/View";
+import Desktop from "./components/desktop/Desktop";
 
-const Desktop = () => {
+const App = () => {
   return (
     <Screen>
       <TopBar />
 
-      <View />
+      <Desktop />
       {/* Right panel */}
       {/* ScreenView */}
       {/* Bottom Dock */}
@@ -17,4 +17,4 @@ const Desktop = () => {
   );
 };
 
-export default Desktop;
+export default App;

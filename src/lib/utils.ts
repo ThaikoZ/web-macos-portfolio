@@ -1,4 +1,4 @@
-import { finderMenu } from "@/apps/finder/finderMenu";
+import { finderMenu } from "@/apps/Finder/finderMenu";
 import { appsTitles } from "@/constants/apps";
 import clsx from "clsx";
 

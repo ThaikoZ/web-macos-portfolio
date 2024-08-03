@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Desktop from "./Desktop.tsx";
+import App from "./App.tsx";
 import "./styles/globals.css";
 import { Provider } from "react-redux";
 import { store } from "@/store/store.ts";
@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <ThemeProvider>
       <AudioProvider>
-        <Desktop />
+        <App />
       </AudioProvider>
     </ThemeProvider>
   </Provider>

@@ -1,4 +1,4 @@
-import { systemMenu } from "@/apps/systemMenu";
+import { systemMenu } from "@/apps/system/systemMenu";
 import {
   AirDropIcon,
   AppleLogoIcon,

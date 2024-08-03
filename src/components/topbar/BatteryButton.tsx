@@ -1,4 +1,4 @@
-import { batteryMenu } from "@/apps/batteryMenu";
+import { batteryMenu } from "@/apps/system/batteryMenu";
 import { BatteryFullIcon } from "@/assets/icons/utility";
 import Button from "./ui/Button";
 import Dropdown from "./ui/DropdownMenu";
