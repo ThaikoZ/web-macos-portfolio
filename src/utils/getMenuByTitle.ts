@@ -1,4 +1,4 @@
-import { finderMenu } from "@/apps/Finder/finderMenu";
+import { finderMenu } from "@/apps/dwadwa/finderMenu";
 import { appsTitles } from "@/constants/apps";
 
 export const getMenuByTitle = (title: string) => {
