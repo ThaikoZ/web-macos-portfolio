@@ -1,20 +1,19 @@
+import { DEFAULT_OPENED_WINDOW } from "@/constants/system";
+import { WindowInterface } from "@/types/window";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface App {
-  id: number;
-  title: string;
-}
-
 export interface SystemSettingsState {
-  openedApps: App[];
-  activeWindowTitle: string;
+  totalOpenedWindows: number;
+  openedWindows: WindowInterface[];
+  activeWindow: WindowInterface;
   isResizing: boolean;
   isMoving: boolean;
 }
 
 const initialState: SystemSettingsState = {
-  openedApps: [],
-  activeWindowTitle: "Finder",
+  totalOpenedWindows: 0,
+  openedWindows: [],
+  activeWindow: DEFAULT_OPENED_WINDOW,
   isResizing: false,
   isMoving: false,
 };
@@ -23,8 +22,10 @@ const windowSlice = createSlice({
   name: "windows",
   initialState,
   reducers: {
-    setActiveWindow(state, action: PayloadAction<string>) {
-      return { ...state, activeWindowTitle: action.payload };
+    setActiveWindow(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const window = state.openedWindows.find((window) => window.id === id);
+      return { ...state, activeWindow: window || DEFAULT_OPENED_WINDOW };
     },
     setMoving(state, action: PayloadAction<boolean>) {
       return { ...state, isMoving: action.payload };
@@ -32,23 +33,34 @@ const windowSlice = createSlice({
     setResizing(state, action: PayloadAction<boolean>) {
       return { ...state, isResizing: action.payload };
     },
-    openApp(state, action: PayloadAction<string>) {
-      const newApp = {
-        id: state.openedApps.length,
+    openWindow(state, action: PayloadAction<string>) {
+      const newWindow: WindowInterface = {
+        id: state.totalOpenedWindows,
         title: action.payload,
       };
-      return { ...state, openedApps: [...state.openedApps, newApp] };
+      return {
+        ...state,
+        totalOpenedWindows: state.totalOpenedWindows + 1,
+        activeWindow: newWindow,
+        openedWindows: [...state.openedWindows, newWindow],
+      };
     },
-    closeApp(state, action: PayloadAction<string>) {
-      const newOpenedApps = state.openedApps.filter(
-        (app) => app.title !== action.payload
+    closeWindow(state, action: PayloadAction<number>) {
+      const windowIdToRemove = action.payload;
+      const openedWindows = state.openedWindows.filter(
+        (window) => window.id !== windowIdToRemove
       );
-      return { ...state, openedApps: newOpenedApps };
+      return { ...state, openedWindows };
     },
   },
 });
 
-export const { setActiveWindow, setMoving, openApp, closeApp } =
-  windowSlice.actions;
+export const {
+  setActiveWindow,
+  setMoving,
+  setResizing,
+  openWindow,
+  closeWindow,
+} = windowSlice.actions;
 
 export default windowSlice.reducer;

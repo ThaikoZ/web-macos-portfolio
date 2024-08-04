@@ -2,13 +2,13 @@ import { dockApps, trashApp } from "@/data/dockConfigs";
 import Divider from "./Divider";
 import { AppConfig } from "@/types/app";
 import { useDispatch } from "react-redux";
-import { openApp, setActiveWindow } from "@/store/reducers/windowSlice";
+import { openWindow } from "@/store/reducers/windowSlice";
 
 const Dock = () => {
   const dispatch = useDispatch();
+
   const handleClick = (app: AppConfig) => {
-    dispatch(openApp(app.title));
-    dispatch(setActiveWindow(app.title));
+    dispatch(openWindow(app.title));
   };
 
   return (

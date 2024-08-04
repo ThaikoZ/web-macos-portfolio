@@ -1,11 +1,16 @@
-import Window from "@/components/screen/Window";
+import Window from "@/components/desktop/Window";
 import { FinderConfig } from "./finderConfig";
 
-const FinderApp = () => {
+interface Props {
+  id: number;
+}
+
+const FinderApp = ({ id }: Props) => {
   const { defalutSize, title, isResizable, defaultPosition } = FinderConfig;
 
   return (
     <Window
+      id={id}
       defalutSize={defalutSize}
       title={title}
       isResizable={isResizable}

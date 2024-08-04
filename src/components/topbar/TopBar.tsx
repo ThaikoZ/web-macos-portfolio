@@ -6,7 +6,7 @@ import {
   SpotlightIcon,
   UserAccountIcon,
 } from "@/assets/icons/utility";
-import { RootState } from "@/store/store";
+import { Store } from "@/store/store";
 import { useSelector } from "react-redux";
 import FlexContainer from "../FlexContainer";
 import Button from "./ui/Button";
@@ -16,14 +16,17 @@ import ControlPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
 import WifiButton from "./WifiButton";
 import { cn } from "@/utils/cn";
-import { getMenuByTitle } from "@/utils/getMenuByTitle";
+import { getConfigByTitle } from "@/utils/getConfigByTitle";
+import { DEFAULT_OPENED_WINDOW } from "@/constants/system";
 
 const TopBar = () => {
   const { isAirdropEnabled, isBluetoothEnabled } = useSelector(
-    (state: RootState) => state.systemSettings
+    (state: Store) => state.systemSettings
   );
-  const { activeWindowTitle } = useSelector((state: RootState) => state.window);
-  const menu = getMenuByTitle(activeWindowTitle);
+  const activeWindow = useSelector((state: Store) => state.window.activeWindow);
+  const menu = getConfigByTitle(
+    activeWindow?.title || DEFAULT_OPENED_WINDOW.title
+  ).menu;
 
   return (
     <div

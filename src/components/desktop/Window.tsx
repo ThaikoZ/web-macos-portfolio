@@ -3,8 +3,8 @@ import {
   DEFAULT_WINDOW_WIDTH,
 } from "@/constants/system";
 import useMouse from "@/hooks/useMouse";
-import { closeApp, setActiveWindow } from "@/store/reducers/windowSlice";
-import { RootState } from "@/store/store";
+import { closeWindow, setActiveWindow } from "@/store/reducers/windowSlice";
+import { Store } from "@/store/store";
 import { App } from "@/types/app";
 import { Position, Size } from "@/types/window";
 import { cn } from "@/utils/cn";
@@ -15,30 +15,46 @@ import { useDispatch, useSelector } from "react-redux";
 const NAVBAR_HEIGHT = 27;
 
 interface Props extends App {
+  id: number;
   children: ReactNode;
 }
 
 const Window = ({
+  id,
   title = "macOS Window",
   children,
   defalutSize,
   defaultPosition = {
-    x: (window.screen.width - DEFAULT_WINDOW_WIDTH) / 2,
-    y: (window.screen.height - DEFAULT_WINDOW_HEIGHT) / 2 - 100,
+    x: (window.screen.width - defalutSize.width) / 2,
+    y: (window.screen.height - defalutSize.height) / 2 - 150,
   },
 }: Props) => {
+  const { activeWindow, openedWindows } = useSelector(
+    (state: Store) => state.window
+  );
   const [size] = useState<Size>(defalutSize);
-  const [position, setPosition] = useState<Position>(defaultPosition);
+  const [position, setPosition] = useState<Position>({
+    x: defaultPosition.x + openedWindows.length * 35,
+    y: defaultPosition.y + openedWindows.length * 30,
+  });
   const [offset, setOffset] = useState<Position>({ x: 0, y: 0 });
   const [isMovable, setMovable] = useState(false);
-  const { activeWindowTitle } = useSelector((state: RootState) => state.window);
+
   const dispatch = useDispatch();
   const mouse = useMouse();
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleClose = () => dispatch(closeApp(title));
+  const handleClose = () => dispatch(closeWindow(id));
+
   const handleMinimize = () => console.log("Minimized Window");
   const handleFullscreen = () => console.log("Fullscreened Window");
+
+  const handleClickDownMoveArea = () => setMovable(true);
+  const handleClickUpMoveArea = () => setMovable(false);
+
+  const handleActivate = () => {
+    dispatch(setActiveWindow(id));
+  };
 
   useEffect(() => {
     if (ref.current) {
@@ -68,20 +84,18 @@ const Window = ({
     else updateWindowPosition();
   }, [mouse]);
 
-  const handleClickDownMoveArea = () => setMovable(true);
-  const handleClickUpMoveArea = () => setMovable(false);
-
-  const handleActivate = () => {
-    if (activeWindowTitle !== title) dispatch(setActiveWindow(title));
-  };
-
   return (
     <div
       ref={ref}
       className={cn(
-        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background "
+        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background pointer-events-auto"
       )}
-      style={{ width: size.width, height: size.height }}
+      style={{
+        boxShadow: activeWindow.id === id ? "" : "none",
+        zIndex: activeWindow.id === id ? "10" : "0",
+        width: size.width,
+        height: size.height,
+      }}
       onMouseDown={handleActivate}
     >
       <div

@@ -1,6 +1,6 @@
 import { songs } from "@/apps/AppleMusic/data/musicPlayerList";
 import { Song } from "@/apps/AppleMusic/types/song";
-import { RootState } from "@/store/store";
+import { Store } from "@/store/store";
 import {
   createContext,
   useRef,
@@ -26,7 +26,7 @@ export const AudioProvider = ({ children }: PropsWithChildren) => {
   const [isPlaying, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const soundRange = useSelector(
-    (state: RootState) => state.systemSettings.soundRange
+    (state: Store) => state.systemSettings.soundRange
   );
 
   const currentSong = songs[index];

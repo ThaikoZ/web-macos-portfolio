@@ -10,8 +10,7 @@ export interface App {
 }
 
 export interface AppConfig extends App {
-  id?: number;
   icon: ComponentType;
-  engine: ComponentType;
+  engine: ComponentType<{ id: number }>;
   menu: DropdownMenuInterface[];
 }

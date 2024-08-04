@@ -1,9 +1,9 @@
-import { RootState } from "@/store/store";
+import { Store } from "@/store/store";
 import { useSelector } from "react-redux";
 
 const Blackout = () => {
   const displayRange = useSelector(
-    (state: RootState) => state.systemSettings.displayRange
+    (state: Store) => state.systemSettings.displayRange
   );
   const displayOpacity = 0.7 * (1 - displayRange / 100);
 

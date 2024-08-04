@@ -1,12 +1,12 @@
 import { WifiIcon } from "@/assets/icons/utility";
 import { toggleWifi } from "@/store/reducers/systemSettingsSlice";
-import { RootState } from "@/store/store";
+import { Store } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./ui/Button";
 
 const WifiButton = () => {
   const isWifiEnabled = useSelector(
-    (state: RootState) => state.systemSettings.isWifiEnabled
+    (state: Store) => state.systemSettings.isWifiEnabled
   );
   const dispatch = useDispatch();
 

@@ -10,7 +10,7 @@ import {
 import Card from "./ControlPanelCard";
 import CardToggleButton from "./CardToggleButton";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { Store } from "@/store/store";
 
 import {
   setDisplayRange,
@@ -35,7 +35,7 @@ const ControlPanel = () => {
     isBluetoothEnabled,
     displayRange,
     soundRange,
-  } = useSelector((state: RootState) => state.systemSettings);
+  } = useSelector((state: Store) => state.systemSettings);
   const { theme, toggleTheme } = useTheme();
 
   return (
