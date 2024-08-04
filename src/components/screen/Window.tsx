@@ -3,38 +3,40 @@ import {
   DEFAULT_WINDOW_WIDTH,
 } from "@/constants/system";
 import useMouse from "@/hooks/useMouse";
-import { Position, Size, WindowInterface } from "@/types/window";
+import { closeApp, setActiveWindow } from "@/store/reducers/windowSlice";
+import { RootState } from "@/store/store";
+import { App } from "@/types/app";
+import { Position, Size } from "@/types/window";
 import { cn } from "@/utils/cn";
 import { convertToPixels } from "@/utils/convertToPixels";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const NAVBAR_HEIGHT = 27;
+
+interface Props extends App {
+  children: ReactNode;
+}
 
 const Window = ({
   title = "macOS Window",
   children,
-  defalutSize = {
-    width: 500,
-    height: 300,
-  },
+  defalutSize,
   defaultPosition = {
     x: (window.screen.width - DEFAULT_WINDOW_WIDTH) / 2,
     y: (window.screen.height - DEFAULT_WINDOW_HEIGHT) / 2 - 100,
   },
-  isResizable = true,
-}: WindowInterface) => {
-  const [size, setSize] = useState<Size>(defalutSize);
+}: Props) => {
+  const [size] = useState<Size>(defalutSize);
   const [position, setPosition] = useState<Position>(defaultPosition);
   const [offset, setOffset] = useState<Position>({ x: 0, y: 0 });
   const [isMovable, setMovable] = useState(false);
-  const [resizeMode, setResizeMode] = useState(false);
-
+  const { activeWindowTitle } = useSelector((state: RootState) => state.window);
+  const dispatch = useDispatch();
   const mouse = useMouse();
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleClose = () => {
-    ref.current?.remove();
-  };
+  const handleClose = () => dispatch(closeApp(title));
   const handleMinimize = () => console.log("Minimized Window");
   const handleFullscreen = () => console.log("Fullscreened Window");
 
@@ -62,30 +64,16 @@ const Window = ({
       setPosition(newPosition);
     };
 
-    const isOnScreen = (() => {
-      const sWidth = window.screen.width;
-      const sHeight = window.screen.height;
-      if (position.x < 0) {
-        setPosition((prev) => {
-          return { ...prev, x: 1 };
-        });
-        return false;
-      }
-      if (position.y < 0) {
-        setPosition((prev) => {
-          return { ...prev, y: 1 };
-        });
-        return false;
-      }
-      return true;
-    })();
-
     if (!isMovable) updateOffset();
-    else if (isOnScreen) updateWindowPosition();
+    else updateWindowPosition();
   }, [mouse]);
 
   const handleClickDownMoveArea = () => setMovable(true);
   const handleClickUpMoveArea = () => setMovable(false);
+
+  const handleActivate = () => {
+    if (activeWindowTitle !== title) dispatch(setActiveWindow(title));
+  };
 
   return (
     <div
@@ -94,7 +82,7 @@ const Window = ({
         "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background "
       )}
       style={{ width: size.width, height: size.height }}
-      autoFocus
+      onMouseDown={handleActivate}
     >
       <div
         onMouseDown={handleClickDownMoveArea}

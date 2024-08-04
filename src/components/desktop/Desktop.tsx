@@ -1,11 +1,17 @@
-import Window from "../screen/Window";
+import { RootState } from "@/store/store";
+import { getConfigByTitle } from "@/utils/getConfigByTitle";
+import { useSelector } from "react-redux";
 
 const Desktop = () => {
+  const openedApps = useSelector((state: RootState) => state.window.openedApps);
+  console.log(openedApps);
+
   return (
-    <div className="h-auto grid grid-cols-12 grid-rows-9">
-      <Window defalutSize={{ width: 500, height: 300 }} title="Finder">
-        Content
-      </Window>
+    <div id="desktop" className="h-auto grid grid-cols-12 grid-rows-9">
+      {openedApps.map((app, index) => {
+        const AppComponent = getConfigByTitle(app.title).engine;
+        return <AppComponent key={index} />;
+      })}
     </div>
   );
 };
