@@ -24,6 +24,7 @@ const windowSlice = createSlice({
   reducers: {
     setActiveWindow(state, action: PayloadAction<number>) {
       const id = action.payload;
+
       const windowIndex = state.openedWindows.findIndex(
         (window) => window.id === id
       );
@@ -68,15 +69,13 @@ const windowSlice = createSlice({
     },
     closeWindow(state, action: PayloadAction<number>) {
       const id = action.payload;
+      const activeWindow =
+        state.activeWindow.id === id
+          ? DEFAULT_OPENED_WINDOW
+          : state.activeWindow;
       const openedWindows = state.openedWindows.filter(
         (window) => window.id !== id
       );
-
-      const activeWindow =
-        state.activeWindow.id === id
-          ? openedWindows[openedWindows.length - 1] || DEFAULT_OPENED_WINDOW
-          : state.activeWindow;
-
       return { ...state, openedWindows, activeWindow };
     },
   },

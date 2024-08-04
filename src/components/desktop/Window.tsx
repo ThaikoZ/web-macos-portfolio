@@ -5,6 +5,11 @@ import { App } from "@/types/app";
 import { Position, Size } from "@/types/window";
 import { cn } from "@/utils/cn";
 import { convertToPixels } from "@/utils/convertToPixels";
+import {
+  Cross2Icon,
+  EnterFullScreenIcon,
+  MinusIcon,
+} from "@radix-ui/react-icons";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -103,28 +108,36 @@ const Window = ({
           { "text-window-bar-text-inactive": inactive }
         )}
       >
-        <div className="absolute flex gap-2">
+        <div className="absolute flex gap-2  window-icons">
           <span
             className={cn(
-              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-close ",
+              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-close transition-colors",
               { "bg-window-btn-inactive": inactive }
             )}
             onClick={handleClose}
-          ></span>
+          >
+            {!inactive && <Cross2Icon className="icon-hidden-on-default" />}
+          </span>
           <span
             className={cn(
-              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-minimize ",
+              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-minimize ",
               { "!bg-window-btn-inactive": inactive }
             )}
             onClick={handleMinimize}
-          ></span>
+          >
+            {!inactive && <MinusIcon className="icon-hidden-on-default" />}
+          </span>
           <span
             className={cn(
-              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-fullscreen ",
+              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-fullscreen ",
               { "bg-window-btn-inactive": inactive }
             )}
             onClick={handleFullscreen}
-          ></span>
+          >
+            {/* {!inactive && (
+              <EnterFullScreenIcon className="icon-hidden-on-default" />
+            )} */}
+          </span>
         </div>
         <div className="flex items-center justify-center w-full pointer-events-none ">
           {title}
