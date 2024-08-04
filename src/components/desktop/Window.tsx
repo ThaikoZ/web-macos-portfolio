@@ -1,7 +1,3 @@
-import {
-  DEFAULT_WINDOW_HEIGHT,
-  DEFAULT_WINDOW_WIDTH,
-} from "@/constants/system";
 import useMouse from "@/hooks/useMouse";
 import { closeWindow, setActiveWindow } from "@/store/reducers/windowSlice";
 import { Store } from "@/store/store";

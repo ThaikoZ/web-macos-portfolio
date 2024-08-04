@@ -26,8 +26,10 @@ import CardContainer from "./CardContainer";
 import { SpeakerLoudIcon, SunIcon } from "@radix-ui/react-icons";
 import Slider from "./Slider";
 import MusicPlayer from "./MusicPlayer";
+import { useState } from "react";
 
 const ControlPanel = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const {
     isAirdropEnabled,
@@ -38,11 +40,15 @@ const ControlPanel = () => {
   } = useSelector((state: Store) => state.systemSettings);
   const { theme, toggleTheme } = useTheme();
 
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+  };
+
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root onOpenChange={handleOpenChange}>
       <DropdownMenu.Trigger asChild>
         <div className="h-full">
-          <Button icon={<ControlPanelIcon width={20} />} />
+          <Button pressed={isOpen} icon={<ControlPanelIcon width={20} />} />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

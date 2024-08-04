@@ -2,7 +2,13 @@ import { ChevronRightIcon } from "@/assets/icons/utility";
 import { cn } from "@/utils/cn";
 import { DropdownItemInterface, DropdownMenuInterface } from "@/types/dropdown";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { forwardRef, ReactNode } from "react";
+import {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  ReactNode,
+  useState,
+} from "react";
 import Badge from "./Badge";
 import Separator from "./Separator";
 import Shortcut from "./Shortcut";
@@ -77,12 +83,27 @@ const DropdownMenuSelector = ({
 };
 
 export const Dropdown = (props: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const dropdownClass = cn(props.className, "window");
 
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (props.onOpenChange) props.onOpenChange(open);
+  };
+
+  const renderTrigger = () => {
+    if (isValidElement(props.trigger)) {
+      return cloneElement(props.trigger as React.ReactElement, {
+        pressed: isOpen,
+      });
+    }
+    return props.trigger;
+  };
+
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root onOpenChange={handleOpenChange}>
       <DropdownMenu.Trigger asChild>
-        <div className="h-full">{props.trigger}</div>
+        <div className="h-full">{renderTrigger()}</div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
