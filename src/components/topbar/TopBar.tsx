@@ -1,4 +1,4 @@
-import { systemMenu } from "@/apps/system/systemMenu";
+import { systemMenu } from "data/systemMenu";
 import {
   AirDropIcon,
   AppleLogoIcon,
@@ -6,7 +6,6 @@ import {
   SpotlightIcon,
   UserAccountIcon,
 } from "@/assets/icons/utility";
-import { cn, getMenuByTitle } from "@/lib/utils";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import FlexContainer from "../FlexContainer";
@@ -16,6 +15,8 @@ import BatteryButton from "./BatteryButton";
 import ControlPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
 import WifiButton from "./WifiButton";
+import { cn } from "@/utils/cn";
+import { getMenuByTitle } from "@/utils/getMenuByTitle";
 
 const TopBar = () => {
   const { activeWindowTitle, isAirdropEnabled, isBluetoothEnabled } =

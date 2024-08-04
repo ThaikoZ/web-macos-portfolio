@@ -8,7 +8,7 @@ const TrashAppIcon = () => {
   const { theme } = useTheme();
   return (
     <Tooltip hint="Trash">
-      <div>{theme === DARK_MODE ? <TrashDark /> : <TrashLight />}</div>
+      {theme === DARK_MODE ? <TrashDark /> : <TrashLight />}
     </Tooltip>
   );
 };

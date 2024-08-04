@@ -2,7 +2,7 @@ import { useContext } from "react";
 import {
   AudioContext,
   AudioContextProps,
-} from "@/components/screen/AudioProvider";
+} from "@/components/providers/AudioProvider";
 
 const useAudio = (): AudioContextProps => {
   const context = useContext(AudioContext);

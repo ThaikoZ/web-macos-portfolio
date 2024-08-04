@@ -4,9 +4,7 @@ import FinderIcon from "./assets/icons/FinderIcon";
 const FinderAppIcon = () => {
   return (
     <Tooltip hint="Finder">
-      <div>
-        <FinderIcon />
-      </div>
+      <FinderIcon />
     </Tooltip>
   );
 };

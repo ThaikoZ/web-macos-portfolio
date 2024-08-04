@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from "@/assets/icons/utility";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { DropdownItemInterface, DropdownMenuInterface } from "@/types/dropdown";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { forwardRef, ReactNode } from "react";

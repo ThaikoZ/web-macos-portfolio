@@ -33,7 +33,8 @@
       "@/styles/*": ["styles/*"],
       "@/hooks/*": ["hooks/*"],
       "@/types/*": ["types/*"],
-      "@/lib/*": ["lib/*"],
+      "@/data/*": ["data/*"],
+      "@/utils/*": ["utils/*"],
       "@/constants/*": ["constants/*"]
     }
   },

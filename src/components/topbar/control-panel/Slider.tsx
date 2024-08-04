@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import * as SliderRadiux from "@radix-ui/react-slider";
 import { ReactNode } from "react";
 

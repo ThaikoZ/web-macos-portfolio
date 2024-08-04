@@ -1,6 +1,6 @@
 import { DARK_MODE } from "@/constants/theme";
 import { useTheme } from "@/hooks/useTheme";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 interface IconProps {
   width?: number;

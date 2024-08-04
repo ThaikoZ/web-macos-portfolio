@@ -1,5 +1,5 @@
 import { useTheme } from "@/hooks/useTheme";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { setFullscreen } from "@/store/reducers/systemSettingsSlice";
 import { PropsWithChildren, useEffect } from "react";
 import { useDispatch } from "react-redux";

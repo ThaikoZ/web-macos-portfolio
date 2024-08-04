@@ -1,7 +1,7 @@
 import IconComponent from "@/components/IconComponent";
 import { IconProps } from "@/types/icon";
 
-const TrashLight = ({ ...props }: IconProps) => {
+const TrashDark = ({ ...props }: IconProps) => {
   return (
     <IconComponent viewBox="0 0 62 62" width={54} height={54} {...props}>
       <rect width="62" height="62" fill="url(#pattern0_214_13597)" />
@@ -28,4 +28,4 @@ const TrashLight = ({ ...props }: IconProps) => {
   );
 };
 
-export default TrashLight;
+export default TrashDark;

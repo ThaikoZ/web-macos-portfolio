@@ -1,6 +1,6 @@
 import { PauseIcon, PlayIcon } from "@/assets/icons/utility/MusicIcons";
 import useAudio from "@/hooks/useAudio";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 const MusicPlayer = () => {
   const { currentSong, isPlaying, playSong, nextSong } = useAudio();
