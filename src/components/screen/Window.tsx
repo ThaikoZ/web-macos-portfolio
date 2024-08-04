@@ -147,18 +147,95 @@ const Window = ({
           html.className = "!cursor-default";
           break;
       }
-      // Sprawdzać czy kursor nie jest na granicy okna
-      // Jeżeli kursor dotyka krawędzi to zmień aktualny kursor na inną klasę
-      // Dezaktywuj możliwość przemieszczania okna
     };
 
-    // if (isResizable) {
-    //   updateResize();
-    // }
-    if (!resizeMode) {
-      if (!isMovable) updateOffset();
-      else updateWindowPosition();
-    }
+    const resizeWindow = () => {
+      const MIN_WIDTH = 100;
+      const MIN_HEIGHT = 100;
+
+      const resizeDirection = checkResizability();
+      let newWidth = size.width;
+      let newHeight = size.height;
+      let newX = position.x;
+      let newY = position.y;
+
+      if (resizeMode) {
+        switch (resizeDirection) {
+          case 0:
+            newHeight = size.height - (mouse.y - position.y);
+            newY = mouse.y;
+            if (newHeight < MIN_HEIGHT) {
+              newHeight = MIN_HEIGHT;
+              newY = position.y + size.height - MIN_HEIGHT;
+            }
+            break;
+          case 1: // Top-right corner resize
+            newWidth = mouse.x - position.x;
+            newHeight = size.height - (mouse.y - position.y);
+            newY = mouse.y;
+            if (newWidth < MIN_WIDTH) newWidth = MIN_WIDTH;
+            if (newHeight < MIN_HEIGHT) {
+              newHeight = MIN_HEIGHT;
+              newY = position.y + size.height - MIN_HEIGHT;
+            }
+            break;
+          case 2: // Right resize
+            newWidth = mouse.x - position.x;
+            if (newWidth < MIN_WIDTH) newWidth = MIN_WIDTH;
+            break;
+          case 3: // Bottom-right corner resize
+            newWidth = mouse.x - position.x;
+            newHeight = mouse.y - position.y;
+            if (newWidth < MIN_WIDTH) newWidth = MIN_WIDTH;
+            if (newHeight < MIN_HEIGHT) newHeight = MIN_HEIGHT;
+            break;
+          case 4: // Bottom resize
+            newHeight = mouse.y - position.y;
+            if (newHeight < MIN_HEIGHT) newHeight = MIN_HEIGHT;
+            break;
+          case 5: // Bottom-left corner resize
+            newWidth = size.width - (mouse.x - position.x);
+            newHeight = mouse.y - position.y;
+            newX = mouse.x;
+            if (newWidth < MIN_WIDTH) {
+              newWidth = MIN_WIDTH;
+              newX = position.x + size.width - MIN_WIDTH;
+            }
+            if (newHeight < MIN_HEIGHT) newHeight = MIN_HEIGHT;
+            break;
+          case 6: // Left resize
+            newWidth = size.width - (mouse.x - position.x);
+            newX = mouse.x;
+            if (newWidth < MIN_WIDTH) {
+              newWidth = MIN_WIDTH;
+              newX = position.x + size.width - MIN_WIDTH;
+            }
+            break;
+          case 7: // Top-left corner resize
+            newWidth = size.width - (mouse.x - position.x);
+            newHeight = size.height - (mouse.y - position.y);
+            newX = mouse.x;
+            newY = mouse.y;
+            if (newWidth < MIN_WIDTH) {
+              newWidth = MIN_WIDTH;
+              newX = position.x + size.width - MIN_WIDTH;
+            }
+            if (newHeight < MIN_HEIGHT) {
+              newHeight = MIN_HEIGHT;
+              newY = position.y + size.height - MIN_HEIGHT;
+            }
+            break;
+          default:
+            break;
+        }
+
+        setSize({ width: newWidth, height: newHeight });
+        setPosition({ x: newX, y: newY });
+      }
+    };
+
+    if (!isMovable) updateOffset();
+    else updateWindowPosition();
   }, [mouse]);
 
   const handleClickDownMoveArea = () => setMovable(true);
