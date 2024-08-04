@@ -17,10 +17,10 @@ const Tooltip = ({ children, hint, className }: Props) => {
         </RadixTooltip.Trigger>
         <RadixTooltip.Portal>
           <RadixTooltip.Content
-            sideOffset={3}
+            sideOffset={5}
             className={cn(
               className,
-              "select-none bg-black px-3 py-1.5 text-white rounded-md font-normal "
+              "select-none bg-black px-3 py-1.5 text-white rounded-md font-normal z-50"
             )}
           >
             {hint}

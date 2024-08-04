@@ -1,8 +1,8 @@
 import { IconProps } from "@/types/icon";
 
 export const BluetoothIcon = ({
-  width = 800,
-  height = 800,
+  width = 16,
+  height = 16,
   fill = "currentColor",
   ...props
 }: IconProps) => (
