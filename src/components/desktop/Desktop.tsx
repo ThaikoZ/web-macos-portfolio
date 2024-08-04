@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 const Desktop = () => {
   const { openedWindows } = useSelector((state: Store) => state.window);
   const dispatch = useDispatch();
+
+  const looseFocus = () => dispatch(setActiveWindow(-1));
+
   return (
     <>
-      <div
-        className="absolute w-full h-full "
-        onClick={() => dispatch(setActiveWindow(-1))}
-      ></div>
+      <div className="absolute w-full h-full " onClick={looseFocus}></div>
       <div id="desktop" className="absolute z-0">
         {openedWindows.map((window) => {
           const AppComponent = getConfigByTitle(window.title).engine;

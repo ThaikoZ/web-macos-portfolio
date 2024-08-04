@@ -24,8 +24,29 @@ const windowSlice = createSlice({
   reducers: {
     setActiveWindow(state, action: PayloadAction<number>) {
       const id = action.payload;
-      const window = state.openedWindows.find((window) => window.id === id);
-      return { ...state, activeWindow: window || DEFAULT_OPENED_WINDOW };
+      const windowIndex = state.openedWindows.findIndex(
+        (window) => window.id === id
+      );
+
+      if (windowIndex !== -1) {
+        const windowToMove = state.openedWindows[windowIndex];
+        const newOpenedWindows = [
+          ...state.openedWindows.slice(0, windowIndex),
+          ...state.openedWindows.slice(windowIndex + 1),
+          windowToMove,
+        ];
+
+        return {
+          ...state,
+          openedWindows: newOpenedWindows,
+          activeWindow: windowToMove,
+        };
+      }
+
+      return {
+        ...state,
+        activeWindow: DEFAULT_OPENED_WINDOW,
+      };
     },
     setMoving(state, action: PayloadAction<boolean>) {
       return { ...state, isMoving: action.payload };
@@ -47,13 +68,15 @@ const windowSlice = createSlice({
     },
     closeWindow(state, action: PayloadAction<number>) {
       const id = action.payload;
-      const activeWindow =
-        state.activeWindow.id === id
-          ? DEFAULT_OPENED_WINDOW
-          : state.activeWindow;
       const openedWindows = state.openedWindows.filter(
         (window) => window.id !== id
       );
+
+      const activeWindow =
+        state.activeWindow.id === id
+          ? openedWindows[openedWindows.length - 1] || DEFAULT_OPENED_WINDOW
+          : state.activeWindow;
+
       return { ...state, openedWindows, activeWindow };
     },
   },
