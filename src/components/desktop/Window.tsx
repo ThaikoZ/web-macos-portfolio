@@ -39,6 +39,7 @@ const Window = ({
   const dispatch = useDispatch();
   const mouse = useMouse();
   const ref = useRef<HTMLDivElement>(null);
+  const inactive = activeWindow.id !== id;
 
   const handleClose = () => dispatch(closeWindow(id));
 
@@ -84,11 +85,11 @@ const Window = ({
     <div
       ref={ref}
       className={cn(
-        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background pointer-events-auto"
+        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background pointer-events-auto",
+        { "!shadow-none": inactive },
+        { "z-10 window-shadow": !inactive }
       )}
       style={{
-        boxShadow: activeWindow.id === id ? "" : "none",
-        zIndex: activeWindow.id === id ? "10" : "0",
         width: size.width,
         height: size.height,
       }}
@@ -97,19 +98,31 @@ const Window = ({
       <div
         onMouseDown={handleClickDownMoveArea}
         onMouseUp={handleClickUpMoveArea}
-        className="flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]"
+        className={cn(
+          "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]",
+          { "text-window-bar-text-inactive": inactive }
+        )}
       >
         <div className="absolute flex gap-2">
           <span
-            className="w-3 h-3 border-[1px] border-window-btn-border bg-window-btn-close rounded-full"
+            className={cn(
+              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-close ",
+              { "bg-window-btn-inactive": inactive }
+            )}
             onClick={handleClose}
           ></span>
           <span
-            className="w-3 h-3 border-[1px] border-window-btn-border bg-window-btn-minimize rounded-full"
+            className={cn(
+              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-minimize ",
+              { "!bg-window-btn-inactive": inactive }
+            )}
             onClick={handleMinimize}
           ></span>
           <span
-            className="w-3 h-3 border-[1px] border-window-btn-border bg-window-btn-fullscreen rounded-full"
+            className={cn(
+              "w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-fullscreen ",
+              { "bg-window-btn-inactive": inactive }
+            )}
             onClick={handleFullscreen}
           ></span>
         </div>

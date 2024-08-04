@@ -46,11 +46,15 @@ const windowSlice = createSlice({
       };
     },
     closeWindow(state, action: PayloadAction<number>) {
-      const windowIdToRemove = action.payload;
+      const id = action.payload;
+      const activeWindow =
+        state.activeWindow.id === id
+          ? DEFAULT_OPENED_WINDOW
+          : state.activeWindow;
       const openedWindows = state.openedWindows.filter(
-        (window) => window.id !== windowIdToRemove
+        (window) => window.id !== id
       );
-      return { ...state, openedWindows };
+      return { ...state, openedWindows, activeWindow };
     },
   },
 });

@@ -81,6 +81,12 @@
   z-index: 1;
 }
 
+.window-shadow {
+  box-shadow: 0px 15px 35px 10px rgba(0, 0, 0, 0.527);
+}
+
+/* Dock */
+
 .dock-item {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
