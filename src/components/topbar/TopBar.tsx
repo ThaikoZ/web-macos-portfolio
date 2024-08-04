@@ -36,7 +36,7 @@ const TopBar = () => {
         "before:backdrop-blur-xl before:absolute before:-z-20 before:left-0 before:top-0 before:w-full before:h-[1.8rem]"
       )}
     >
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between ">
         <FlexContainer className="justify-start ">
           <DropdownMenu
             trigger={<Button icon={<AppleLogoIcon />} />}

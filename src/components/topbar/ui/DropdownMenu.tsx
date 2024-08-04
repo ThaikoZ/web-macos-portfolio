@@ -84,7 +84,7 @@ const DropdownMenuSelector = ({
 
 export const Dropdown = (props: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownClass = cn(props.className, "window");
+  const dropdownClass = cn(props.className, "window z-30");
 
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
@@ -143,7 +143,7 @@ export const DropdownMenuItem = forwardRef<
       onClick={handleOnClick}
       className={cn(
         item.className,
-        "group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12",
+        "group px-[0.75rem] py-[0.15rem] rounded-md flex justify-between items-center gap-12 ",
         {
           "hover:bg-topbar-dropdown-sub-item-hovered hover:text-topbar-dropdown-sub-item-hovered-text":
             !disabled && !item.variant,

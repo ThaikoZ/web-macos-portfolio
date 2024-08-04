@@ -54,7 +54,7 @@ const ControlPanel = () => {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           sideOffset={8}
-          className="window grid grid-cols-12 gap-2.5 !p-2 !rounded-xl min-w-fit me-1"
+          className="window grid grid-cols-12 gap-2.5 !p-2 !rounded-xl min-w-fit me-1 z-30"
         >
           <Card className="col-span-6 row-span-2">
             <CardToggleButton
