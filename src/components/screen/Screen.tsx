@@ -51,6 +51,7 @@ const Screen = ({ children }: PropsWithChildren) => {
       )}
     >
       <Blackout />
+
       <div className="pointer-events-auto flex flex-col justify-between h-full">
         {children}
       </div>

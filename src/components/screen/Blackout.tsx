@@ -9,7 +9,7 @@ const Blackout = () => {
 
   return (
     <div
-      className="absolute top-0 left-0 w-full h-full pointer-events-none z-10"
+      className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
       style={{
         backgroundColor: `rgba(0, 0, 0, ${displayOpacity})`,
       }}
