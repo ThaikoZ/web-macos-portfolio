@@ -1,4 +1,3 @@
-import { appsTitles } from "@/constants/apps";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface SystemSettingsState {
@@ -9,7 +8,6 @@ export interface SystemSettingsState {
   isFullscreen: boolean;
   displayRange: number;
   soundRange: number;
-  activeWindowTitle: string;
 }
 
 const initialState: SystemSettingsState = {
@@ -20,7 +18,6 @@ const initialState: SystemSettingsState = {
   isFullscreen: false,
   displayRange: 90,
   soundRange: 50,
-  activeWindowTitle: appsTitles.finder,
 };
 
 const systemSettingsSlice = createSlice({

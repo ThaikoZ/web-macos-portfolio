@@ -19,8 +19,10 @@ import { cn } from "@/utils/cn";
 import { getMenuByTitle } from "@/utils/getMenuByTitle";
 
 const TopBar = () => {
-  const { activeWindowTitle, isAirdropEnabled, isBluetoothEnabled } =
-    useSelector((state: RootState) => state.systemSettings);
+  const { isAirdropEnabled, isBluetoothEnabled } = useSelector(
+    (state: RootState) => state.systemSettings
+  );
+  const { activeWindowTitle } = useSelector((state: RootState) => state.window);
   const menu = getMenuByTitle(activeWindowTitle);
 
   return (
