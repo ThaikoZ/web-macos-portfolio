@@ -90,6 +90,21 @@ export default {
           background: "var(--color-dock-background)",
           divider: "var(--color-dock-divider)",
         },
+        window: {
+          background: "var(--color-window-background)",
+          bar: {
+            background: "var(--color-window-bar-background)",
+            text: "var(--color-window-bar-text)",
+            "text-inactive": "var(--color-window-bar-text-inactive)",
+          },
+          btn: {
+            border: "var(--color-window-btn-border)",
+            close: "var(--color-window-btn-close)",
+            minimize: "var(--color-window-btn-minimize)",
+            fullscreen: "var(--color-window-btn-fullscreen)",
+            inactive: "var(--color-window-btn-inactive)",
+          },
+        },
       },
       cursor: {
         pointer: "var(--cursor-pointer)",
