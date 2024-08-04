@@ -16,8 +16,10 @@ const Screen = ({ children }: PropsWithChildren) => {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
+        if (document.fullscreenElement) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
         }
       } else if (event.key === "F11") {
         event.preventDefault();
@@ -51,8 +53,7 @@ const Screen = ({ children }: PropsWithChildren) => {
       )}
     >
       <Blackout />
-
-      <div className="pointer-events-auto flex flex-col justify-between h-full">
+      <div className="pointer-events-auto flex flex-col justify-between h-full select-none">
         {children}
       </div>
     </div>
