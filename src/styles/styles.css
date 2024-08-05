@@ -49,8 +49,8 @@
 .window-border {
   @apply backdrop-blur-xl text-topbar-dropdown-text;
   position: relative;
-  box-shadow: -9px 9px 23px 0px rgba(24, 24, 24, 0.15),
-    9px 9px 23px 0px rgba(24, 24, 24, 0.15);
+  box-shadow: -9px 9px 23px 0px rgba(24, 24, 24, 0.25),
+    9px 9px 23px 0px rgba(24, 24, 24, 0.25);
 }
 
 .window-border::before {

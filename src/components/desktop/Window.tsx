@@ -58,8 +58,7 @@ const Window = ({
       className={cn(
         "fixed min-w-80 min-h-52 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
         {
-          "!shadow-none": activeWindow.id !== id,
-          "z-10 shadow-window": activeWindow.id === id,
+          "z-10 !shadow-window-active": activeWindow.id === id,
         },
         { "fullscreen-transition": isTransitioning }
       )}
@@ -79,24 +78,30 @@ const Window = ({
           { "text-window-bar-text-inactive": activeWindow.id !== id }
         )}
       >
-        <div className="absolute flex gap-2 window-icons">
+        <div className="group absolute flex gap-2 window-icons">
           <WindowButton
-            inactive={activeWindow.id !== id}
+            active={activeWindow.id === id}
             onClick={handleClose}
-            className="bg-window-btn-close"
+            className="bg-window-btn-close group-hover:bg-window-btn-close"
             icon={<Cross2Icon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            inactive={activeWindow.id !== id}
+            active={activeWindow.id === id}
             onClick={handleMinimize}
-            className="bg-window-btn-minimize"
+            className="bg-window-btn-minimize group-hover:bg-window-btn-minimize"
             icon={<MinusIcon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            inactive={activeWindow.id !== id || !isResizable}
+            active={activeWindow.id === id}
+            disabled={!isResizable}
             onClick={handleFullscreen}
-            className="bg-window-btn-fullscreen"
-            icon={<SizeIcon className="icon-hidden-on-default" width={9} />}
+            className="bg-window-btn-fullscreen group-hover:bg-window-btn-fullscreen"
+            icon={
+              <SizeIcon
+                className="icon-hidden-on-default rotate-90"
+                width={9}
+              />
+            }
           />
         </div>
         <div className="flex items-center justify-center w-full pointer-events-none">
