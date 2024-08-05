@@ -23,6 +23,7 @@ const useWindow = (
   const [isMoving, setMoving] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isFullscreen, setFullscreen] = useState(false);
+  const [isMinimized, setMinimized] = useState(false);
   const [previousState, setPreviousState] = useState<WindowState>({
     size,
     position,
@@ -84,6 +85,21 @@ const useWindow = (
 
     setTimeout(() => setTransitioning(false), 300);
   }, [isFullscreen, position, size, previousState, isResizable]);
+
+  const toggleMinimize = useCallback(() => {
+    setTransitioning(true);
+    if (isMinimized) {
+      setSize(previousState.size);
+      setPosition(previousState.position);
+    } else {
+      setPreviousState({ size, position });
+      setSize({ width: 0, height: 0 });
+      setPosition({ x: 1000, y: 900 });
+    }
+    setMinimized((prev) => !prev);
+
+    setTimeout(() => setTransitioning(false), 300);
+  }, [isMinimized, position, size, previousState]);
 
   const handleMouseMove = useCallback(() => {
     if (isResizing && resizeDirection && isResizable && !isFullscreen) {
@@ -170,6 +186,7 @@ const useWindow = (
     isFullscreen,
     handleDoubleClickFullscreen,
     isTransitioning,
+    toggleMinimize,
   };
 };
 

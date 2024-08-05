@@ -45,10 +45,11 @@ const Window = ({
     handleMouseDownResize,
     handleMouseDownMove,
     isTransitioning,
+    toggleMinimize,
   } = useWindow(defalutSize, initialPosition, isResizable);
 
   const handleClose = () => dispatch(closeWindow(id));
-  const handleMinimize = () => console.log("Minimized Window");
+  const handleMinimize = () => toggleMinimize();
   const handleFullscreen = () => toggleFullscreen();
   const handleActivateWindow = () => dispatch(setActiveWindow(id));
 

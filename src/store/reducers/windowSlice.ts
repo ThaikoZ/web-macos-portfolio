@@ -4,8 +4,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface SystemSettingsState {
   totalOpenedWindows: number;
-  openedWindows: WindowInterface[];
   activeWindow: WindowInterface;
+  openedWindows: WindowInterface[];
+  minimizedWindows: WindowInterface[];
   isResizing: boolean;
   isMoving: boolean;
 }
@@ -16,6 +17,7 @@ const initialState: SystemSettingsState = {
   activeWindow: DEFAULT_OPENED_WINDOW,
   isResizing: false,
   isMoving: false,
+  minimizedWindows: [],
 };
 
 const windowSlice = createSlice({
@@ -78,6 +80,60 @@ const windowSlice = createSlice({
       );
       return { ...state, openedWindows, activeWindow };
     },
+    minimizeWindow(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const windowIndex = state.openedWindows.findIndex(
+        (window) => window.id === id
+      );
+
+      if (windowIndex !== -1) {
+        const windowToMinimize = state.openedWindows[windowIndex];
+        const newOpenedWindows = [
+          ...state.openedWindows.slice(0, windowIndex),
+          ...state.openedWindows.slice(windowIndex + 1),
+        ];
+        const newMinimizedWindows = [
+          ...state.minimizedWindows,
+          windowToMinimize,
+        ];
+
+        return {
+          ...state,
+          openedWindows: newOpenedWindows,
+          minimizedWindows: newMinimizedWindows,
+          activeWindow:
+            state.activeWindow.id === id
+              ? DEFAULT_OPENED_WINDOW
+              : state.activeWindow,
+        };
+      }
+
+      return state;
+    },
+    restoreWindow(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const windowIndex = state.minimizedWindows.findIndex(
+        (window) => window.id === id
+      );
+
+      if (windowIndex !== -1) {
+        const windowToRestore = state.minimizedWindows[windowIndex];
+        const newMinimizedWindows = [
+          ...state.minimizedWindows.slice(0, windowIndex),
+          ...state.minimizedWindows.slice(windowIndex + 1),
+        ];
+        const newOpenedWindows = [...state.openedWindows, windowToRestore];
+
+        return {
+          ...state,
+          minimizedWindows: newMinimizedWindows,
+          openedWindows: newOpenedWindows,
+          activeWindow: windowToRestore,
+        };
+      }
+
+      return state;
+    },
   },
 });
 
@@ -87,6 +143,8 @@ export const {
   setResizing,
   openWindow,
   closeWindow,
+  minimizeWindow,
+  restoreWindow,
 } = windowSlice.actions;
 
 export default windowSlice.reducer;
