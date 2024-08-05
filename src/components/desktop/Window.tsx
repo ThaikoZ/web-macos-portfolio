@@ -5,13 +5,10 @@ import { App } from "@/types/app";
 import { Position, Size } from "@/types/window";
 import { cn } from "@/utils/cn";
 import { convertToPixels } from "@/utils/convertToPixels";
-import {
-  Cross2Icon,
-  EnterFullScreenIcon,
-  MinusIcon,
-} from "@radix-ui/react-icons";
+import { Cross2Icon, MinusIcon, SizeIcon } from "@radix-ui/react-icons";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import WindowButton from "./WindowButton";
 
 const NAVBAR_HEIGHT = 27;
 
@@ -90,9 +87,8 @@ const Window = ({
     <div
       ref={ref}
       className={cn(
-        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl  bg-window-background pointer-events-auto",
-        { "!shadow-none": inactive },
-        { "z-10 window-shadow": !inactive }
+        "fixed min-w-14 min-h-14 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
+        { "!shadow-none": inactive, "z-10 window-shadow": !inactive }
       )}
       style={{
         width: size.width,
@@ -108,38 +104,27 @@ const Window = ({
           { "text-window-bar-text-inactive": inactive }
         )}
       >
-        <div className="absolute flex gap-2  window-icons">
-          <span
-            className={cn(
-              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-close transition-colors",
-              { "bg-window-btn-inactive": inactive }
-            )}
+        <div className="absolute flex gap-2 window-icons">
+          <WindowButton
             onClick={handleClose}
-          >
-            {!inactive && <Cross2Icon className="icon-hidden-on-default" />}
-          </span>
-          <span
-            className={cn(
-              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-minimize ",
-              { "!bg-window-btn-inactive": inactive }
-            )}
+            inactive={inactive}
+            className="bg-window-btn-close"
+            icon={<Cross2Icon className="icon-hidden-on-default" />}
+          />
+          <WindowButton
             onClick={handleMinimize}
-          >
-            {!inactive && <MinusIcon className="icon-hidden-on-default" />}
-          </span>
-          <span
-            className={cn(
-              "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full bg-window-btn-fullscreen ",
-              { "bg-window-btn-inactive": inactive }
-            )}
+            inactive={inactive}
+            className="bg-window-btn-minimize"
+            icon={<MinusIcon className="icon-hidden-on-default" />}
+          />
+          <WindowButton
             onClick={handleFullscreen}
-          >
-            {/* {!inactive && (
-              <EnterFullScreenIcon className="icon-hidden-on-default" />
-            )} */}
-          </span>
+            inactive={inactive}
+            className="bg-window-btn-fullscreen"
+            icon={<SizeIcon className="icon-hidden-on-default" />}
+          />
         </div>
-        <div className="flex items-center justify-center w-full pointer-events-none ">
+        <div className="flex items-center justify-center w-full pointer-events-none">
           {title}
         </div>
       </div>
