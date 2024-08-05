@@ -1,7 +1,7 @@
 import Tooltip from "@/components/Tooltip";
 import FinderIcon from "./assets/icons/FinderIcon";
 
-const size = 60;
+const size = 56;
 
 const FinderAppIcon = () => {
   return (

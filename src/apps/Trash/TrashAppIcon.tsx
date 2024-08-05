@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { DARK_MODE } from "@/constants/theme";
 import TrashDark from "./assets/icons/TrashDark";
 
-const size = 50;
+const size = 48;
 
 const TrashAppIcon = () => {
   const { theme } = useTheme();

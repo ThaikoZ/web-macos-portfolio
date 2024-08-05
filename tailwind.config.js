@@ -92,6 +92,7 @@ export default {
         dock: {
           background: "var(--color-dock-background)",
           divider: "var(--color-dock-divider)",
+          dot: "var(--color-dock-dot)",
         },
         window: {
           background: "var(--color-window-background)",
@@ -101,11 +102,11 @@ export default {
             "text-inactive": "var(--color-window-bar-text-inactive)",
           },
           btn: {
+            inactive: "var(--color-window-btn-inactive)",
             border: "var(--color-window-btn-border)",
             close: "var(--color-window-btn-close)",
-            minimize: "var(--color-window-btn-minimize)",
             fullscreen: "var(--color-window-btn-fullscreen)",
-            inactive: "var(--color-window-btn-inactive)",
+            minimize: "var(--color-window-btn-minimize)",
           },
         },
       },

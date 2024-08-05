@@ -81,6 +81,7 @@
   /* Dock */
   --color-dock-background: rgba(255, 255, 255, 0.2);
   --color-dock-divider: rgba(0, 0, 0, 0.3);
+  --color-dock-dot: rgba(0, 0, 0, 0.5);
 }
 
 .dark {
@@ -145,4 +146,5 @@
   /* Dock */
   --color-dock-background: rgba(0, 0, 0, 0.2);
   --color-dock-divider: rgba(255, 255, 255, 0.3);
+  --color-dock-dot: rgba(255, 255, 255, 0.6);
 }
