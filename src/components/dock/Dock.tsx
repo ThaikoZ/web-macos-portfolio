@@ -12,7 +12,7 @@ const Dock = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full flex items-end justify-center h-[86px] pointer-events-none">
+    <div className="fixed bottom-0 w-full flex items-end justify-center h-[80px] pointer-events-none">
       <div className="flex items-center bg-dock-background w-fit h-full rounded-[29px] before:rounded-[29px] after:rounded-[29px] gap-1.5 window-border mb-1.5 back px-3 py-1.5 z-30 pointer-events-auto">
         {dockApps.map((app, index) => {
           const Icon = app.icon;

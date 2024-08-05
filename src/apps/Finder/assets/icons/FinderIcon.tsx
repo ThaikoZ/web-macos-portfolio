@@ -3,7 +3,7 @@ import { IconProps } from "@/types/icon";
 
 const FinderIcon = ({ ...props }: IconProps) => {
   return (
-    <IconComponent viewBox="0 0 50 50" width={64} height={64} {...props}>
+    <IconComponent viewBox="0 0 50 50" {...props}>
       <rect width="50" height="50" fill="url(#pattern0_121_13115)" />
       <defs>
         <pattern
