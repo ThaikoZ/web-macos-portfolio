@@ -10,14 +10,14 @@
   --cursor-grab: url("../assets/cursors/grab.png"), grab;
   --cursor-move: url("../assets/cursors/move.png"), move;
   --cursor-wait: url("../assets/cursors/wait.png"), wait;
-  --cursor-n-resize: url("../assets/cursors/n-resize.png"), n-resize;
-  --cursor-s-resize: url("../assets/cursors/n-resize.png"), s-resize;
-  --cursor-w-resize: url("../assets/cursors/w-resize.png"), w-resize;
-  --cursor-e-resize: url("../assets/cursors/w-resize.png"), e-resize;
-  --cursor-nw-resize: url("../assets/cursors/nw-resize.png"), nw-resize;
-  --cursor-se-resize: url("../assets/cursors/nw-resize.png"), se-resize;
-  --cursor-ne-resize: url("../assets/cursors/ne-resize.png"), ne-resize;
-  --cursor-sw-resize: url("../assets/cursors/ne-resize.png"), sw-resize;
+  --cursor-n-resize: url("../assets/cursors/n-resize.png") 8 8, n-resize;
+  --cursor-s-resize: url("../assets/cursors/n-resize.png") 8 8, s-resize;
+  --cursor-w-resize: url("../assets/cursors/w-resize.png") 8 6, w-resize;
+  --cursor-e-resize: url("../assets/cursors/w-resize.png") 8 6, e-resize;
+  --cursor-nw-resize: url("../assets/cursors/nw-resize.png") 8 6, nw-resize;
+  --cursor-se-resize: url("../assets/cursors/nw-resize.png") 8 6, se-resize;
+  --cursor-ne-resize: url("../assets/cursors/ne-resize.png") 8 6, ne-resize;
+  --cursor-sw-resize: url("../assets/cursors/ne-resize.png") 8 6, sw-resize;
 }
 
 .light {

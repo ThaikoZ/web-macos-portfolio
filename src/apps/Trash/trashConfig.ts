@@ -11,6 +11,6 @@ export const TrashConfig: AppConfig = {
     width: 300,
     height: 400,
   },
-  isResizable: true,
+  isResizable: false,
   menu: trashMenu,
 };

@@ -48,7 +48,7 @@ const Window = ({
     <div
       ref={ref}
       className={cn(
-        "fixed min-w-60 min-h-32 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
+        "fixed min-w-80 min-h-52 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
         {
           "!shadow-none": activeWindow.id !== id,
           "z-10 shadow-window": activeWindow.id === id,
