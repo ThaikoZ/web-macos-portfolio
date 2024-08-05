@@ -37,7 +37,7 @@ export default {
         "window-inner": "var(--color-window-inner)",
       },
       boxShadow: {
-        window: "0px 10px 35px rgba(0, 0, 0, 0.527)",
+        window: "0px 10px 35px rgba(0, 0, 0, 0.7)",
       },
       colors: {
         topbar: {

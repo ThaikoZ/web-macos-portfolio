@@ -11,7 +11,7 @@ interface Props {
 const WindowButton = ({ onClick, inactive, className, icon }: Props) => (
   <span
     className={cn(
-      "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full transition-colors",
+      "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full transition-colors text-opacity-75",
       className,
       { "!bg-window-btn-inactive": inactive }
     )}

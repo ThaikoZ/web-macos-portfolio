@@ -84,19 +84,19 @@ const Window = ({
             inactive={activeWindow.id !== id}
             onClick={handleClose}
             className="bg-window-btn-close"
-            icon={<Cross2Icon className="icon-hidden-on-default" />}
+            icon={<Cross2Icon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
             inactive={activeWindow.id !== id}
             onClick={handleMinimize}
             className="bg-window-btn-minimize"
-            icon={<MinusIcon className="icon-hidden-on-default" />}
+            icon={<MinusIcon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
             inactive={activeWindow.id !== id || !isResizable}
             onClick={handleFullscreen}
             className="bg-window-btn-fullscreen"
-            icon={<SizeIcon className="icon-hidden-on-default" />}
+            icon={<SizeIcon className="icon-hidden-on-default" width={9} />}
           />
         </div>
         <div className="flex items-center justify-center w-full pointer-events-none">
