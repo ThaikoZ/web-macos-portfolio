@@ -23,6 +23,8 @@
 .light {
   --wallpaper: url("/src/assets/backgrounds/monterey-light.jpg");
 
+  --color-text-primary: rgba(17, 17, 17, 1);
+
   --color-window-outer: rgba(0, 0, 0, 0.15);
   --color-window-inner: rgba(211, 211, 211, 0.26);
 
@@ -84,6 +86,8 @@
 .dark {
   --wallpaper: url("/src/assets/backgrounds/monterey-dark.jpg");
 
+  --color-text-primary: rgba(241, 241, 241, 1);
+
   --color-window-outer: rgba(0, 0, 0, 0.5);
   --color-window-inner: rgba(211, 211, 211, 0.26);
 
@@ -134,6 +138,7 @@
   --color-window-btn-inactive: rgba(88, 89, 91, 1);
   --color-window-btn-close: rgba(236, 106, 94, 1);
   --color-window-btn-minimize: rgba(245, 191, 79, 1);
+  --color-window-btn-minim: rgba(245, 191, 79, 1);
   --color-window-btn-fullscreen: rgba(97, 197, 84, 1);
   /* --shadow-window-active: ; */
 

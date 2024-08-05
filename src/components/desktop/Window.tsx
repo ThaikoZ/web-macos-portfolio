@@ -80,19 +80,19 @@ const Window = ({
       >
         <div className="group absolute flex gap-2 window-icons">
           <WindowButton
-            active={activeWindow.id === id}
+            inactive={activeWindow.id !== id}
             onClick={handleClose}
             className="bg-window-btn-close group-hover:bg-window-btn-close"
             icon={<Cross2Icon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            active={activeWindow.id === id}
+            inactive={activeWindow.id !== id}
             onClick={handleMinimize}
             className="bg-window-btn-minimize group-hover:bg-window-btn-minimize"
             icon={<MinusIcon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            active={activeWindow.id === id}
+            inactive={activeWindow.id !== id}
             disabled={!isResizable}
             onClick={handleFullscreen}
             className="bg-window-btn-fullscreen group-hover:bg-window-btn-fullscreen"

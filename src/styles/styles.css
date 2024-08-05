@@ -92,6 +92,9 @@
 .window-icons:hover .icon-hidden-on-default {
   display: block;
 }
+span.bg-window-bar-btn-inactive {
+  @apply bg-window-btn-inactive;
+}
 
 .resize-handle {
   position: absolute;
@@ -167,6 +170,6 @@
 }
 
 .dock-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
