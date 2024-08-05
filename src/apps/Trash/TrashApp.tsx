@@ -16,7 +16,7 @@ const TrashApp = ({ id }: Props) => {
       isResizable={isResizable}
       defaultPosition={defaultPosition}
     >
-      Trash App
+      <div className="">Trash</div>
     </Window>
   );
 };

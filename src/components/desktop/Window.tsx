@@ -37,7 +37,7 @@ const Window = ({
 
   const ref = useRef<HTMLDivElement>(null);
   const {
-    handleDoubleClick,
+    handleDoubleClickFullscreen,
     toggleFullscreen,
     size,
     position,
@@ -73,7 +73,7 @@ const Window = ({
     >
       <div
         onMouseDown={handleMouseDownMove}
-        onClick={handleDoubleClick}
+        onClick={handleDoubleClickFullscreen}
         className={cn(
           "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]",
           { "text-window-bar-text-inactive": activeWindow.id !== id }
@@ -93,7 +93,7 @@ const Window = ({
             icon={<MinusIcon className="icon-hidden-on-default" />}
           />
           <WindowButton
-            inactive={activeWindow.id !== id}
+            inactive={activeWindow.id !== id || !isResizable}
             onClick={handleFullscreen}
             className="bg-window-btn-fullscreen"
             icon={<SizeIcon className="icon-hidden-on-default" />}
@@ -103,7 +103,7 @@ const Window = ({
           {title}
         </div>
       </div>
-      <div className="p-2">{children}</div>
+      <div>{children}</div>
       {isResizable && !isFullscreen && (
         <>
           <div
