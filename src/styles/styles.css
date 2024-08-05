@@ -81,6 +81,10 @@
   z-index: 1;
 }
 
+.window-border.fullscreen-transition {
+  transition: width 0.3s ease, height 0.3s ease, left 0.3s ease, top 0.3s ease;
+}
+
 .icon-hidden-on-default {
   display: none;
 }

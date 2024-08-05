@@ -36,12 +36,20 @@ const Window = ({
   };
 
   const ref = useRef<HTMLDivElement>(null);
-  const { size, position, handleMouseDownResize, handleMouseDownMove } =
-    useWindow(defalutSize, initialPosition, isResizable);
+  const {
+    handleDoubleClick,
+    toggleFullscreen,
+    size,
+    position,
+    isFullscreen,
+    handleMouseDownResize,
+    handleMouseDownMove,
+    isTransitioning,
+  } = useWindow(defalutSize, initialPosition, isResizable);
 
   const handleClose = () => dispatch(closeWindow(id));
   const handleMinimize = () => console.log("Minimized Window");
-  const handleFullscreen = () => console.log("Fullscreened Window");
+  const handleFullscreen = () => toggleFullscreen();
   const handleActivateWindow = () => dispatch(setActiveWindow(id));
 
   return (
@@ -52,7 +60,8 @@ const Window = ({
         {
           "!shadow-none": activeWindow.id !== id,
           "z-10 shadow-window": activeWindow.id === id,
-        }
+        },
+        { "fullscreen-transition": isTransitioning }
       )}
       style={{
         width: convertToPixels(size.width),
@@ -64,6 +73,7 @@ const Window = ({
     >
       <div
         onMouseDown={handleMouseDownMove}
+        onClick={handleDoubleClick}
         className={cn(
           "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]",
           { "text-window-bar-text-inactive": activeWindow.id !== id }
@@ -94,7 +104,7 @@ const Window = ({
         </div>
       </div>
       <div className="p-2">{children}</div>
-      {isResizable && (
+      {isResizable && !isFullscreen && (
         <>
           <div
             className="resize-handle top-left"

@@ -1,24 +1,38 @@
+import { useCallback, useEffect, useState } from "react";
 import useMouse from "@/hooks/useMouse";
 import { Position, Size } from "@/types/window";
-import { useCallback, useEffect, useState } from "react";
 
 const NAVBAR_HEIGHT = 27;
+const DOUBLE_CLICK_DELAY = 200;
+
+interface WindowState {
+  size: Size;
+  position: Position;
+}
 
 const useWindow = (
   initialSize: Size,
   initialPosition: Position,
-  isResizable: boolean
+  initialIsResizable: boolean
 ) => {
+  const [isResizable, setResizable] = useState(initialIsResizable);
   const [size, setSize] = useState<Size>(initialSize);
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isResizing, setResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState<null | string>(null);
   const [isMoving, setMoving] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isFullscreen, setFullscreen] = useState(false);
+  const [lastClickTime, setLastClickTime] = useState(0);
+  const [previousState, setPreviousState] = useState<WindowState>({
+    size,
+    position,
+  });
+  const [isTransitioning, setTransitioning] = useState(false);
   const mouse = useMouse();
 
   const handleMouseDownResize = (direction: string) => {
-    if (isResizable) {
+    if (isResizable && !isFullscreen) {
       setResizeDirection(direction);
       setResizing(true);
     }
@@ -32,20 +46,45 @@ const useWindow = (
   }, [isResizable]);
 
   const handleMouseDownMove = () => {
-    const newOffset = {
-      x: mouse.x - position.x,
-      y: mouse.y - position.y - NAVBAR_HEIGHT,
-    };
-    setOffset(newOffset);
-    setMoving(true);
+    if (!isFullscreen) {
+      const newOffset = {
+        x: mouse.x - position.x,
+        y: mouse.y - position.y - NAVBAR_HEIGHT,
+      };
+      setOffset(newOffset);
+      setMoving(true);
+    }
   };
 
   const handleMouseUpMove = () => {
     setMoving(false);
   };
 
+  const toggleFullscreen = useCallback(() => {
+    setTransitioning(true);
+    if (isFullscreen) {
+      setSize(previousState.size);
+      setPosition(previousState.position);
+      setResizable(true);
+    } else {
+      setPreviousState({ size, position });
+      setResizable(false);
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight - NAVBAR_HEIGHT,
+      });
+      setPosition({
+        x: 0,
+        y: NAVBAR_HEIGHT,
+      });
+    }
+    setFullscreen((prev) => !prev);
+
+    setTimeout(() => setTransitioning(false), 300);
+  }, [isFullscreen, position, size, previousState]);
+
   const handleMouseMove = useCallback(() => {
-    if (isResizing && resizeDirection && isResizable) {
+    if (isResizing && resizeDirection && isResizable && !isFullscreen) {
       const newSize = { ...size };
       const newPosition = { ...position };
 
@@ -70,7 +109,7 @@ const useWindow = (
       setPosition(newPosition);
     }
 
-    if (isMoving) {
+    if (isMoving && !isFullscreen) {
       const newPosition = {
         x: mouse.x - offset.x,
         y: mouse.y - offset.y - NAVBAR_HEIGHT,
@@ -86,7 +125,20 @@ const useWindow = (
     isMoving,
     offset,
     isResizable,
+    isFullscreen,
   ]);
+
+  const handleDoubleClick = useCallback(() => {
+    const currentTime = Date.now();
+    const timeDifference = currentTime - lastClickTime;
+
+    if (timeDifference < DOUBLE_CLICK_DELAY) {
+      toggleFullscreen();
+    }
+
+    // Update the last click time
+    setLastClickTime(currentTime);
+  }, [lastClickTime, toggleFullscreen]);
 
   useEffect(() => {
     if (isResizing || isMoving) {
@@ -114,6 +166,7 @@ const useWindow = (
     handleMouseMove,
     isResizable,
     handleMouseUpResize,
+    isFullscreen,
   ]);
 
   return {
@@ -123,6 +176,10 @@ const useWindow = (
     handleMouseDownMove,
     isResizing,
     isMoving,
+    toggleFullscreen,
+    isFullscreen,
+    handleDoubleClick,
+    isTransitioning,
   };
 };
 
