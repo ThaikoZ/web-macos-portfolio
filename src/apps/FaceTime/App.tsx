@@ -1,12 +1,12 @@
 import Window from "@/components/desktop/Window";
-import { FinderConfig } from "./finderConfig";
+import { FaceTimeConfig } from "./Config";
 
 interface Props {
   id: number;
 }
 
-const FinderApp = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = FinderConfig;
+const App = ({ id }: Props) => {
+  const { defalutSize, title, isResizable, defaultPosition } = FaceTimeConfig;
 
   return (
     <Window
@@ -16,9 +16,9 @@ const FinderApp = ({ id }: Props) => {
       isResizable={isResizable}
       defaultPosition={defaultPosition}
     >
-      Finder App
+      FaceTime
     </Window>
   );
 };
 
-export default FinderApp;
+export default App;

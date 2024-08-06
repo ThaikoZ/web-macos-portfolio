@@ -1,5 +1,5 @@
-import { songs } from "@/apps/AppleMusic/data/musicPlayerList";
-import { Song } from "@/apps/AppleMusic/types/song";
+import { songs } from "@/apps/Music/data/musicPlayerList";
+import { Song } from "@/apps/Music/types/song";
 import { Store } from "@/store/store";
 import {
   createContext,

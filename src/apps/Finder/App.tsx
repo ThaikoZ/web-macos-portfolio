@@ -1,12 +1,12 @@
 import Window from "@/components/desktop/Window";
-import { TrashConfig } from "./trashConfig";
+import { FinderConfig } from "./Config";
 
 interface Props {
   id: number;
 }
 
-const TrashApp = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = TrashConfig;
+const App = ({ id }: Props) => {
+  const { defalutSize, title, isResizable, defaultPosition } = FinderConfig;
 
   return (
     <Window
@@ -16,9 +16,9 @@ const TrashApp = ({ id }: Props) => {
       isResizable={isResizable}
       defaultPosition={defaultPosition}
     >
-      <div className="">Trash</div>
+      Finder App
     </Window>
   );
 };
 
-export default TrashApp;
+export default App;

@@ -1,7 +1,16 @@
-import { FinderConfig } from "@/apps/Finder/finderConfig";
-import { TrashConfig } from "@/apps/Trash/trashConfig";
+import {
+  FaceTimeConfig,
+  FinderConfig,
+  MusicConfig,
+  SafariiConfig,
+  TrashConfig,
+} from "@/apps/index";
 import { AppConfig } from "@/types/app";
 
-export const dockApps: AppConfig[] = [FinderConfig, TrashConfig];
-
-export const trashApp: AppConfig = TrashConfig;
+export const dockApps: AppConfig[] = [
+  FinderConfig,
+  SafariiConfig,
+  FaceTimeConfig,
+  MusicConfig,
+  TrashConfig,
+];

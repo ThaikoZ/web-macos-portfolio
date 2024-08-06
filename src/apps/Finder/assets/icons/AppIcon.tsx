@@ -1,7 +1,7 @@
 import IconComponent from "@/components/IconComponent";
 import { IconProps } from "@/types/icon";
 
-const FinderIcon = ({ ...props }: IconProps) => {
+const AppIcon = ({ ...props }: IconProps) => {
   return (
     <IconComponent viewBox="0 0 50 50" {...props}>
       <rect width="50" height="50" fill="url(#pattern0_121_13115)" />
@@ -25,4 +25,4 @@ const FinderIcon = ({ ...props }: IconProps) => {
   );
 };
 
-export default FinderIcon;
+export default AppIcon;
