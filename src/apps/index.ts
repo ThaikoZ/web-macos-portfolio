@@ -3,3 +3,4 @@ export { SafariiConfig } from "./Safarii/Config";
 export { TrashConfig } from "./Trash/Config";
 export { MusicConfig } from "./Music/Config";
 export { FinderConfig } from "./Finder/Config";
+export { NotesConfig } from "./Notes/Config";

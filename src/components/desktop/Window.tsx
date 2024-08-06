@@ -48,7 +48,10 @@ const Window = ({
     toggleMinimize,
   } = useWindow(defalutSize, initialPosition, isResizable);
 
-  const handleClose = () => dispatch(closeWindow(id));
+  const handleClose = () => {
+    console.log("closeing window");
+    dispatch(closeWindow(id));
+  };
   const handleMinimize = () => toggleMinimize();
   const handleFullscreen = () => toggleFullscreen();
   const handleActivateWindow = () => dispatch(setActiveWindow(id));
@@ -79,7 +82,7 @@ const Window = ({
           { "text-window-bar-text-inactive": activeWindow.id !== id }
         )}
       >
-        <div className="group absolute flex gap-2 window-icons">
+        <div className="group fixed flex gap-2 window-icons">
           <WindowButton
             inactive={activeWindow.id !== id}
             onClick={handleClose}

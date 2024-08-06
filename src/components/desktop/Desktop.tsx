@@ -2,6 +2,7 @@ import { setActiveWindow } from "@/store/reducers/windowSlice";
 import { Store } from "@/store/store";
 import { getConfigByTitle } from "@/utils/getConfigByTitle";
 import { useDispatch, useSelector } from "react-redux";
+import DesktopContextMenu from "./DesktopContextMenu";
 
 const Desktop = () => {
   const { openedWindows } = useSelector((state: Store) => state.window);
@@ -11,7 +12,9 @@ const Desktop = () => {
 
   return (
     <>
-      <div className="absolute w-full h-full " onClick={looseFocus}></div>
+      <DesktopContextMenu>
+        <div className="absolute w-full h-full" onClick={looseFocus}></div>
+      </DesktopContextMenu>
       <div id="desktop" className="absolute z-0">
         {openedWindows.map((window) => {
           const AppComponent = getConfigByTitle(window.title).engine;

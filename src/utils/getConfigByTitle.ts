@@ -1,6 +1,11 @@
-import { FinderConfig } from "@/apps/Finder/Config";
-import { TrashConfig } from "@/apps/Trash/Config";
-import { FaceTimeConfig, MusicConfig, SafariiConfig } from "../apps";
+import {
+  NotesConfig,
+  FaceTimeConfig,
+  MusicConfig,
+  SafariiConfig,
+  TrashConfig,
+  FinderConfig,
+} from "../apps";
 
 export const getConfigByTitle = (title: string) => {
   switch (title) {
@@ -14,6 +19,8 @@ export const getConfigByTitle = (title: string) => {
       return FaceTimeConfig;
     case SafariiConfig.title:
       return SafariiConfig;
+    case NotesConfig.title:
+      return NotesConfig;
     default:
       return FinderConfig;
   }

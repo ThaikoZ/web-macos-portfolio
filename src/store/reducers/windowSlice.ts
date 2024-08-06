@@ -78,6 +78,7 @@ const windowSlice = createSlice({
       const openedWindows = state.openedWindows.filter(
         (window) => window.id !== id
       );
+
       return { ...state, openedWindows, activeWindow };
     },
     minimizeWindow(state, action: PayloadAction<number>) {
