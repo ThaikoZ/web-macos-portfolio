@@ -31,7 +31,7 @@ const TopBar = () => {
   return (
     <div
       className={cn(
-        "bg-topbar-background text-topbar-text z-30",
+        "bg-topbar-background text-topbar-text z-10",
         "w-full h-[1.8rem] px-[0.4rem] flex",
         "before:backdrop-blur-xl before:absolute before:-z-20 before:left-0 before:top-0 before:w-full before:h-[1.8rem]"
       )}

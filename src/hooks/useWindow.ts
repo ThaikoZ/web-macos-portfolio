@@ -74,11 +74,11 @@ const useWindow = (
       setResizable(false);
       setSize({
         width: window.innerWidth,
-        height: window.innerHeight - NAVBAR_HEIGHT,
+        height: window.innerHeight,
       });
       setPosition({
         x: 0,
-        y: NAVBAR_HEIGHT,
+        y: 0,
       });
     }
     setFullscreen((prev) => !prev);
@@ -94,7 +94,10 @@ const useWindow = (
     } else {
       setPreviousState({ size, position });
       setSize({ width: 0, height: 0 });
-      setPosition({ x: 1000, y: 900 });
+      setPosition({
+        x: (window.screen.width - size.width) / 2,
+        y: window.screen.height,
+      });
     }
     setMinimized((prev) => !prev);
 
@@ -118,9 +121,11 @@ const useWindow = (
         newSize.height = mouse.y - position.y;
       }
       if (resizeDirection.includes("top")) {
-        const newHeight = position.y - mouse.y + size.height;
-        newSize.height = newHeight;
-        newPosition.y = mouse.y;
+        if (mouse.y >= NAVBAR_HEIGHT) {
+          const newHeight = position.y - mouse.y + size.height;
+          newSize.height = newHeight;
+          newPosition.y = mouse.y;
+        }
       }
 
       setSize(newSize);
@@ -130,8 +135,12 @@ const useWindow = (
     if (isMoving && !isFullscreen) {
       const newPosition = {
         x: mouse.x - offset.x,
-        y: mouse.y - offset.y - NAVBAR_HEIGHT,
+        y:
+          mouse.y - NAVBAR_HEIGHT < NAVBAR_HEIGHT + offset.y
+            ? NAVBAR_HEIGHT
+            : mouse.y - offset.y - NAVBAR_HEIGHT,
       };
+
       setPosition(newPosition);
     }
   }, [

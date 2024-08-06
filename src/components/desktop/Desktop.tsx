@@ -13,9 +13,9 @@ const Desktop = () => {
   return (
     <>
       <DesktopContextMenu>
-        <div className="absolute w-full h-full" onClick={looseFocus}></div>
+        <div className="absolute w-full h-full " onClick={looseFocus}></div>
       </DesktopContextMenu>
-      <div id="desktop" className="absolute z-0">
+      <div id="desktop" className="absolute z-10">
         {openedWindows.map((window) => {
           const AppComponent = getConfigByTitle(window.title).engine;
 

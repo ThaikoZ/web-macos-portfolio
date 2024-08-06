@@ -92,6 +92,7 @@ const Window = ({
           <WindowButton
             inactive={activeWindow.id !== id}
             onClick={handleMinimize}
+            disabled={isFullscreen}
             className="bg-window-btn-minimize group-hover:bg-window-btn-minimize"
             icon={<MinusIcon className="icon-hidden-on-default" width={9} />}
           />

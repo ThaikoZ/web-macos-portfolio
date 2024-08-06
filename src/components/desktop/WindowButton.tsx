@@ -24,7 +24,9 @@ const WindowButton = ({
         className,
         "flex items-center justify-center text-black w-3 h-3 border-[1px] border-window-btn-border rounded-full transition-colors"
       )}
-      onClick={onClick}
+      onClick={() => {
+        if (!disabled) onClick();
+      }}
     >
       {!disabled && icon}
     </span>
