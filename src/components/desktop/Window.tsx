@@ -49,10 +49,8 @@ const Window = ({
     toggleMinimize,
   } = useWindow(defaultSize, initialPosition, isResizable);
 
-  const handleClose = () => {
-    console.log("Closing Window with id: ", id);
-    dispatch(closeWindow(id));
-  };
+  const handleClose = () => dispatch(closeWindow(id));
+
   const handleMinimize = () => toggleMinimize();
   const handleFullscreen = () => toggleFullscreen();
   const handleActivateWindow = () => dispatch(setActiveWindow(id));
