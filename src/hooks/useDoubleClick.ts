@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 
 const useDoubleClick = (
   onDoubleClick: () => void,
-  doubleClickDelay: number = 200
+  doubleClickDelay: number = 350
 ) => {
   const [lastClickTime, setLastClickTime] = useState(0);
 
