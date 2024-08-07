@@ -6,14 +6,14 @@ import { DeskProvider } from "@/providers/DeskProvider";
 
 const DesktopPage = () => {
   return (
-    <Screen>
-      <DeskProvider>
+    <DeskProvider>
+      <Screen>
         <TopBar />
         <Desk />
         {/* Right panel */}
         <Dock />
-      </DeskProvider>
-    </Screen>
+      </Screen>
+    </DeskProvider>
   );
 };
 

@@ -1,39 +1,30 @@
 import { ReactNode, useRef } from "react";
-import { App } from "@/types/app";
+import { AppConfig } from "@/types/app";
 import { convertToPixels } from "@/utils/convertToPixels";
 import { Cross2Icon, MinusIcon, SizeIcon } from "@radix-ui/react-icons";
 import useWindow from "@/hooks/useWindow";
-import { useDispatch, useSelector } from "react-redux";
-import { closeWindow, setActiveWindow } from "@/store/reducers/windowSlice";
 import WindowButton from "./WindowButton";
-import { Store } from "@/store/store";
 import { cn } from "@/utils/cn";
 import { MIN_WINDOW_HEIGHT, MIN_WINDOW_WIDTH } from "@/constants/system";
+import useDesk from "@/hooks/useDesk";
 
-interface Props extends App {
-  id: number;
+interface Props {
+  config: AppConfig;
   children: ReactNode;
 }
 
-const Window = ({
-  id,
-  title = "macOS Window",
-  children,
-  defaultSize,
-  defaultPosition = {
-    x: (window.screen.width - defaultSize.width) / 2,
-    y: (window.screen.height - defaultSize.height) / 2 - 150,
-  },
-  isResizable = false,
-}: Props) => {
-  const dispatch = useDispatch();
-  const { activeWindow, openedWindows } = useSelector(
-    (state: Store) => state.window
-  );
+const Window = ({ config, children }: Props) => {
+  const { activeWindow, openedWindows, closeWindow, setActiveWindow } =
+    useDesk();
 
   const initialPosition = {
-    x: defaultPosition.x + openedWindows.length * 35,
-    y: defaultPosition.y + openedWindows.length * 30,
+    x:
+      (window.screen.width - config.defaultSize.width) / 2 +
+      openedWindows.length * 35,
+    y:
+      (window.screen.height - config.defaultSize.height) / 2 -
+      150 +
+      openedWindows.length * 30,
   };
 
   const ref = useRef<HTMLDivElement>(null);
@@ -47,13 +38,14 @@ const Window = ({
     handleMouseDownMove,
     isTransitioning,
     toggleMinimize,
-  } = useWindow(defaultSize, initialPosition, isResizable);
+  } = useWindow(config.defaultSize, initialPosition, config.isResizable);
 
-  const handleClose = () => dispatch(closeWindow(id));
+  const isActive = activeWindow.title === config.title;
 
+  const handleClose = () => closeWindow(config);
   const handleMinimize = () => toggleMinimize();
   const handleFullscreen = () => toggleFullscreen();
-  const handleActivateWindow = () => dispatch(setActiveWindow(id));
+  const handleActivateWindow = () => setActiveWindow(config);
 
   return (
     <div
@@ -61,7 +53,7 @@ const Window = ({
       className={cn(
         "fixed window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
         {
-          "z-10 !shadow-window-active": activeWindow.id === id,
+          "z-10 !shadow-window-active": activeWindow.title === config.title,
         },
         { "fullscreen-transition": isTransitioning }
       )}
@@ -80,26 +72,26 @@ const Window = ({
         onClick={handleDoubleClickFullscreen}
         className={cn(
           "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]",
-          { "text-window-bar-text-inactive": activeWindow.id !== id }
+          { "text-window-bar-text-inactive": !isActive }
         )}
       >
         <div className="group fixed flex gap-2 window-icons">
           <WindowButton
-            inactive={activeWindow.id !== id}
+            inactive={!isActive}
             onClick={handleClose}
             className="bg-window-btn-close group-hover:bg-window-btn-close"
             icon={<Cross2Icon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            inactive={activeWindow.id !== id}
+            inactive={!isActive}
             onClick={handleMinimize}
             disabled={isFullscreen}
             className="bg-window-btn-minimize group-hover:bg-window-btn-minimize"
             icon={<MinusIcon className="icon-hidden-on-default" width={9} />}
           />
           <WindowButton
-            inactive={activeWindow.id !== id}
-            disabled={!isResizable}
+            inactive={!isActive}
+            disabled={!config.isResizable}
             onClick={handleFullscreen}
             className="bg-window-btn-fullscreen group-hover:bg-window-btn-fullscreen"
             icon={
@@ -111,11 +103,11 @@ const Window = ({
           />
         </div>
         <div className="flex items-center justify-center w-full pointer-events-none">
-          {title}
+          {config.title}
         </div>
       </div>
       <div>{children}</div>
-      {isResizable && !isFullscreen && (
+      {config.isResizable && !isFullscreen && (
         <>
           <div
             className="resize-handle top-left"

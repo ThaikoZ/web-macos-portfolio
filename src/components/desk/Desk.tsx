@@ -1,26 +1,20 @@
-import { setActiveWindow } from "@/store/reducers/windowSlice";
-import { Store } from "@/store/store";
-import { getConfigByTitle } from "@/utils/getConfigByTitle";
-import { useDispatch, useSelector } from "react-redux";
-// import DeskContextMenu from "./DeskContextMenu";
+import { FinderConfig } from "@/apps/index";
+import useDesk from "@/hooks/useDesk";
 
 const Desk = () => {
-  const { openedWindows } = useSelector((state: Store) => state.window);
-  const dispatch = useDispatch();
+  const { openedWindows, setActiveWindow } = useDesk();
 
-  const looseFocus = () => dispatch(setActiveWindow(-1));
+  const unFocus = () => setActiveWindow(FinderConfig);
 
   return (
     <>
-      {/* <DeskContextMenu> */}
-      <div className="absolute w-full h-full " onClick={looseFocus}></div>
-      {/* </DeskContextMenu> */}
+      <div className="absolute w-full h-full " onClick={unFocus}></div>
       <div id="Desk" className="absolute z-10">
         {openedWindows.map((window) => {
-          const AppComponent = getConfigByTitle(window.title).engine;
+          const AppComponent = window.engine;
           return (
-            <div key={window.id} className="absolute bg-black w-0 h-0">
-              <AppComponent id={window.id} />
+            <div key={window.title} className="absolute bg-black w-0 h-0">
+              <AppComponent />
             </div>
           );
         })}

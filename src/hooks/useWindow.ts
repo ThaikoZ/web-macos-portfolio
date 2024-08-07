@@ -1,15 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import useMouse from "@/hooks/useMouse";
-import { Position, Size } from "@/types/window";
+import useMove from "./useMove";
+import useResize from "./useResize";
+import { Position, Size, WindowState } from "@/types/window";
 import useDoubleClick from "./useDoubleClick";
-import { MIN_WINDOW_HEIGHT, MIN_WINDOW_WIDTH } from "@/constants/system";
-
-const NAVBAR_HEIGHT = 27;
-
-interface WindowState {
-  size: Size;
-  position: Position;
-}
 
 const useWindow = (
   initialSize: Size,
@@ -19,10 +12,6 @@ const useWindow = (
   const [size, setSize] = useState<Size>(initialSize);
   const [position, setPosition] = useState<Position>(initialPosition);
   const [isResizable, setResizable] = useState(initialIsResizable);
-  const [isResizing, setResizing] = useState(false);
-  const [resizeDirection, setResizeDirection] = useState<null | string>(null);
-  const [isMoving, setMoving] = useState(false);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isFullscreen, setFullscreen] = useState(false);
   const [isMinimized, setMinimized] = useState(false);
   const [previousState, setPreviousState] = useState<WindowState>({
@@ -30,37 +19,29 @@ const useWindow = (
     position,
   });
   const [isTransitioning, setTransitioning] = useState(false);
-  const mouse = useMouse();
-  const handleDoubleClickFullscreen = useDoubleClick(() => toggleFullscreen());
 
-  const handleMouseDownResize = (direction: string) => {
-    if (isResizable && !isFullscreen) {
-      setResizeDirection(direction);
-      setResizing(true);
-    }
-  };
+  const {
+    handleMouseDownMove,
+    handleMouseUpMove,
+    handleMouseMove: handleMoveMouseMove,
+    isMoving,
+  } = useMove(position, setPosition, isFullscreen);
 
-  const handleMouseUpResize = useCallback(() => {
-    if (isResizable) {
-      setResizing(false);
-      setResizeDirection(null);
-    }
-  }, [isResizable]);
+  const {
+    handleMouseDownResize,
+    handleMouseUpResize,
+    handleMouseMove: handleResizeMouseMove,
+    isResizing,
+  } = useResize(
+    size,
+    setSize,
+    position,
+    setPosition,
+    isResizable,
+    isFullscreen
+  );
 
-  const handleMouseDownMove = () => {
-    if (!isFullscreen) {
-      const newOffset = {
-        x: mouse.x - position.x,
-        y: mouse.y - position.y - NAVBAR_HEIGHT,
-      };
-      setOffset(newOffset);
-      setMoving(true);
-    }
-  };
-
-  const handleMouseUpMove = () => {
-    setMoving(false);
-  };
+  const handleDoubleClick = useDoubleClick(() => toggleFullscreen(), 300);
 
   const toggleFullscreen = useCallback(() => {
     if (!isResizable && !isFullscreen) return;
@@ -82,9 +63,8 @@ const useWindow = (
         y: 0,
       });
     }
-    setFullscreen((prev) => !prev);
-
     setTimeout(() => setTransitioning(false), 300);
+    setFullscreen((prev) => !prev);
   }, [isFullscreen, position, size, previousState, isResizable]);
 
   const toggleMinimize = useCallback(() => {
@@ -100,99 +80,38 @@ const useWindow = (
         y: window.screen.height,
       });
     }
-    setMinimized((prev) => !prev);
-
     setTimeout(() => setTransitioning(false), 300);
+    setMinimized((prev) => !prev);
   }, [isMinimized, position, size, previousState]);
-
-  const handleMouseMove = useCallback(() => {
-    if (isResizing && resizeDirection && isResizable && !isFullscreen) {
-      const newSize = { ...size };
-      const newPosition = { ...position };
-
-      if (resizeDirection.includes("right")) {
-        newSize.width = mouse.x - position.x;
-      }
-      if (resizeDirection.includes("left")) {
-        const newWidth = position.x - mouse.x + size.width;
-        newSize.width = Math.max(newWidth, MIN_WINDOW_WIDTH);
-        newPosition.x = newSize.width > MIN_WINDOW_WIDTH ? mouse.x : position.x;
-      }
-
-      if (resizeDirection.includes("bottom")) {
-        newSize.height = mouse.y - position.y;
-      }
-      if (resizeDirection.includes("top")) {
-        if (mouse.y >= NAVBAR_HEIGHT) {
-          newSize.height = Math.max(
-            size.height + position.y - mouse.y,
-            MIN_WINDOW_HEIGHT
-          );
-          newPosition.y =
-            newSize.height > MIN_WINDOW_HEIGHT ? mouse.y : position.y;
-        } else {
-          newSize.height = Math.max(
-            size.height + position.y - NAVBAR_HEIGHT,
-            MIN_WINDOW_HEIGHT
-          );
-          newPosition.y =
-            newSize.height > MIN_WINDOW_HEIGHT ? NAVBAR_HEIGHT : position.y;
-        }
-      }
-
-      setSize(newSize);
-      setPosition(newPosition);
-    }
-
-    if (isMoving && !isFullscreen) {
-      const newPosition = {
-        x: mouse.x - offset.x,
-        y:
-          mouse.y - NAVBAR_HEIGHT < NAVBAR_HEIGHT + offset.y
-            ? NAVBAR_HEIGHT
-            : mouse.y - offset.y - NAVBAR_HEIGHT,
-      };
-
-      setPosition(newPosition);
-    }
-  }, [
-    isResizing,
-    resizeDirection,
-    size,
-    position,
-    mouse,
-    isMoving,
-    offset,
-    isResizable,
-    isFullscreen,
-  ]);
 
   useEffect(() => {
     if (isResizing || isMoving) {
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleResizeMouseMove);
+      window.addEventListener("mousemove", handleMoveMouseMove);
       window.addEventListener(
         "mouseup",
         isResizing ? handleMouseUpResize : handleMouseUpMove
       );
     } else {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleResizeMouseMove);
+      window.removeEventListener("mousemove", handleMoveMouseMove);
       window.removeEventListener("mouseup", handleMouseUpResize);
       window.removeEventListener("mouseup", handleMouseUpMove);
     }
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleResizeMouseMove);
+      window.removeEventListener("mousemove", handleMoveMouseMove);
       window.removeEventListener("mouseup", handleMouseUpResize);
       window.removeEventListener("mouseup", handleMouseUpMove);
     };
   }, [
     isResizing,
     isMoving,
-    resizeDirection,
-    mouse,
-    handleMouseMove,
-    isResizable,
+    handleResizeMouseMove,
+    handleMoveMouseMove,
     handleMouseUpResize,
+    handleMouseUpMove,
     isFullscreen,
   ]);
 
@@ -205,7 +124,7 @@ const useWindow = (
     isMoving,
     toggleFullscreen,
     isFullscreen,
-    handleDoubleClickFullscreen,
+    handleDoubleClickFullscreen: handleDoubleClick,
     isTransitioning,
     toggleMinimize,
   };

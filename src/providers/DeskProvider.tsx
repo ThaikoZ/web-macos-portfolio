@@ -1,6 +1,12 @@
 import { AppConfig } from "@/types/app";
 import { createContext, PropsWithChildren, useState } from "react";
 import { FinderConfig } from "../apps";
+import {
+  findWindow,
+  findWindowIndex,
+  moveWindowToEnd,
+  removeWindow,
+} from "@/utils/window";
 
 export interface DeskContextProps {
   activeWindow: AppConfig;
@@ -13,22 +19,18 @@ export interface DeskContextProps {
   restoreWindow: (app: AppConfig) => void;
 }
 
-const DeskContext = createContext<DeskContextProps | undefined>(undefined);
+const initialValues: DeskContextProps = {
+  activeWindow: FinderConfig,
+  openedWindows: [],
+  minimizedWindows: [],
+  setActiveWindow: () => {},
+  openWindow: () => {},
+  closeWindow: () => {},
+  minimizeWindow: () => {},
+  restoreWindow: () => {},
+};
 
-const findWindow = (windows: AppConfig[], app: AppConfig) =>
-  windows.find((window) => window.title === app.title);
-
-const findWindowIndex = (windows: AppConfig[], app: AppConfig) =>
-  windows.findIndex((window) => window.title === app.title);
-
-const moveWindowToEnd = (windows: AppConfig[], index: number) => [
-  ...windows.slice(0, index),
-  ...windows.slice(index + 1),
-  windows[index],
-];
-
-const removeWindow = (windows: AppConfig[], app: AppConfig) =>
-  windows.filter((window) => window.title !== app.title);
+export const DeskContext = createContext<DeskContextProps>(initialValues);
 
 const DEFAULT_OPENED_WINDOW = FinderConfig;
 

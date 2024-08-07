@@ -12,3 +12,8 @@ export interface WindowInterface {
   id: number;
   title: string;
 }
+
+export interface WindowState {
+  size: Size;
+  position: Position;
+}

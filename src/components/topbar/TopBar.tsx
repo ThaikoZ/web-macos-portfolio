@@ -1,4 +1,3 @@
-import systemMenu from "menus/systemMenu";
 import {
   AirDropIcon,
   AppleLogoIcon,
@@ -6,27 +5,34 @@ import {
   SpotlightIcon,
   UserAccountIcon,
 } from "@/assets/icons/utility";
-import { Store } from "@/store/store";
+import useDesk from "@/hooks/useDesk";
+import { settingsSelector } from "@/store/systemSettingsSlice";
+import { cn } from "@/utils/cn";
+import systemMenu from "menus/systemMenu";
 import { useSelector } from "react-redux";
 import FlexContainer from "../FlexContainer";
-import Button from "./ui/Button";
-import DropdownMenu from "./ui/DropdownMenu";
 import BatteryButton from "./BatteryButton";
 import ControlPanel from "./control-panel/ControlPanel";
 import DateTimeButton from "./DateTimeButton";
+import Button from "./ui/Button";
+import DropdownMenu from "./ui/DropdownMenu";
 import WifiButton from "./WifiButton";
-import { cn } from "@/utils/cn";
-import { getConfigByTitle } from "@/utils/getConfigByTitle";
-import { DEFAULT_OPENED_WINDOW } from "@/constants/system";
-import { settingsSelector } from "@/store/systemSettingsSlice";
 
 const TopBar = () => {
   const { isAirdropEnabled, isBluetoothEnabled } =
     useSelector(settingsSelector);
-  const activeWindow = useSelector((state: Store) => state.window.activeWindow);
-  const menu = getConfigByTitle(
-    activeWindow?.title || DEFAULT_OPENED_WINDOW.title
-  ).menu;
+  const { activeWindow } = useDesk();
+
+  const renderMenuItems = () =>
+    activeWindow.menu.map((item, index) => (
+      <DropdownMenu
+        key={item.title}
+        trigger={
+          <Button font={index === 0 ? "!font-bold" : ""}>{item.title}</Button>
+        }
+        menu={item}
+      />
+    ));
 
   return (
     <div
@@ -36,23 +42,13 @@ const TopBar = () => {
         "before:backdrop-blur-xl before:absolute before:-z-20 before:left-0 before:top-0 before:w-full before:h-[1.8rem]"
       )}
     >
-      <div className="w-full flex justify-between ">
-        <FlexContainer className="justify-start ">
+      <div className="w-full flex justify-between">
+        <FlexContainer className="justify-start">
           <DropdownMenu
             trigger={<Button icon={<AppleLogoIcon />} />}
             menu={systemMenu}
           />
-          {menu.map((item, index) => (
-            <DropdownMenu
-              key={item.title}
-              trigger={
-                <Button font={index === 0 ? "!font-bold" : ""}>
-                  {item.title}
-                </Button>
-              }
-              menu={item}
-            />
-          ))}
+          {renderMenuItems()}
         </FlexContainer>
         <FlexContainer>
           {isAirdropEnabled && <Button icon={<AirDropIcon width={20} />} />}
