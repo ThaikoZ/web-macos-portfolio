@@ -121,10 +121,13 @@ const useWindow = (
         newSize.height = mouse.y - position.y;
       }
       if (resizeDirection.includes("top")) {
+        const newHeight = position.y - mouse.y + size.height;
         if (mouse.y >= NAVBAR_HEIGHT) {
-          const newHeight = position.y - mouse.y + size.height;
           newSize.height = newHeight;
           newPosition.y = mouse.y;
+        } else {
+          newSize.height = size.height + position.y - NAVBAR_HEIGHT;
+          newPosition.y = NAVBAR_HEIGHT;
         }
       }
 
