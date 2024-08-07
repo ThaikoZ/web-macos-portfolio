@@ -7,7 +7,7 @@ export const FinderConfig: AppConfig = {
   title: "Finder",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 500,
     height: 400,
   },

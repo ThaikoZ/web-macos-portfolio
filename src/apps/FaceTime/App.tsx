@@ -6,12 +6,12 @@ interface Props {
 }
 
 const App = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = FaceTimeConfig;
+  const { defaultSize, title, isResizable, defaultPosition } = FaceTimeConfig;
 
   return (
     <Window
       id={id}
-      defalutSize={defalutSize}
+      defaultSize={defaultSize}
       title={title}
       isResizable={isResizable}
       defaultPosition={defaultPosition}

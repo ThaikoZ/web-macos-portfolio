@@ -1,24 +1,16 @@
-import Window from "@/components/desktop/Window";
+import WindowWrapper from "@/components/desktop/WindowWrapper";
 import { FinderConfig } from "./Config";
 
 interface Props {
   id: number;
 }
 
-const App = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = FinderConfig;
-
+const FinderApp = ({ id }: Props) => {
   return (
-    <Window
-      id={id}
-      defalutSize={defalutSize}
-      title={title}
-      isResizable={isResizable}
-      defaultPosition={defaultPosition}
-    >
+    <WindowWrapper id={id} config={FinderConfig}>
       Finder App
-    </Window>
+    </WindowWrapper>
   );
 };
 
-export default App;
+export default FinderApp;

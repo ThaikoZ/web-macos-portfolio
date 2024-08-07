@@ -6,12 +6,12 @@ interface Props {
 }
 
 const App = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = TrashConfig;
+  const { defaultSize, title, isResizable, defaultPosition } = TrashConfig;
 
   return (
     <Window
       id={id}
-      defalutSize={defalutSize}
+      defaultSize={defaultSize}
       title={title}
       isResizable={isResizable}
       defaultPosition={defaultPosition}

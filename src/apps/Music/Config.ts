@@ -7,7 +7,7 @@ export const MusicConfig: AppConfig = {
   title: "Music",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 300,
     height: 400,
   },

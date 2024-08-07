@@ -7,7 +7,7 @@ export const FaceTimeConfig: AppConfig = {
   title: "FaceTime",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 300,
     height: 400,
   },

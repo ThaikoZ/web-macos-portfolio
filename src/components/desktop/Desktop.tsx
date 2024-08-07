@@ -18,7 +18,6 @@ const Desktop = () => {
       <div id="desktop" className="absolute z-10">
         {openedWindows.map((window) => {
           const AppComponent = getConfigByTitle(window.title).engine;
-
           return (
             <div key={window.id} className="absolute bg-black w-0 h-0">
               <AppComponent id={window.id} />

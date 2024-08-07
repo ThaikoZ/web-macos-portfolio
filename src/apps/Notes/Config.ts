@@ -7,7 +7,7 @@ export const NotesConfig: AppConfig = {
   title: "Notes",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 300,
     height: 400,
   },

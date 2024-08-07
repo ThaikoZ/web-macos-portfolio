@@ -6,12 +6,12 @@ interface Props {
 }
 
 const App = ({ id }: Props) => {
-  const { defalutSize, title, isResizable, defaultPosition } = NotesConfig;
+  const { defaultSize, title, isResizable, defaultPosition } = NotesConfig;
 
   return (
     <Window
       id={id}
-      defalutSize={defalutSize}
+      defaultSize={defaultSize}
       title={title}
       isResizable={isResizable}
       defaultPosition={defaultPosition}

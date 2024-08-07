@@ -19,10 +19,10 @@ const Window = ({
   id,
   title = "macOS Window",
   children,
-  defalutSize,
+  defaultSize,
   defaultPosition = {
-    x: (window.screen.width - defalutSize.width) / 2,
-    y: (window.screen.height - defalutSize.height) / 2 - 150,
+    x: (window.screen.width - defaultSize.width) / 2,
+    y: (window.screen.height - defaultSize.height) / 2 - 150,
   },
   isResizable = false,
 }: Props) => {
@@ -47,10 +47,10 @@ const Window = ({
     handleMouseDownMove,
     isTransitioning,
     toggleMinimize,
-  } = useWindow(defalutSize, initialPosition, isResizable);
+  } = useWindow(defaultSize, initialPosition, isResizable);
 
   const handleClose = () => {
-    console.log("closeing window");
+    console.log("Closing Window with id: ", id);
     dispatch(closeWindow(id));
   };
   const handleMinimize = () => toggleMinimize();

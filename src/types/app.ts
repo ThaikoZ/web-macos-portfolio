@@ -4,7 +4,7 @@ import { Position, Size } from "./window";
 
 export interface App {
   title: string;
-  defalutSize: Size;
+  defaultSize: Size;
   defaultPosition?: Position;
   isResizable: boolean;
 }

@@ -7,7 +7,7 @@ export const SafariiConfig: AppConfig = {
   title: "Safarii",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 300,
     height: 400,
   },

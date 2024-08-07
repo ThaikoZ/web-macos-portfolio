@@ -7,7 +7,7 @@ export const TrashConfig: AppConfig = {
   title: "Trash",
   icon: Icon,
   engine: App,
-  defalutSize: {
+  defaultSize: {
     width: 300,
     height: 400,
   },

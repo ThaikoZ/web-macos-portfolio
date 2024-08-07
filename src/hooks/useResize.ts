@@ -1,7 +1,7 @@
 // import React from "react";
 
 // const useResize = () => {
-//   const [size, setSize] = useState<Size>(defalutSize);
+//   const [size, setSize] = useState<Size>(defaultSize);
 //   const [resizeMode, setResizeMode] = useState(false);
 
 //   useState(() => {
