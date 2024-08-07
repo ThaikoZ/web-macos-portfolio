@@ -21,7 +21,7 @@ const Dock = () => {
 
   return (
     <div className="fixed bottom-0 w-full flex items-end justify-center h-0 pointer-events-non z-10">
-      <div className="flex items-center bg-dock-background w-fit h-[74px] rounded-3xl before:rounded-3xl after:rounded-3xl gap-1.5 window-border mb-1.5 back px-2 py-1.5  pointer-events-auto pb-3.5">
+      <div className="flex items-center bg-dock-background w-fit h-[74px] rounded-3xl before:rounded-3xl after:rounded-3xl gap-1.5 window-border mb-1.5 back px-2 py-1.5 pointer-events-auto pb-3.5">
         {dockApps.map((app, index) => {
           const includeDivider = index === dockApps.length - 2;
           const checkedApp = checkIfOpened(app.title);
