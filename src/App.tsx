@@ -1,19 +1,11 @@
-import Dock from "./components/dock/Dock";
-import Screen from "./components/screen/Screen";
-import TopBar from "./components/topbar/TopBar";
-import Desktop from "./components/desktop/Desktop";
+import DesktopPage from "pages/DesktopPage";
+import Providers from "providers/Providers.tsx";
 
 const App = () => {
   return (
-    <Screen>
-      <TopBar />
-
-      <Desktop />
-      {/* Right panel */}
-      {/* ScreenView */}
-      {/* Bottom Dock */}
-      <Dock />
-    </Screen>
+    <Providers>
+      <DesktopPage />;
+    </Providers>
   );
 };
 
