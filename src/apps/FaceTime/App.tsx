@@ -1,4 +1,4 @@
-import Window from "@/components/desktop/Window";
+import WindowWrapper from "@/components/desktop/WindowWrapper";
 import { FaceTimeConfig } from "./Config";
 
 interface Props {
@@ -6,18 +6,10 @@ interface Props {
 }
 
 const App = ({ id }: Props) => {
-  const { defaultSize, title, isResizable, defaultPosition } = FaceTimeConfig;
-
   return (
-    <Window
-      id={id}
-      defaultSize={defaultSize}
-      title={title}
-      isResizable={isResizable}
-      defaultPosition={defaultPosition}
-    >
-      FaceTime
-    </Window>
+    <WindowWrapper id={id} config={FaceTimeConfig}>
+      FaceTime App
+    </WindowWrapper>
   );
 };
 

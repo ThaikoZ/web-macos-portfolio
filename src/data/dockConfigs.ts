@@ -3,14 +3,14 @@ import {
   FinderConfig,
   MusicConfig,
   NotesConfig,
-  SafariiConfig,
+  SafariConfig,
   TrashConfig,
 } from "@/apps/index";
 import { AppConfig } from "@/types/app";
 
 export const dockApps: AppConfig[] = [
   FinderConfig,
-  SafariiConfig,
+  SafariConfig,
   NotesConfig,
   FaceTimeConfig,
   MusicConfig,

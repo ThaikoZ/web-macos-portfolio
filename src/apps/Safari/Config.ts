@@ -3,8 +3,8 @@ import App from "./App";
 import Icon from "./Icon";
 import { Menu } from "./Menu";
 
-export const SafariiConfig: AppConfig = {
-  title: "Safarii",
+export const SafariConfig: AppConfig = {
+  title: "Safari",
   icon: Icon,
   engine: App,
   defaultSize: {

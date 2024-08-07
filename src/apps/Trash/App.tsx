@@ -1,4 +1,4 @@
-import Window from "@/components/desktop/Window";
+import WindowWrapper from "@/components/desktop/WindowWrapper";
 import { TrashConfig } from "./Config";
 
 interface Props {
@@ -6,18 +6,10 @@ interface Props {
 }
 
 const App = ({ id }: Props) => {
-  const { defaultSize, title, isResizable, defaultPosition } = TrashConfig;
-
   return (
-    <Window
-      id={id}
-      defaultSize={defaultSize}
-      title={title}
-      isResizable={isResizable}
-      defaultPosition={defaultPosition}
-    >
-      <div className="">Trash</div>
-    </Window>
+    <WindowWrapper id={id} config={TrashConfig}>
+      Trash App
+    </WindowWrapper>
   );
 };
 

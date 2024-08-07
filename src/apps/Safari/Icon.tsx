@@ -5,7 +5,7 @@ const size = 56;
 
 const Icon = () => {
   return (
-    <Tooltip hint="Safarii">
+    <Tooltip hint="Safari">
       <AppIcon width={size} height={size} />
     </Tooltip>
   );

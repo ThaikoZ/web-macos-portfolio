@@ -2,7 +2,7 @@ import {
   NotesConfig,
   FaceTimeConfig,
   MusicConfig,
-  SafariiConfig,
+  SafariConfig,
   TrashConfig,
   FinderConfig,
 } from "../apps";
@@ -17,8 +17,8 @@ export const getConfigByTitle = (title: string) => {
       return MusicConfig;
     case FaceTimeConfig.title:
       return FaceTimeConfig;
-    case SafariiConfig.title:
-      return SafariiConfig;
+    case SafariConfig.title:
+      return SafariConfig;
     case NotesConfig.title:
       return NotesConfig;
     default:
