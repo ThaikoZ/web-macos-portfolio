@@ -1,8 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { SafariConfig } from "./Config";
 
 const App = () => {
-  return <AppWindowWrapper config={SafariConfig}>Safari App</AppWindowWrapper>;
+  return <AppWrapper config={SafariConfig}>Safari App</AppWrapper>;
 };
 
 export default App;

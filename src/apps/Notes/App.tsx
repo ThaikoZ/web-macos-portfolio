@@ -1,8 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { NotesConfig } from "./Config";
 
 const App = () => {
-  return <AppWindowWrapper config={NotesConfig}>Notes App</AppWindowWrapper>;
+  return <AppWrapper config={NotesConfig}>Notes App</AppWrapper>;
 };
 
 export default App;

@@ -1,8 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { FinderConfig } from "./Config";
 
 const FinderApp = () => {
-  return <AppWindowWrapper config={FinderConfig}>Finder App</AppWindowWrapper>;
+  return <AppWrapper config={FinderConfig}>Finder App</AppWrapper>;
 };
 
 export default FinderApp;

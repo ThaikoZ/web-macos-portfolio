@@ -1,8 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { TrashConfig } from "./Config";
 
 const App = () => {
-  return <AppWindowWrapper config={TrashConfig}>Trash App</AppWindowWrapper>;
+  return <AppWrapper config={TrashConfig}>Trash App</AppWrapper>;
 };
 
 export default App;

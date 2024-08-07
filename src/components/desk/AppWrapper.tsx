@@ -1,13 +1,13 @@
 import Window from "@/components/desk/Window";
 import { AppConfig } from "@/types/app";
 
-interface AppWindowWrapperProps {
+interface AppWrapperProps {
   config: AppConfig;
   children: React.ReactNode;
 }
 
-const AppWindowWrapper = ({ config, children }: AppWindowWrapperProps) => {
+const AppWrapper = ({ config, children }: AppWrapperProps) => {
   return <Window config={config}>{children}</Window>;
 };
 
-export default AppWindowWrapper;
+export default AppWrapper;

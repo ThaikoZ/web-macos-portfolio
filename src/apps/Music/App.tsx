@@ -1,8 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { MusicConfig } from "./Config";
 
 const App = () => {
-  return <AppWindowWrapper config={MusicConfig}>Music App</AppWindowWrapper>;
+  return <AppWrapper config={MusicConfig}>Music App</AppWrapper>;
 };
 
 export default App;

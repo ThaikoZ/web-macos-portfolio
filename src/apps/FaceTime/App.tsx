@@ -1,10 +1,8 @@
-import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
+import AppWrapper from "@/components/desk/AppWrapper";
 import { FaceTimeConfig } from "./Config";
 
 const App = () => {
-  return (
-    <AppWindowWrapper config={FaceTimeConfig}>FaceTime App</AppWindowWrapper>
-  );
+  return <AppWrapper config={FaceTimeConfig}>FaceTime App</AppWrapper>;
 };
 
 export default App;
