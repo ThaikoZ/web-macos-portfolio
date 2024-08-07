@@ -1,6 +1,6 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DEFAULT_OPENED_WINDOW } from "@/constants/system";
 import { WindowInterface } from "@/types/window";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface SystemSettingsState {
   totalOpenedWindows: number;
@@ -20,29 +20,39 @@ const initialState: SystemSettingsState = {
   minimizedWindows: [],
 };
 
+const findWindowIndexById = (windows: WindowInterface[], id: number) =>
+  windows.findIndex((window) => window.id === id);
+
+const moveWindowToEnd = (windows: WindowInterface[], index: number) => [
+  ...windows.slice(0, index),
+  ...windows.slice(index + 1),
+  windows[index],
+];
+
+const removeWindowByIndex = (windows: WindowInterface[], index: number) => [
+  ...windows.slice(0, index),
+  ...windows.slice(index + 1),
+];
+
 const windowSlice = createSlice({
   name: "windows",
   initialState,
   reducers: {
     setActiveWindow(state, action: PayloadAction<number>) {
-      const id = action.payload;
-
-      const windowIndex = state.openedWindows.findIndex(
-        (window) => window.id === id
+      const windowIndex = findWindowIndexById(
+        state.openedWindows,
+        action.payload
       );
 
       if (windowIndex !== -1) {
-        const windowToMove = state.openedWindows[windowIndex];
-        const newOpenedWindows = [
-          ...state.openedWindows.slice(0, windowIndex),
-          ...state.openedWindows.slice(windowIndex + 1),
-          windowToMove,
-        ];
-
+        const newOpenedWindows = moveWindowToEnd(
+          state.openedWindows,
+          windowIndex
+        );
         return {
           ...state,
           openedWindows: newOpenedWindows,
-          activeWindow: windowToMove,
+          activeWindow: newOpenedWindows[newOpenedWindows.length - 1],
         };
       }
 
@@ -52,88 +62,70 @@ const windowSlice = createSlice({
       };
     },
     setMoving(state, action: PayloadAction<boolean>) {
-      return { ...state, isMoving: action.payload };
+      state.isMoving = action.payload;
     },
     setResizing(state, action: PayloadAction<boolean>) {
-      return { ...state, isResizing: action.payload };
+      state.isResizing = action.payload;
     },
     openWindow(state, action: PayloadAction<string>) {
       const newWindow: WindowInterface = {
         id: state.totalOpenedWindows,
         title: action.payload,
       };
-      return {
-        ...state,
-        totalOpenedWindows: state.totalOpenedWindows + 1,
-        activeWindow: newWindow,
-        openedWindows: [...state.openedWindows, newWindow],
-      };
+      state.totalOpenedWindows += 1;
+      state.activeWindow = newWindow;
+      state.openedWindows.push(newWindow);
     },
     closeWindow(state, action: PayloadAction<number>) {
-      const id = action.payload;
-      const activeWindow =
-        state.activeWindow.id === id
-          ? DEFAULT_OPENED_WINDOW
-          : state.activeWindow;
-      const openedWindows = state.openedWindows.filter(
-        (window) => window.id !== id
+      const windowIndex = findWindowIndexById(
+        state.openedWindows,
+        action.payload
       );
 
-      return { ...state, openedWindows, activeWindow };
+      if (windowIndex !== -1) {
+        state.openedWindows = removeWindowByIndex(
+          state.openedWindows,
+          windowIndex
+        );
+        state.activeWindow =
+          state.activeWindow.id === action.payload
+            ? DEFAULT_OPENED_WINDOW
+            : state.activeWindow;
+      }
     },
     minimizeWindow(state, action: PayloadAction<number>) {
-      const id = action.payload;
-      const windowIndex = state.openedWindows.findIndex(
-        (window) => window.id === id
+      const windowIndex = findWindowIndexById(
+        state.openedWindows,
+        action.payload
       );
 
       if (windowIndex !== -1) {
         const windowToMinimize = state.openedWindows[windowIndex];
-        const newOpenedWindows = [
-          ...state.openedWindows.slice(0, windowIndex),
-          ...state.openedWindows.slice(windowIndex + 1),
-        ];
-        const newMinimizedWindows = [
-          ...state.minimizedWindows,
-          windowToMinimize,
-        ];
-
-        return {
-          ...state,
-          openedWindows: newOpenedWindows,
-          minimizedWindows: newMinimizedWindows,
-          activeWindow:
-            state.activeWindow.id === id
-              ? DEFAULT_OPENED_WINDOW
-              : state.activeWindow,
-        };
+        state.openedWindows = removeWindowByIndex(
+          state.openedWindows,
+          windowIndex
+        );
+        state.minimizedWindows.push(windowToMinimize);
+        if (state.activeWindow.id === action.payload) {
+          state.activeWindow = DEFAULT_OPENED_WINDOW;
+        }
       }
-
-      return state;
     },
     restoreWindow(state, action: PayloadAction<number>) {
-      const id = action.payload;
-      const windowIndex = state.minimizedWindows.findIndex(
-        (window) => window.id === id
+      const windowIndex = findWindowIndexById(
+        state.minimizedWindows,
+        action.payload
       );
 
       if (windowIndex !== -1) {
         const windowToRestore = state.minimizedWindows[windowIndex];
-        const newMinimizedWindows = [
-          ...state.minimizedWindows.slice(0, windowIndex),
-          ...state.minimizedWindows.slice(windowIndex + 1),
-        ];
-        const newOpenedWindows = [...state.openedWindows, windowToRestore];
-
-        return {
-          ...state,
-          minimizedWindows: newMinimizedWindows,
-          openedWindows: newOpenedWindows,
-          activeWindow: windowToRestore,
-        };
+        state.minimizedWindows = removeWindowByIndex(
+          state.minimizedWindows,
+          windowIndex
+        );
+        state.openedWindows.push(windowToRestore);
+        state.activeWindow = windowToRestore;
       }
-
-      return state;
     },
   },
 });

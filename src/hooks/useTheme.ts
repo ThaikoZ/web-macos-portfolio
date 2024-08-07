@@ -1,7 +1,4 @@
-import {
-  ThemeContext,
-  ThemeContextInterface,
-} from "@/components/providers/ThemeProvider";
+import { ThemeContext, ThemeContextInterface } from "providers/ThemeProvider";
 import { useContext } from "react";
 
 export const useTheme = (): ThemeContextInterface => {
