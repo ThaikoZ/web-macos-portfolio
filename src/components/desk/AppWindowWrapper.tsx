@@ -1,4 +1,4 @@
-import Window from "@/components/desktop/Window";
+import Window from "@/components/desk/Window";
 import { AppConfig } from "@/types/app";
 
 interface AppWindowWrapperProps {

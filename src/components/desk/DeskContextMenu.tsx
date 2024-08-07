@@ -2,7 +2,7 @@ import * as ContextMenu from "@radix-ui/react-context-menu";
 import { ChevronRightIcon } from "@/assets/icons/utility";
 import { PropsWithChildren } from "react";
 
-const DesktopContextMenu = ({ children }: PropsWithChildren) => {
+const DeskContextMenu = ({ children }: PropsWithChildren) => {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger className="w-full h-full absolute">
@@ -36,4 +36,4 @@ const DesktopContextMenu = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default DesktopContextMenu;
+export default DeskContextMenu;

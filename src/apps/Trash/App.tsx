@@ -1,4 +1,4 @@
-import AppWindowWrapper from "@/components/desktop/AppWindowWrapper";
+import AppWindowWrapper from "@/components/desk/AppWindowWrapper";
 import { TrashConfig } from "./Config";
 
 interface Props {

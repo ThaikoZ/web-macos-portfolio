@@ -33,9 +33,10 @@
       "@/styles/*": ["styles/*"],
       "@/hooks/*": ["hooks/*"],
       "@/types/*": ["types/*"],
-      "@/data/*": ["data/*"],
+      "@/menus/*": ["menus/*"],
       "@/utils/*": ["utils/*"],
-      "@/constants/*": ["constants/*"]
+      "@/constants/*": ["constants/*"],
+      "@/providers/*": ["providers/*"]
     }
   },
   "include": ["src/**/*"]

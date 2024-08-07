@@ -1,14 +1,9 @@
 import { songs } from "@/apps/Music/data/musicPlayerList";
-import { Song } from "@/apps/Music/types/song";
 import { settingsSelector } from "@/store/systemSettingsSlice";
-import {
-  createContext,
-  PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { Song } from "@/apps/Music/types/song";
+import { createContext } from "react";
 
 export interface AudioContextProps {
   currentSong: Song;
