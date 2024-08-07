@@ -1,7 +1,8 @@
 :root {
+  /* Cursor Variables */
   --cursor-pointer: url("../assets/cursors/pointer.png"), pointer;
   --cursor-default: url("../assets/cursors/default.png"), default;
-  --cursor-auto: url("../assets/cursors/default.png"), auto;
+  --cursor-auto: var(--cursor-default);
   --cursor-text: url("../assets/cursors/text.png"), text;
   --cursor-crosshair: url("../assets/cursors/crosshair.png"), crosshair;
   --cursor-zoom-in: url("../assets/cursors/zoom-in.png"), zoom-in;
@@ -11,13 +12,23 @@
   --cursor-move: url("../assets/cursors/move.png"), move;
   --cursor-wait: url("../assets/cursors/wait.png"), wait;
   --cursor-n-resize: url("../assets/cursors/n-resize.png") 8 8, n-resize;
-  --cursor-s-resize: url("../assets/cursors/n-resize.png") 8 8, s-resize;
+  --cursor-s-resize: var(--cursor-n-resize);
   --cursor-w-resize: url("../assets/cursors/w-resize.png") 8 6, w-resize;
-  --cursor-e-resize: url("../assets/cursors/w-resize.png") 8 6, e-resize;
+  --cursor-e-resize: var(--cursor-w-resize);
   --cursor-nw-resize: url("../assets/cursors/nw-resize.png") 8 6, nw-resize;
-  --cursor-se-resize: url("../assets/cursors/nw-resize.png") 8 6, se-resize;
+  --cursor-se-resize: var(--cursor-nw-resize);
   --cursor-ne-resize: url("../assets/cursors/ne-resize.png") 8 6, ne-resize;
-  --cursor-sw-resize: url("../assets/cursors/ne-resize.png") 8 6, sw-resize;
+  --cursor-sw-resize: var(--cursor-ne-resize);
+}
+
+.light,
+.dark {
+  /* Common Variables */
+  --color-window-inner: rgba(211, 211, 211, 0.26);
+  --color-window-btn-close: rgba(236, 106, 94, 1);
+  --color-window-btn-minimize: rgba(245, 191, 79, 1);
+  --color-window-btn-fullscreen: rgba(97, 197, 84, 1);
+  --color-window-btn-border: rgba(0, 0, 0, 0.12);
 }
 
 .light {
@@ -26,33 +37,26 @@
   --color-text-primary: rgba(17, 17, 17, 1);
 
   --color-window-outer: rgba(0, 0, 0, 0.15);
-  --color-window-inner: rgba(211, 211, 211, 0.26);
 
   /* Topbar */
   --color-topbar-background: rgba(255, 255, 255, 0.5);
-  --color-topbar-text: rgba(17, 17, 17, 1);
-
+  --color-topbar-text: var(--color-text-primary);
   --color-topbar-btn-background: rgba(0, 0, 0, 0);
   --color-topbar-btn-hovered: rgba(0, 0, 0, 0.15);
-  --color-topbar-btn-text: rgba(17, 17, 17, 1);
+  --color-topbar-btn-text: var(--color-text-primary);
 
   /* Dropdown Menu */
   --color-topbar-dropdown-background: rgba(255, 255, 255, 0.65);
-  --color-topbar-dropdown-text: rgba(17, 17, 17, 1);
+  --color-topbar-dropdown-text: var(--color-text-primary);
   --color-topbar-dropdown-text-inactive: rgba(17, 17, 17, 0.45);
   --color-topbar-dropdown-border: rgba(0, 0, 0, 0.12);
   --color-topbar-dropdown-title: rgba(0, 0, 0, 0.5);
-
   --color-topbar-dropdown-item-hovered: rgba(0, 122, 255, 1);
   --color-topbar-dropdown-item-text: rgba(255, 255, 255, 1);
-
   --color-topbar-dropdown-separator: rgba(60, 60, 67, 0.18);
-
   --color-topbar-dropdown-badge-background: rgba(60, 60, 67, 0.2);
-
   --color-topbar-dropdown-shortcut-text: rgba(60, 60, 67, 0.4);
   --color-topbar-dropdown-shortcut-text-hovered: rgba(255, 255, 255, 1);
-
   --color-topbar-dropdown-sub-chevron-text: rgba(0, 0, 0, 1);
   --color-topbar-dropdown-sub-chevron-text-hovered: rgba(255, 255, 255, 1);
   --color-topbar-dropdown-sub-active: rgba(60, 60, 67, 0.15);
@@ -61,22 +65,16 @@
   --color-topbar-wifi-disabled: rgba(0, 0, 0, 0.4);
   --color-topbar-control-card-btn-inactive: rgba(0, 0, 0, 0.1);
   --bg-topbar-control-card-background: rgba(255, 255, 255, 0.3);
-
   --color-topbar-control-range-background: rgba(0, 0, 0, 0.1);
   --color-topbar-control-range-active: rgba(249, 250, 251, 0.95);
   --color-topbar-control-range-icon: rgba(0, 0, 0, 1);
 
-  /* System Window*/
+  /* System Window */
   --color-window-bar-background: rgba(255, 255, 255, 1);
   --color-window-bar-text: rgba(61, 61, 61, 1);
   --color-window-bar-text-inactive: rgba(60, 60, 67, 0.6);
   --color-window-background: rgba(246, 246, 246, 1);
-  --color-window-btn-border: rgba(0, 0, 0, 0.12);
   --color-window-btn-inactive: rgba(206, 205, 205, 1);
-  --color-window-btn-close: rgba(236, 106, 94, 1);
-  --color-window-btn-minimize: rgba(245, 191, 79, 1);
-  --color-window-btn-fullscreen: rgba(97, 197, 84, 1);
-  /* --shadow-window-active: ; */
 
   /* Dock */
   --color-dock-background: rgba(255, 255, 255, 0.2);
@@ -90,58 +88,50 @@
   --color-text-primary: rgba(241, 241, 241, 1);
 
   --color-window-outer: rgba(0, 0, 0, 0.5);
-  --color-window-inner: rgba(211, 211, 211, 0.26);
 
   /* Topbar */
   --color-topbar-background: rgba(0, 0, 0, 0.18);
-  --color-topbar-text: rgba(241, 241, 241, 1);
-
+  --color-topbar-text: var(--color-text-primary);
   --color-topbar-btn-background: rgba(0, 0, 0, 0);
   --color-topbar-btn-hovered: rgba(255, 255, 255, 0.2);
-  --color-topbar-btn-text: rgba(255, 255, 255, 1);
+  --color-topbar-btn-text: var(--color-text-primary);
 
   /* Dropdown Menu */
   --color-topbar-dropdown-background: rgba(72, 72, 72, 0.5);
-  --color-topbar-dropdown-text: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-text: var(--color-text-primary);
   --color-topbar-dropdown-text-inactive: rgba(255, 255, 255, 0.45);
   --color-topbar-dropdown-border: rgba(0, 0, 0, 0.12);
   --color-topbar-dropdown-title: rgba(255, 255, 255, 0.5);
-
   --color-topbar-dropdown-item-hovered: rgba(0, 71, 247, 1);
   --color-topbar-dropdown-item-text: rgba(255, 255, 255, 1);
-
   --color-topbar-dropdown-separator: rgba(255, 255, 255, 0.2);
-
   --color-topbar-dropdown-badge-background: rgba(235, 235, 245, 0.15);
-
   --color-topbar-dropdown-shortcut-text: rgba(235, 235, 245, 0.4);
-  --color-topbar-dropdown-shortcut-text-hovered: rgba(255, 255, 255, 1);
-
-  --color-topbar-dropdown-sub-chevron-text: rgba(255, 255, 255, 1);
-  --color-topbar-dropdown-sub-chevron-text-hovered: rgba(255, 255, 255, 1);
+  --color-topbar-dropdown-shortcut-text-hovered: var(
+    --color-topbar-dropdown-item-text
+  );
+  --color-topbar-dropdown-sub-chevron-text: var(
+    --color-topbar-dropdown-item-text
+  );
+  --color-topbar-dropdown-sub-chevron-text-hovered: var(
+    --color-topbar-dropdown-item-text
+  );
   --color-topbar-dropdown-sub-active: rgba(235, 235, 245, 0.15);
 
   /* Control Panel */
   --color-topbar-wifi-disabled: rgba(255, 255, 255, 0.5);
   --color-topbar-control-card-btn-inactive: rgba(255, 255, 255, 0.1);
   --bg-topbar-control-card-background: rgba(10, 10, 10, 0.2);
-
   --color-topbar-control-range-background: rgba(0, 0, 0, 0.2);
   --color-topbar-control-range-active: rgba(20, 20, 20, 0.4);
-  --color-topbar-control-range-icon: rgba(255, 255, 255, 1);
+  --color-topbar-control-range-icon: var(--color-text-primary);
 
-  /* System Window*/
-  --color-window-background: rgba(40, 40, 40, 1);
+  /* System Window */
   --color-window-bar-background: rgba(30, 30, 30, 1);
   --color-window-bar-text: rgba(235, 235, 245, 0.6);
   --color-window-bar-text-inactive: rgba(235, 235, 245, 0.3);
-  --color-window-btn-border: rgba(0, 0, 0, 0);
+  --color-window-background: rgba(40, 40, 40, 1);
   --color-window-btn-inactive: rgba(88, 89, 91, 1);
-  --color-window-btn-close: rgba(236, 106, 94, 1);
-  --color-window-btn-minimize: rgba(245, 191, 79, 1);
-  --color-window-btn-minim: rgba(245, 191, 79, 1);
-  --color-window-btn-fullscreen: rgba(97, 197, 84, 1);
-  /* --shadow-window-active: ; */
 
   /* Dock */
   --color-dock-background: rgba(0, 0, 0, 0.2);

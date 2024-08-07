@@ -1,12 +1,12 @@
 import { songs } from "@/apps/Music/data/musicPlayerList";
 import { Song } from "@/apps/Music/types/song";
-import { Store } from "@/store/store";
+import { settingsSelector } from "@/store/systemSettingsSlice";
 import {
   createContext,
+  PropsWithChildren,
+  useEffect,
   useRef,
   useState,
-  useEffect,
-  PropsWithChildren,
 } from "react";
 import { useSelector } from "react-redux";
 
@@ -25,9 +25,7 @@ export const AudioProvider = ({ children }: PropsWithChildren) => {
   const [index, setIndex] = useState(0);
   const [isPlaying, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const soundRange = useSelector(
-    (state: Store) => state.systemSettings.soundRange
-  );
+  const { soundRange } = useSelector(settingsSelector);
 
   const currentSong = songs[index];
 

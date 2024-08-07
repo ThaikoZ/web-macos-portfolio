@@ -1,6 +1,7 @@
 import { DARK_MODE } from "@/constants/theme";
-import { useTheme } from "@/hooks/useTheme";
+import { settingsSelector } from "@/store/systemSettingsSlice";
 import { cn } from "@/utils/cn";
+import { useSelector } from "react-redux";
 
 interface IconProps {
   width?: number;
@@ -27,7 +28,7 @@ const CardToggleButton = ({
   isActive,
 }: Props) => {
   const toggleActive = () => onToggle();
-  const { theme } = useTheme();
+  const { theme } = useSelector(settingsSelector);
   return (
     <div className="px-1.5 py-2 flex items-center gap-3 ">
       <div

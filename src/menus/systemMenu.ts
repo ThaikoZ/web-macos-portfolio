@@ -1,6 +1,6 @@
 import { DropdownMenuInterface } from "@/types/dropdown";
 
-export const systemMenu: DropdownMenuInterface = {
+export default {
   title: "",
   items: [
     { id: "about", title: "About This Mac" },
@@ -35,4 +35,4 @@ export const systemMenu: DropdownMenuInterface = {
       shortcut: "SHIFT+CMD+Q",
     },
   ],
-};
+} as DropdownMenuInterface;

@@ -1,32 +1,32 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import Button from "../ui/Button";
 import {
+  AirDropIcon,
   BluetoothIcon,
   ControlPanelIcon,
   ThemeModeIcon,
-  AirDropIcon,
   WifiIcon,
 } from "@/assets/icons/utility";
-import Card from "./ControlPanelCard";
-import CardToggleButton from "./CardToggleButton";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useDispatch, useSelector } from "react-redux";
-import { Store } from "@/store/store";
+import Button from "../ui/Button";
+import CardToggleButton from "./CardToggleButton";
+import Card from "./ControlPanelCard";
 
+import { DARK_MODE, LIGHT_MODE } from "@/constants/theme";
 import {
   setDisplayRange,
   setSoundRange,
+  setTheme,
+  settingsSelector,
   toggleAirdrop,
   toggleBluetooth,
   toggleWifi,
-} from "@/store/reducers/systemSettingsSlice";
-import { useTheme } from "@/hooks/useTheme";
-import { DARK_MODE } from "@/constants/theme";
-import FullscreenButton from "./FullscreenButton";
-import CardContainer from "./CardContainer";
+} from "@/store/systemSettingsSlice";
 import { SpeakerLoudIcon, SunIcon } from "@radix-ui/react-icons";
-import Slider from "./Slider";
-import MusicPlayer from "./MusicPlayer";
 import { useState } from "react";
+import CardContainer from "./CardContainer";
+import FullscreenButton from "./FullscreenButton";
+import MusicPlayer from "./MusicPlayer";
+import Slider from "./Slider";
 
 const ControlPanel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,9 +36,14 @@ const ControlPanel = () => {
     isWifiEnabled,
     isBluetoothEnabled,
     displayRange,
+    theme,
     soundRange,
-  } = useSelector((state: Store) => state.systemSettings);
-  const { theme, toggleTheme } = useTheme();
+  } = useSelector(settingsSelector);
+
+  const handleChangeTheme = () => {
+    const nextTheme = theme == LIGHT_MODE ? DARK_MODE : LIGHT_MODE;
+    dispatch(setTheme(nextTheme));
+  };
 
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
@@ -86,7 +91,7 @@ const ControlPanel = () => {
             <CardToggleButton
               title="Dark Mode"
               subtitle={theme === DARK_MODE ? "On" : "Off"}
-              onToggle={() => toggleTheme()}
+              onToggle={handleChangeTheme}
               isActive={theme === DARK_MODE}
               Icon={ThemeModeIcon}
               iconProps={{ width: 20, height: 20, fill: "red" }}

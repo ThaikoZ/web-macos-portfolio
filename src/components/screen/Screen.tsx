@@ -1,12 +1,11 @@
-import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/utils/cn";
-import { setFullscreen } from "@/store/reducers/systemSettingsSlice";
+import { setFullscreen, settingsSelector } from "@/store/systemSettingsSlice";
 import { PropsWithChildren, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Blackout from "./Blackout";
 
 const Screen = ({ children }: PropsWithChildren) => {
-  const { theme } = useTheme();
+  const { theme } = useSelector(settingsSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {

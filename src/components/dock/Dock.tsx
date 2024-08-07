@@ -1,4 +1,4 @@
-import { dockApps } from "@/data/dockConfigs";
+import { dockApps } from "dockConfigs";
 import { openWindow, setActiveWindow } from "@/store/reducers/windowSlice";
 import { Store } from "@/store/store";
 import { AppConfig } from "@/types/app";

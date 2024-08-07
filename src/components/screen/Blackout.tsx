@@ -1,10 +1,8 @@
-import { Store } from "@/store/store";
+import { settingsSelector } from "@/store/systemSettingsSlice";
 import { useSelector } from "react-redux";
 
 const Blackout = () => {
-  const displayRange = useSelector(
-    (state: Store) => state.systemSettings.displayRange
-  );
+  const { displayRange } = useSelector(settingsSelector);
   const displayOpacity = 0.7 * (1 - displayRange / 100);
 
   return (

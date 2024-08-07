@@ -1,4 +1,4 @@
-import { systemMenu } from "data/systemMenu";
+import systemMenu from "menus/systemMenu";
 import {
   AirDropIcon,
   AppleLogoIcon,
@@ -18,11 +18,11 @@ import WifiButton from "./WifiButton";
 import { cn } from "@/utils/cn";
 import { getConfigByTitle } from "@/utils/getConfigByTitle";
 import { DEFAULT_OPENED_WINDOW } from "@/constants/system";
+import { settingsSelector } from "@/store/systemSettingsSlice";
 
 const TopBar = () => {
-  const { isAirdropEnabled, isBluetoothEnabled } = useSelector(
-    (state: Store) => state.systemSettings
-  );
+  const { isAirdropEnabled, isBluetoothEnabled } =
+    useSelector(settingsSelector);
   const activeWindow = useSelector((state: Store) => state.window.activeWindow);
   const menu = getConfigByTitle(
     activeWindow?.title || DEFAULT_OPENED_WINDOW.title

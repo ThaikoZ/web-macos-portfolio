@@ -1,15 +1,13 @@
-// components/desktop/WindowWrapper.js
-
 import Window from "@/components/desktop/Window";
 import { AppConfig } from "@/types/app";
 
-interface WindowWrapperProps {
+interface AppWindowWrapperProps {
   id: number;
   config: AppConfig;
   children: React.ReactNode;
 }
 
-const WindowWrapper = ({ id, config, children }: WindowWrapperProps) => {
+const AppWindowWrapper = ({ id, config, children }: AppWindowWrapperProps) => {
   const { defaultSize, title, isResizable, defaultPosition } = config;
 
   return (
@@ -25,4 +23,4 @@ const WindowWrapper = ({ id, config, children }: WindowWrapperProps) => {
   );
 };
 
-export default WindowWrapper;
+export default AppWindowWrapper;

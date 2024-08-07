@@ -1,4 +1,4 @@
-import WindowWrapper from "@/components/desktop/WindowWrapper";
+import AppWindowWrapper from "@/components/desktop/AppWindowWrapper";
 import { FaceTimeConfig } from "./Config";
 
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 const App = ({ id }: Props) => {
   return (
-    <WindowWrapper id={id} config={FaceTimeConfig}>
+    <AppWindowWrapper id={id} config={FaceTimeConfig}>
       FaceTime App
-    </WindowWrapper>
+    </AppWindowWrapper>
   );
 };
 

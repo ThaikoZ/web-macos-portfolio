@@ -1,13 +1,15 @@
-import React from "react";
+import {
+  settingsSelector,
+  toggleFullscreen,
+} from "@/store/systemSettingsSlice";
 import { EnterFullScreenIcon, ExitFullScreenIcon } from "@radix-ui/react-icons";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Store } from "@/store/store";
-import { toggleFullscreen } from "@/store/reducers/systemSettingsSlice";
 import CardContainer from "./CardContainer";
 
 const FullscreenButton: React.FC = () => {
   const dispatch = useDispatch();
-  const { isFullscreen } = useSelector((state: Store) => state.systemSettings);
+  const { isFullscreen } = useSelector(settingsSelector);
 
   const handleToggleFullscreen = () => {
     if (isFullscreen) {

@@ -1,6 +1,6 @@
 import { DropdownMenuInterface } from "@/types/dropdown";
 
-export const batteryMenu: DropdownMenuInterface = {
+export default {
   title: "Battery Menu",
   items: [
     {
@@ -20,4 +20,4 @@ export const batteryMenu: DropdownMenuInterface = {
       variant: "secondary",
     },
   ],
-};
+} as DropdownMenuInterface;

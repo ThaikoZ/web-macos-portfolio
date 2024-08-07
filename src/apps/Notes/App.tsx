@@ -1,4 +1,4 @@
-import WindowWrapper from "@/components/desktop/WindowWrapper";
+import AppWindowWrapper from "@/components/desktop/AppWindowWrapper";
 import { NotesConfig } from "./Config";
 
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 const App = ({ id }: Props) => {
   return (
-    <WindowWrapper id={id} config={NotesConfig}>
+    <AppWindowWrapper id={id} config={NotesConfig}>
       Notes App
-    </WindowWrapper>
+    </AppWindowWrapper>
   );
 };
 

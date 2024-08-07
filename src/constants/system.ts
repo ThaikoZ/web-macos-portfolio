@@ -1,3 +1,6 @@
+export const APP_NAME = "Adrian Sudak Portfolio - macOS System";
+export const VERSION = "0.0.1";
+
 export const DEFAULT_WINDOW_WIDTH = 500;
 export const DEFAULT_WINDOW_HEIGHT = 500;
 

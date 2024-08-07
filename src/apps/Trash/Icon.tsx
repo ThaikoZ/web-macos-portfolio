@@ -1,20 +1,24 @@
 import Tooltip from "@/components/Tooltip";
-import LightAppIcon from "./assets/icons/LightAppIcon";
-import { useTheme } from "@/hooks/useTheme";
 import { DARK_MODE } from "@/constants/theme";
+import { settingsSelector } from "@/store/systemSettingsSlice";
+import { useSelector } from "react-redux";
 import DarkAppIcon from "./assets/icons/DarkAppIcon";
+import LightAppIcon from "./assets/icons/LightAppIcon";
 
-const size = 48;
+const ICON_SIZE = 48;
+
+const ThemeIcon = ({ theme }: { theme: string }) => {
+  if (theme === DARK_MODE)
+    return <DarkAppIcon width={ICON_SIZE} height={ICON_SIZE} />;
+  return <LightAppIcon width={ICON_SIZE} height={ICON_SIZE} />;
+};
 
 const Icon = () => {
-  const { theme } = useTheme();
+  const { theme } = useSelector(settingsSelector);
+
   return (
     <Tooltip hint="Trash">
-      {theme === DARK_MODE ? (
-        <DarkAppIcon width={size} height={size} />
-      ) : (
-        <LightAppIcon width={size} height={size} />
-      )}
+      <ThemeIcon theme={theme} />
     </Tooltip>
   );
 };

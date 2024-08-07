@@ -1,4 +1,4 @@
-import WindowWrapper from "@/components/desktop/WindowWrapper";
+import AppWindowWrapper from "@/components/desktop/AppWindowWrapper";
 import { MusicConfig } from "./Config";
 
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 const App = ({ id }: Props) => {
   return (
-    <WindowWrapper id={id} config={MusicConfig}>
+    <AppWindowWrapper id={id} config={MusicConfig}>
       Music App
-    </WindowWrapper>
+    </AppWindowWrapper>
   );
 };
 

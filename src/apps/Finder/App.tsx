@@ -1,4 +1,4 @@
-import WindowWrapper from "@/components/desktop/WindowWrapper";
+import AppWindowWrapper from "@/components/desktop/AppWindowWrapper";
 import { FinderConfig } from "./Config";
 
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 const FinderApp = ({ id }: Props) => {
   return (
-    <WindowWrapper id={id} config={FinderConfig}>
+    <AppWindowWrapper id={id} config={FinderConfig}>
       Finder App
-    </WindowWrapper>
+    </AppWindowWrapper>
   );
 };
 
