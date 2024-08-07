@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useMouse from "@/hooks/useMouse";
 import { Position, Size } from "@/types/window";
 import useDoubleClick from "./useDoubleClick";
+import { MIN_WINDOW_HEIGHT, MIN_WINDOW_WIDTH } from "@/constants/system";
 
 const NAVBAR_HEIGHT = 27;
 
@@ -114,20 +115,28 @@ const useWindow = (
       }
       if (resizeDirection.includes("left")) {
         const newWidth = position.x - mouse.x + size.width;
-        newSize.width = newWidth;
-        newPosition.x = mouse.x;
+        newSize.width = Math.max(newWidth, MIN_WINDOW_WIDTH);
+        newPosition.x = newSize.width > MIN_WINDOW_WIDTH ? mouse.x : position.x;
       }
+
       if (resizeDirection.includes("bottom")) {
         newSize.height = mouse.y - position.y;
       }
       if (resizeDirection.includes("top")) {
-        const newHeight = position.y - mouse.y + size.height;
         if (mouse.y >= NAVBAR_HEIGHT) {
-          newSize.height = newHeight;
-          newPosition.y = mouse.y;
+          newSize.height = Math.max(
+            size.height + position.y - mouse.y,
+            MIN_WINDOW_HEIGHT
+          );
+          newPosition.y =
+            newSize.height > MIN_WINDOW_HEIGHT ? mouse.y : position.y;
         } else {
-          newSize.height = size.height + position.y - NAVBAR_HEIGHT;
-          newPosition.y = NAVBAR_HEIGHT;
+          newSize.height = Math.max(
+            size.height + position.y - NAVBAR_HEIGHT,
+            MIN_WINDOW_HEIGHT
+          );
+          newPosition.y =
+            newSize.height > MIN_WINDOW_HEIGHT ? NAVBAR_HEIGHT : position.y;
         }
       }
 

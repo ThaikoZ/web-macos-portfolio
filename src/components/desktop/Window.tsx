@@ -8,6 +8,7 @@ import { closeWindow, setActiveWindow } from "@/store/reducers/windowSlice";
 import WindowButton from "./WindowButton";
 import { Store } from "@/store/store";
 import { cn } from "@/utils/cn";
+import { MIN_WINDOW_HEIGHT, MIN_WINDOW_WIDTH } from "@/constants/system";
 
 interface Props extends App {
   id: number;
@@ -60,13 +61,15 @@ const Window = ({
     <div
       ref={ref}
       className={cn(
-        "fixed min-w-80 min-h-52 window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
+        "fixed window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
         {
           "z-10 !shadow-window-active": activeWindow.id === id,
         },
         { "fullscreen-transition": isTransitioning }
       )}
       style={{
+        minHeight: MIN_WINDOW_HEIGHT,
+        minWidth: MIN_WINDOW_WIDTH,
         width: convertToPixels(size.width),
         height: convertToPixels(size.height),
         left: convertToPixels(position.x),
