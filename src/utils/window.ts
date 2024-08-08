@@ -17,3 +17,8 @@ export const removeWindow = (windows: AppConfig[], app: AppConfig) =>
 
 export const checkIfWindowIsOpened = (windows: AppConfig[], app: AppConfig) =>
   windows.find((window) => window.title === app.title);
+
+export const checkIfWindowIsMinimized = (
+  windows: AppConfig[],
+  app: AppConfig
+) => windows.find((window) => window.title == app.title);

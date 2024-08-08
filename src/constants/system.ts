@@ -12,3 +12,9 @@ export const MIN_WINDOW_HEIGHT = 200;
 export const DEFAULT_RESIZE_THICKNESS = 4;
 
 export const DEFAULT_OPENED_WINDOW = { id: -1, title: "Finder" };
+
+export const DEFAULT_START_POSITION = {
+  x: window.screen.width / 2 - DEFAULT_WINDOW_WIDTH / 4,
+  y: window.screen.height,
+};
+export const DEFAULT_START_SIZE = { width: 5, height: 5 };

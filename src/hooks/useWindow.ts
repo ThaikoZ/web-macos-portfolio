@@ -3,22 +3,27 @@ import useMove from "./useMove";
 import useResize from "./useResize";
 import { Position, Size, WindowState } from "@/types/window";
 import useDoubleClick from "./useDoubleClick";
+import useDesk from "./useDesk";
+import { AppConfig } from "@/types/app";
+import { checkIfWindowIsMinimized } from "@/utils/window";
+import { DEFAULT_START_POSITION, DEFAULT_START_SIZE } from "@/constants/system";
 
 const useWindow = (
   initialSize: Size,
   initialPosition: Position,
-  initialIsResizable: boolean
+  initialIsResizable: boolean,
+  config: AppConfig
 ) => {
-  const [size, setSize] = useState<Size>(initialSize);
-  const [position, setPosition] = useState<Position>(initialPosition);
+  const [size, setSize] = useState<Size>(DEFAULT_START_SIZE);
+  const [position, setPosition] = useState<Position>(DEFAULT_START_POSITION);
   const [isResizable, setResizable] = useState(initialIsResizable);
   const [isFullscreen, setFullscreen] = useState(false);
-  const [isMinimized, setMinimized] = useState(false);
   const [previousState, setPreviousState] = useState<WindowState>({
-    size,
-    position,
+    size: initialSize,
+    position: initialPosition,
   });
   const [isTransitioning, setTransitioning] = useState(false);
+  const [isOpening, setOpening] = useState(true);
 
   const {
     handleMouseDownMove,
@@ -40,6 +45,9 @@ const useWindow = (
     isResizable,
     isFullscreen
   );
+
+  const { minimizeWindow, minimizedWindows } = useDesk();
+  const isMinimized = checkIfWindowIsMinimized(minimizedWindows, config);
 
   const handleDoubleClick = useDoubleClick(() => toggleFullscreen(), 300);
 
@@ -63,8 +71,8 @@ const useWindow = (
         y: 0,
       });
     }
-    setTimeout(() => setTransitioning(false), 300);
     setFullscreen((prev) => !prev);
+    setTimeout(() => setTransitioning(false), 300);
   }, [isFullscreen, position, size, previousState, isResizable]);
 
   const toggleMinimize = useCallback(() => {
@@ -73,16 +81,31 @@ const useWindow = (
       setSize(previousState.size);
       setPosition(previousState.position);
     } else {
-      setPreviousState({ size, position });
-      setSize({ width: 0, height: 0 });
-      setPosition({
-        x: (window.screen.width - size.width) / 2,
-        y: window.screen.height,
-      });
+      const state = { size, position };
+      console.log(state);
+      setPreviousState(state);
+      setSize(DEFAULT_START_SIZE);
+      setPosition(DEFAULT_START_POSITION);
     }
-    setTimeout(() => setTransitioning(false), 300);
-    setMinimized((prev) => !prev);
-  }, [isMinimized, position, size, previousState]);
+    setTimeout(() => {
+      setTransitioning(false);
+      minimizeWindow(config);
+    }, 300);
+  }, [isMinimized, position, size, previousState, config, minimizeWindow]);
+
+  useEffect(() => {
+    if (isOpening) {
+      setTransitioning(true);
+      // console.log(previousState);
+      setSize(previousState.size);
+      setPosition(previousState.position);
+
+      setTimeout(() => {
+        setTransitioning(false);
+        setOpening(false);
+      }, 300);
+    }
+  }, [isOpening, previousState]);
 
   useEffect(() => {
     if (isResizing || isMoving) {

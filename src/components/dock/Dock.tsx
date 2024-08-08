@@ -3,30 +3,41 @@ import { AppConfig } from "@/types/app";
 import { dockApps } from "dockConfigs";
 import Divider from "./Divider";
 import Dot from "./Dot";
-import { checkIfWindowIsOpened } from "@/utils/window";
+import {
+  checkIfWindowIsMinimized,
+  checkIfWindowIsOpened,
+} from "@/utils/window";
 
 const Dock = () => {
-  const { openedWindows, openWindow, setActiveWindow } = useDesk();
-
-  const handleClick = (app: AppConfig) => {
-    const existingApp = checkIfWindowIsOpened(openedWindows, app);
-    existingApp ? setActiveWindow(existingApp) : openWindow(app);
-  };
+  const {
+    openedWindows,
+    openWindow,
+    setActiveWindow,
+    minimizedWindows,
+    restoreWindow,
+  } = useDesk();
 
   const renderAppItem = (app: AppConfig, index: number) => {
-    const isLastItem = index === dockApps.length - 2;
-    const isAppOpened = checkIfWindowIsOpened(openedWindows, app);
+    const isPenultimateItem = index === dockApps.length - 2;
+    const isOpened = checkIfWindowIsOpened(openedWindows, app);
+    const isMinimized = checkIfWindowIsMinimized(minimizedWindows, app);
     const Icon = app.icon;
+
+    const handleClick = () => {
+      if (isOpened) setActiveWindow(isOpened);
+      else if (isMinimized) restoreWindow(app);
+      else openWindow(app);
+    };
 
     return (
       <div className="flex" key={index}>
         <div className="flex flex-col items-center">
-          <div className="dock-item" onClick={() => handleClick(app)}>
+          <div className="dock-item" onClick={handleClick}>
             <Icon />
           </div>
-          {isAppOpened && <Dot />}
+          {(isOpened || isMinimized) && <Dot />}
         </div>
-        {isLastItem && <Divider />}
+        {isPenultimateItem && <Divider />}
       </div>
     );
   };

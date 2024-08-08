@@ -38,7 +38,12 @@ const Window = ({ config, children }: Props) => {
     handleMouseDownMove,
     isTransitioning,
     toggleMinimize,
-  } = useWindow(config.defaultSize, initialPosition, config.isResizable);
+  } = useWindow(
+    config.defaultSize,
+    initialPosition,
+    config.isResizable,
+    config
+  );
 
   const isActive = activeWindow.title === config.title;
 
@@ -71,7 +76,7 @@ const Window = ({ config, children }: Props) => {
         onMouseDown={handleMouseDownMove}
         onClick={handleDoubleClickFullscreen}
         className={cn(
-          "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px]",
+          "flex items-center py-1 px-2.5 w-full bg-window-bar-background h-7 font-bold text-window-bar-text rounded-tl-xl rounded-tr-xl !shadow-sm overflow-hidden text-[14px] z-20",
           { "text-window-bar-text-inactive": !isActive }
         )}
       >
