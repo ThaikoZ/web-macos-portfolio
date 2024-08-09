@@ -8,8 +8,8 @@ export const FinderConfig: AppConfig = {
   icon: Icon,
   engine: App,
   defaultSize: {
-    width: 500,
-    height: 400,
+    width: 700,
+    height: 500,
   },
   isResizable: true,
   menu: Menu,

@@ -40,6 +40,13 @@ export default {
         "window-active": "0px 15px 35px rgba(0, 0, 0, 0.7)",
       },
       colors: {
+        notes: {
+          background: "var(--background)",
+          "note-selected": "var(--note-selected)",
+          border: "var(--border)",
+          subtitle: "var(--subtitle)",
+        },
+
         topbar: {
           background: "var(--color-topbar-background)",
           text: "var(--color-topbar-text)",

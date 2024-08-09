@@ -1,0 +1,14 @@
+.light,
+.dark {
+  --note-selected: rgba(251, 225, 150, 1);
+}
+
+.light {
+  --background: rgba(255, 255, 255, 1);
+  --subtitle: rgba(151, 151, 151, 1);
+  --border: rgba(230, 240, 240, 1);
+}
+
+.dark {
+  --background: rgba(0, 0, 0, 1);
+}

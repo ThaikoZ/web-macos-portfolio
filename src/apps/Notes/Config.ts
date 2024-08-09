@@ -8,8 +8,8 @@ export const NotesConfig: AppConfig = {
   icon: Icon,
   engine: App,
   defaultSize: {
-    width: 300,
-    height: 400,
+    width: 800,
+    height: 500,
   },
   isResizable: true,
   menu: Menu,
