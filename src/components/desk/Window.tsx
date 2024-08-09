@@ -56,7 +56,7 @@ const Window = ({ config, children }: Props) => {
     <div
       ref={ref}
       className={cn(
-        "fixed window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto",
+        "fixed window-border w-fit h-fit rounded-xl before:rounded-xl after:rounded-xl bg-window-background pointer-events-auto overflow-hidden",
         {
           "z-10 !shadow-window-active": activeWindow.title === config.title,
         },
@@ -107,11 +107,11 @@ const Window = ({ config, children }: Props) => {
             }
           />
         </div>
-        <div className="flex items-center justify-center w-full pointer-events-none">
+        <div className="flex items-center justify-center w-full  pointer-events-none">
           {config.title}
         </div>
       </div>
-      <div>{children}</div>
+      <div className="w-full h-full">{children}</div>
       {config.isResizable && !isFullscreen && (
         <>
           <div

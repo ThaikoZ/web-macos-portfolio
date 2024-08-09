@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import systemSettingsSlice from "./systemSettingsSlice";
-import windowSlice from "./reducers/windowSlice";
 
 export const store = configureStore({
   reducer: {
     systemSettings: systemSettingsSlice,
-    window: windowSlice,
   },
 });
 

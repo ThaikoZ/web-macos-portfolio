@@ -96,7 +96,6 @@ const useWindow = (
   useEffect(() => {
     if (isOpening) {
       setTransitioning(true);
-      // console.log(previousState);
       setSize(previousState.size);
       setPosition(previousState.position);
 
