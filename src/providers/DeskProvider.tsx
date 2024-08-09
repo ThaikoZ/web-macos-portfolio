@@ -1,6 +1,6 @@
 import { AppConfig } from "@/types/app";
 import { createContext, PropsWithChildren, useState } from "react";
-import { FinderConfig, NotesConfig } from "../apps";
+import { FinderConfig } from "../apps";
 import {
   findWindow,
   findWindowIndex,
@@ -35,9 +35,7 @@ export const DeskContext = createContext<DeskContextProps>(initialValues);
 const DEFAULT_OPENED_WINDOW = FinderConfig;
 
 export const DeskProvider = ({ children }: PropsWithChildren) => {
-  const [openedWindows, setOpenedWindows] = useState<AppConfig[]>([
-    NotesConfig,
-  ]);
+  const [openedWindows, setOpenedWindows] = useState<AppConfig[]>([]);
   const [minimizedWindows, setMinimizedWindows] = useState<AppConfig[]>([]);
   const [activeWindow, setActiveWindowState] = useState<AppConfig>(
     DEFAULT_OPENED_WINDOW
