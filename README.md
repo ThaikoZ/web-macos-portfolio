@@ -4,6 +4,8 @@
 
 **macOS in Browser** is a web-based application that simulates the experience of using a macOS-like desktop environment directly within your browser. This project was built to showcase proprietary portfolio that provides users with a familiar and intuitive desktop experience, allowing them to manage windows, applications, and multitasking similar to how they would on an actual macOS system.
 
+Production Branch Preview: [https://adriansudak.com/](https://adriansudak.com/)
+
 ## Features
 
 - **Window Management**: Create, move, resize, minimize, and maximize windows, simulating a macOS-like environment.
@@ -18,6 +20,7 @@
 - **TypeScript**: Typed JavaScript at scale.
 - **Tailwind**: Used to speed up work.
 - **Radix Primitives**: Components for building high-quality UI interfaces.
+- **Netlify**: Platform that allows to deploy projects easily for free.
 
 ## License
 
