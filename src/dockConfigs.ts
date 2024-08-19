@@ -5,6 +5,7 @@ import {
   NotesConfig,
   SafariConfig,
   TrashConfig,
+  UnsplashConfig,
 } from "@/apps/index";
 import { AppConfig } from "@/types/app";
 
@@ -14,5 +15,6 @@ export const dockApps: AppConfig[] = [
   NotesConfig,
   FaceTimeConfig,
   MusicConfig,
+  UnsplashConfig,
   TrashConfig,
 ];
