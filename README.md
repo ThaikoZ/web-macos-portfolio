@@ -1,27 +1,91 @@
-# macOS in Browser
+# macOS Portfolio
 
-## Project Description
+A fully interactive macOS desktop environment built for the web. This portfolio project replicates the macOS user experience with pixel-perfect UI components, smooth animations, and functional applications.
 
-**macOS in Browser** is a web-based application that simulates the experience of using a macOS-like desktop environment directly within your browser. This project was built to showcase proprietary portfolio that provides users with a familiar and intuitive desktop experience, allowing them to manage windows, applications, and multitasking similar to how they would on an actual macOS system.
-
-Production Branch Preview: [https://adriansudak.com/](https://adriansudak.com/)
+**Live Demo**: [https://adriansudak.com/](https://adriansudak.com/)
 
 ## Features
 
-- **Window Management**: Create, move, resize, minimize, and maximize windows, simulating a macOS-like environment.
+### Desktop Environment
+- **Authentic macOS UI**: Dock, menu bar, and window chrome styled after macOS Sonoma
+- **Window Management**: Drag, resize, minimize, maximize, and close windows with smooth animations
+- **Theme Support**: Light and dark mode with multiple wallpaper options (Sonoma, Monterey)
+- **Context Menus**: Right-click interactions throughout the interface
+- **Responsive Dock**: Magnification effects and drag-to-reorder functionality
 
-- **Desktop Environment**: Manage multiple windows and applications with ease, using familiar macOS-style UI components.
+### Built-in Applications
 
-- **Applications (soon)**: A Notes app is available, allowing users to create, edit, and manage notes directly within the simulated macOS environment. This is the first of many planned applications to simulate a macOS experience.
+- **Finder**: File system browser with macOS-style navigation
+- **Safari**: Web browser interface
+- **Notes**: Create, edit, and organize notes with a sidebar navigation
+- **FaceTime**: Video call interface mockup
+- **Music**: Fully functional music player with playlist support and playback controls
+- **Unsplash**: Image gallery browser
+- **Trash**: System trash bin with empty/full states
+
+### System Features
+- **Menu Bar**: Clock, system controls, battery indicator, WiFi status, and user account menu
+- **Spotlight Search**: Quick access search functionality
+- **Control Panel**: System settings and quick toggles
+- **Custom Cursors**: macOS-style cursor set for different interactions
+- **Audio Support**: Background music and sound effects
 
 ## Technology Stack
 
-- **React**: A JavaScript library for building user interfaces.
-- **TypeScript**: Typed JavaScript at scale.
-- **Tailwind**: Used to speed up work.
-- **Radix Primitives**: Components for building high-quality UI interfaces.
-- **Netlify**: Platform that allows to deploy projects easily for free.
+- **React 18**: Component-based UI architecture
+- **TypeScript**: Type-safe development
+- **Redux Toolkit**: Centralized state management
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first styling
+- **Radix UI**: Accessible component primitives (dropdowns, tooltips, sliders, context menus)
+- **SF Pro**: Official Apple system fonts
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+npm run build
+```
+
+### Docker Support
+
+```bash
+docker-compose up
+```
+
+## Project Structure
+
+```
+src/
+├── apps/              # Individual application implementations
+├── components/        # Reusable UI components (dock, topbar, screen)
+├── hooks/             # Custom React hooks (window, audio, mouse, resize)
+├── providers/         # Context providers
+├── store/             # Redux store and slices
+├── styles/            # Global styles and fonts
+├── types/             # TypeScript type definitions
+└── utils/             # Helper functions
+```
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+MIT License
